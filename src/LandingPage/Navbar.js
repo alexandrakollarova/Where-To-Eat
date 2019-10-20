@@ -6,13 +6,20 @@ class Navbar extends Component {
 
     static contextType = AppContext;
 
-    render() { 
+    render() {
         return ( 
             <nav>
                 <p>logo!</p>
                 <ul>
-                    <button type="button" onClick={this.context.showModal}>Sign Up</button>
-                    <NavLink to='/demoPage'>Demo</NavLink>
+                    <button 
+                        type="button" 
+                        className="btn-signup-modal"
+                        onClick={this.context.showModal}
+                    >
+                        Sign Up
+                    </button>
+
+                    <NavLink to='/demo-page'>Demo</NavLink>
                 </ul>
             </nav>
          );

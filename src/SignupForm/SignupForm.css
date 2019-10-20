@@ -1,0 +1,77 @@
+.signup-form {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.signup-form fieldset {
+    border-style: none;
+    background-color: darkgray;
+    padding-top: 20px;
+    border-radius: 8px;
+}
+
+.signup-form legend {
+    font-size: 20px;
+    padding-top: 80px
+}
+
+.signup-form label {
+    padding-left: 6px
+}
+
+.signup-form input {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    border-style: none;
+    border-radius: 5px
+}
+
+.btn-signup-form {
+    border: none;
+    background-color: inherit;
+    font-family: 'Libre Franklin', sans-serif;
+    font-size: inherit;
+}
+
+.btn-signup-form {
+    border: solid 1px black;
+    border-radius: 8px;
+    padding: 5px 8px;
+    margin-top: 10px
+}
+
+.btn-signup-form-wrapper1 {
+    float: left;
+    margin-left: 15px;
+    padding: 10px 0;
+}
+
+.btn-signup-form-wrapper2 {
+    float: right;
+    margin-right: 15px;
+    padding: 10px 0;
+}
+
+.error-message {
+    font-size: 12px;
+    padding: 0 10px;
+    padding-bottom: 10px;
+}
+
+.display-block {
+    display: block;
+}
+  
+.display-none {
+    display: none;
+}

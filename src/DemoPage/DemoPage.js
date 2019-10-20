@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import Footer from '../LandingPage/Footer';
 import Header from '../LandingPage/Header';
+import './DemoPage.css';
 
 class DemoPage extends Component {
-    state = {  }
+    
     render() { 
         return ( 
             <>
                 <Header />
 
                 <main>
-                    <div className='headline'>
-                        <h1>Some header</h1>
-                        <p>(background image)</p>
+                    <div className='main-demo'>
+                        <h1 className="headline">Some header</h1>
 
-                        <h4>
+                        <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        </h4>
+                        </p>
 
                         <div className='image-wrapper'></div>
 

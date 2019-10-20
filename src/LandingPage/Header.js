@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 import Navbar from './Navbar';
+import HomepageNav from '../HomePage/HomepageNav';
+import AppContext from '../AppContext';
 
 class Header extends Component {
-    state = {  }
+    static contextType = AppContext;
+
     render() { 
         return ( 
             <header>
-                <Navbar />
+                {
+                    this.context.isSignedIn 
+                    ? <HomepageNav /> 
+                    : <Navbar />
+                }
             </header>
          );
     }
