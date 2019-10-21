@@ -17,10 +17,14 @@
     margin: 5px;
 }
 
-/* .material-icons {
-    
-} */
-
 .home-screen-select {
     text-align: center;
 }
+
+
+.search-icon {
+    border: none;
+    background-color: inherit
+}
+
+

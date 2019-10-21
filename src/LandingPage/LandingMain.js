@@ -1,45 +1,42 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Header from '../Header/Header';
 import Footer from './Footer';
 import Funnels from './Funnels';
 import SignupForm from '../SignupForm/SignupForm';
+import '../Header/Header.css'
 
-class LandingMain extends Component {
-    
+class LandingMain extends Component {    
        
-    render() { 
-       
+    render() {        
         return ( 
             <div>
-                    <Header />
+                <Header />
 
-                    <SignupForm />
+                <SignupForm />
 
-                    <main>
-                        <div className="main-landing">
-                            <h1 className="headline">
-                                Where 
-                                <br />
-                                to eat?
-                            </h1>
+                <main className="main-landing">
+                    <h1 className="headline">
+                        Where 
+                        <br />
+                        to eat?
+                    </h1>
 
-                            <p>
-                                Craving something yummy, don't feel like experimenting, 
-                                and nothing comes to your mind?
-                                Let Where To Eat to help you to solve this once for all. 
-                            </p>
+                    <p>
+                        Craving something yummy, don't feel like experimenting, 
+                        and nothing comes to your mind?
+                        Let Where To Eat to help you to solve this once for all. 
+                    </p>
                         
-                            <button 
-                                type="button"
-                                className="btn-check-it-out"
-                            >
-                                Check it out
-                            </button>
-                        </div>
+                    <button 
+                        type="button"
+                        className="btn-check-it-out"
+                    >
+                        Check it out
+                    </button>
 
-                        <Funnels />
+                    <Funnels />
 
-                    </main>
+                </main>
 
                 <Footer />
             </div>

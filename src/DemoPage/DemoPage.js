@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Footer from '../LandingPage/Footer';
-import Header from '../LandingPage/Header';
+import Header from '../Header/Header';
 import './DemoPage.css';
+import SignupForm from '../SignupForm/SignupForm';
 
 class DemoPage extends Component {
     
@@ -10,17 +11,17 @@ class DemoPage extends Component {
             <>
                 <Header />
 
-                <main>
-                    <div className='main-demo'>
-                        <h1 className="headline">Some header</h1>
+                <SignupForm />
 
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        </p>
+                <main className='main-demo'>
+                    <h1 className="headline">Some header</h1>
 
-                        <div className='image-wrapper'></div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    </p>
 
-                    </div>
+                    <div className='image-wrapper'></div>
+
                 </main>
 
                 <Footer />        

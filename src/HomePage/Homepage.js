@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 
-class SignInPage extends Component {
+class Homepage extends Component {
     state = {  }
     render() { 
         return ( 
             <>
+            Homepage in progress
             </>
          );
     }
 }
  
-export default SignInPage;
+export default Homepage;

@@ -6,26 +6,13 @@
     box-sizing: border-box;
 }
 
-nav li {
-    list-style: none;
-    display: inline;
-    padding-left: 15px;
+button, link, a {
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit
 }
 
-nav {
-    padding: 10px 15px
-}
-
-/*fake logo */
-nav p { 
-    float: left;
-}
-
-nav ul {
-    float: right
-}
-
-main .main-landing {
+.main-landing {
     padding: 130px 30px;
     text-align: center;
 }
@@ -79,12 +66,6 @@ footer {
     border: solid 1px grey;
     margin-left: auto;
     margin-right: auto;
-}
-
-button, link, a {
-    cursor: pointer;
-    text-decoration: none;
-    color: inherit
 }
 
 .btn-signup-modal, .btn-check-it-out, .btn-signup-form {

@@ -1,0 +1,68 @@
+.nav-landing li {
+    list-style: none;
+    display: inline;
+    padding-left: 15px;
+}
+
+.nav-landing {
+    padding: 10px 15px
+}
+
+/*fake logo */
+.nav-landing p { 
+    float: left;
+}
+
+.nav-landing ul {
+    float: right
+}
+
+.hamburger-menu {
+    background-color: wheat;
+    text-align: left;
+    right: 0;
+    top: 0;
+    margin: 0;
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    list-style: none;
+    padding-top: 50px
+}
+
+.hamburger-menu li {
+    padding-top: 20px
+}
+
+.material-icons {
+    font-size: 25px;
+}
+
+.utensils-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: none;
+    background-color: inherit;
+}
+
+.nav-homepage .close-icon {
+    float: right;
+    border: none;
+    background-color: inherit;
+    margin-right: -10px;
+}
+
+.nav-homepage ul {
+    float: right
+}
+
+.nav-homepage {
+    padding: 10px 15px
+}
+
+/*fake logo */
+.nav-homepage p { 
+    float: left;
+    margin: 0
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Navbar from './Navbar';
-import HomepageNav from '../HomePage/HomepageNav';
+import NavSignedOut from './NavSignedOut';
+import NavSignedIn from './NavSignedIn';
 import AppContext from '../AppContext';
 
 class Header extends Component {
@@ -11,8 +11,8 @@ class Header extends Component {
             <header>
                 {
                     this.context.isSignedIn 
-                    ? <HomepageNav /> 
-                    : <Navbar />
+                    ? <NavSignedIn /> 
+                    : <NavSignedOut />
                 }
             </header>
          );

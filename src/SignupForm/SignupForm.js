@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import ValidationError from './ValidationError';
 import './SignupForm.css';
-import uuid from 'uuid'
+import uuid from 'uuid';
 
 const strongRegex = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])");
 

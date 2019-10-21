@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Footer from '../LandingPage/Footer';
-import Header from '../LandingPage/Header';
+import Header from '../Header/Header';
 import './Homepage.css';
 import PlacesList from '../Places/PlacesList';
 import AppContext from '../AppContext';
+import slider from './slider.png'
 
-class Homepage extends Component {
+class SearchPlaces extends Component {
     static contextType = AppContext;
 
     state = {
@@ -18,12 +19,11 @@ class Homepage extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const searchInput = this.state
+        const searchInput = this.state.searchInput
 
         const filtered = this.context.places.filter(place => 
             place.name === searchInput
         )   
-
         this.context.updateSearchResults(filtered)
     }
 
@@ -38,7 +38,10 @@ class Homepage extends Component {
 
                         <form onSubmit={e => this.handleSubmit(e)}>
 
-                            <button type="submit">
+                            <button 
+                                type="submit"
+                                className="search-icon"
+                            >
                                 <i className="material-icons">search</i>
                             </button>
                                 
@@ -49,34 +52,7 @@ class Homepage extends Component {
                                 onChange={e => this.updateSearchInput(e.target.value)}
                             />
 
-                            <div className="filter-options-group">
-                                <input 
-                                type="radio"
-                                name="filter-option"
-                                value="All"
-                                //    checked={}
-                                //    onChange={}
-                                />
-                                    All
-                                    
-                                <input 
-                                type="radio"
-                                name="filter-option"
-                                value="Popular"
-                                //    checked={}
-                                //    onChange={}
-                                />
-                                    Popular
-
-                                <input 
-                                type="radio"
-                                name="filter-option"
-                                value="Favorite"
-                                //    checked={}
-                                //    onChange={}
-                                />
-                                    Favorite
-                            </div>
+                           <img src={slider} alt="slider-icon"></img>
                         </form>
                         {/* <i className="material-icons">&#xe145;</i> */}
                         <PlacesList />
@@ -89,4 +65,4 @@ class Homepage extends Component {
     }
 }
  
-export default Homepage;
+export default SearchPlaces;

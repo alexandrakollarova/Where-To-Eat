@@ -6,9 +6,9 @@ class Navbar extends Component {
 
     static contextType = AppContext;
 
-    render() {
+    render() { 
         return ( 
-            <nav>
+            <nav className="nav-landing">
                 <p>logo!</p>
                 <ul>
                     <button 

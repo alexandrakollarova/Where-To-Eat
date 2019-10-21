@@ -8,8 +8,9 @@ import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
 import places from '../SampleData';
 import users from '../SampleData'
-import SignupForm from '../SignupForm/SignupForm';
-import SignInPage from '../SignInPage/SignInPage'
+// import SignupForm from '../SignupForm/SignupForm';
+// import SignInPage from '../SignInPage/SignInPage';
+import Homepage from '../HomePage/Homepage';
 
 class App extends Component {
   state = { 
@@ -54,20 +55,33 @@ class App extends Component {
     return ( 
       <AppContext.Provider value={contextValue}>      
         <Switch>
+
+          <Route exact path='/'>
+            {this.state.isSignedIn 
+                ? <Redirect to='/search-places' /> 
+                : <LandingMain />
+            }
+          </Route>
           
-          <Route exact path='/' component={LandingMain} />
+          {/* <Route exact path='/' component={LandingMain} /> */}
 
-          <Route path='/demo-page' component={DemoPage} />
+          <Route path='/home-page' component={Homepage} />
 
-          <Route path='/signup' component={SignupForm} />
+          <Route path='/demo-page'>
+            {this.state.isSignedIn
+                ? <Redirect to='/search-places' /> 
+                : <DemoPage />
+            }
+          </Route>
+
+          {/* <Route path='/signup' component={SignupForm} /> */}
 
           <Route path='/search-places' component={SearchPlaces} />
 
           <Route component={PageNotFound} />
 
         </Switch> 
-      </AppContext.Provider>
-     
+      </AppContext.Provider>     
      );
   }
 }
