@@ -6,13 +6,13 @@ import AppContext from '../AppContext';
 class OpenSignedOutMenu extends Component {
     static contextType = AppContext;
 
-    state = { isMenuActive: true }
+    state = { isMenuActive: this.props.handleMenu }
 
     handleCloseMenu = () => {
         this.setState({ isMenuActive: false });
     }
 
-    render() {
+    render() { console.log(this.state.isMenuActive)
         return ( 
             <ul 
                 className="open-menu" 

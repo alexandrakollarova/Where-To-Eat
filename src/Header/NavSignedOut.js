@@ -25,7 +25,7 @@ class NavSignedOut extends Component {
                 </button> 
                 
                 {this.state.isMenuActive 
-                    && <OpenSignedOutMenu />}             
+                    && <OpenSignedOutMenu handleMenu={this.state.isMenuActive} />}             
 
             </nav>
          );
