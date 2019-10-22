@@ -5,12 +5,12 @@ import OpenSignedOutMenu from './OpenSignedOutMenu';
 class NavSignedOut extends Component {
     static contextType = AppContext;
 
-    state = { menuActive: false }
+    state = { isMenuActive: false }
 
     handleOpenMenu = () => {
-        this.setState({ menuActive: true });
+        this.setState({ isMenuActive: true });
     }
-
+   
     render() { 
         return ( 
             <nav className="nav-landing">
@@ -24,8 +24,8 @@ class NavSignedOut extends Component {
                     <i className="material-icons">restaurant</i>
                 </button> 
                 
-                {this.state.menuActive 
-                    && <OpenSignedOutMenu menuActive={this.state.menuActive} />}             
+                {this.state.isMenuActive 
+                    && <OpenSignedOutMenu />}             
 
             </nav>
          );

@@ -18,6 +18,7 @@ class App extends Component {
     users: users.users,
     showSignupForm: false,
     isSignedIn: false,
+    isMenuActive: false
   }
 
   cretaeUser = user => {
@@ -27,7 +28,11 @@ class App extends Component {
     });
   } 
 
-  showModal = () => {this.setState({ showSignupForm: true })}
+  showModal = () => {
+    this.setState({ 
+      showSignupForm: true,
+    })
+  }
 
   hideModal = () => {this.setState({ showSignupForm: false })}
 
@@ -43,7 +48,8 @@ class App extends Component {
       showModal: this.showModal,
       hideModal: this.hideModal,
       createUser: this.cretaeUser,
-      updateSearchResults: this.updateSearchResults
+      updateSearchResults: this.updateSearchResults,
+      isMenuActive: this.state.isMenuActive
     }
 
     return ( 

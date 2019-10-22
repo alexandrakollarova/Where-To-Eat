@@ -10,6 +10,8 @@ const AppContext = React.createContext({
 
    isSignedIn: "",
 
+   isMenuActive: false,
+
    createUser: () => {},
    
    addPlace: () => {},

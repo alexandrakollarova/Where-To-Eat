@@ -2,23 +2,22 @@ import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
 import './Header.css';
 import AppContext from '../AppContext';
-import NavSignedOut from './NavSignedOut';
 
 class OpenSignedOutMenu extends Component {
     static contextType = AppContext;
 
-    state = { menuActive: true }
+    state = { isMenuActive: true }
 
     handleCloseMenu = () => {
-        this.setState({ menuActive: false });
+        this.setState({ isMenuActive: false });
     }
 
     render() {
         return ( 
             <ul 
                 className="open-menu" 
-                style={{display: this.state.menuActive 
-                    ? 'block' : 'none' }}>
+                style={{display: this.state.isMenuActive ? 'block' : 'none' }}
+            >
                 <button 
                     type="button"
                     className="close-icon"
