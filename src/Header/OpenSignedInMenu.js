@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class OpenHamburgerMenu extends Component {
+class OpenSignedInMenu extends Component {
     state = {  }
     render() { 
         return ( 
-            <ul className="hamburger-menu">
+            <ul className="open-menu">
                 <button className="close-icon"> 
-                    <i class="material-icons">close</i>
+                    <i className="material-icons">close</i>
                 </button>
 
                 <li>My collection</li>
@@ -16,4 +16,4 @@ class OpenHamburgerMenu extends Component {
     }
 }
  
-export default OpenHamburgerMenu;
+export default OpenSignedInMenu;

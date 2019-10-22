@@ -1,23 +1,40 @@
-.nav-landing li {
-    list-style: none;
-    display: inline;
-    padding-left: 15px;
-}
-
-.nav-landing {
-    padding: 10px 15px
-}
-
 /*fake logo */
 .nav-landing p { 
     float: left;
+    margin-top: 20px;
+    margin-left: 15px;;
 }
 
-.nav-landing ul {
-    float: right
+.material-icons {
+    font-size: 25px;
 }
 
-.hamburger-menu {
+.utensils-icon, .close-icon {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    border: none;
+    background-color: inherit;
+}
+
+/* .nav-landing li {
+    list-style: none;
+    display: inline;
+    padding-left: 15px;
+} */
+
+.open-menu li {
+    list-style: none;
+    display: block;
+    margin-top: 25px;
+    font-size: 20px;
+}
+
+.open-menu li button {
+    padding: 0;
+}
+
+.open-menu {
     background-color: wheat;
     text-align: left;
     right: 0;
@@ -27,31 +44,13 @@
     width: 200px;
     position: absolute;
     list-style: none;
-    padding-top: 50px
+    padding-top: 50px;
+    z-index: 10;
 }
 
-.hamburger-menu li {
-    padding-top: 20px
-}
 
-.material-icons {
-    font-size: 25px;
-}
 
-.utensils-icon {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    border: none;
-    background-color: inherit;
-}
 
-.nav-homepage .close-icon {
-    float: right;
-    border: none;
-    background-color: inherit;
-    margin-right: -10px;
-}
 
 .nav-homepage ul {
     float: right
@@ -59,10 +58,4 @@
 
 .nav-homepage {
     padding: 10px 15px
-}
-
-/*fake logo */
-.nav-homepage p { 
-    float: left;
-    margin: 0
 }

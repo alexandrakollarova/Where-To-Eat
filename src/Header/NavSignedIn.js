@@ -1,36 +1,32 @@
 import React, { Component } from 'react';
-import '../HomePage/Homepage.css';
-import OpenHamburgerMenu from './OpenHamburgerMenu';
+import OpenSignedInMenu from './OpenSignedInMenu';
 
-class HomepageNav extends Component {
-
+class NavSignedIn extends Component {
     state = {
-        hamburgerIconClicked: false
+        menuActive: false
     }
 
-
-    handleHamburgerIcon = () => {
-        this.setState({ hamburgerIconClicked: true });
+    handleClickMenu = () => {
+        this.setState({ menuActive: true });
     }
 
-    render() { 
-      
+    render() {       
         return ( 
             <nav className="nav-homepage">
                 <p>logo!</p>
 
                 <button 
                     className="utensils-icon"
-                    onClick={this.handleHamburgerIcon}
+                    onClick={this.handleClickMenu}
                 >
                     <i className="material-icons">restaurant</i>
                 </button> 
 
-                 {this.state.hamburgerIconClicked && <OpenHamburgerMenu />}             
+                 {this.state.menuActive && <OpenSignedInMenu />}             
                 
             </nav>
          );
     }
 }
  
-export default HomepageNav;
+export default NavSignedIn;

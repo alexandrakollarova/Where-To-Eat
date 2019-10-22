@@ -17,7 +17,7 @@ class App extends Component {
     places: places.places,
     users: users.users,
     showSignupForm: false,
-    isSignedIn: false
+    isSignedIn: false,
   }
 
   cretaeUser = user => {
