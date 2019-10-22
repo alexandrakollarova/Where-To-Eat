@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import {NavLink} from 'react-router-dom';
 import AppContext from '../AppContext';
 import OpenSignedOutMenu from './OpenSignedOutMenu';
 
 class NavSignedOut extends Component {
     static contextType = AppContext;
 
-    state = {
-        menuActive: false
-    }
+    state = { menuActive: false }
 
-    handleClickMenu = () => {
+    handleOpenMenu = () => {
         this.setState({ menuActive: true });
     }
 
@@ -20,14 +17,15 @@ class NavSignedOut extends Component {
                 <p>logo!</p>
 
                 <button 
+                    type="button"
                     className="utensils-icon"
-                    onClick={this.handleClickMenu}
+                    onClick={this.handleOpenMenu}
                 >
                     <i className="material-icons">restaurant</i>
                 </button> 
                 
                 {this.state.menuActive 
-                    && <OpenSignedOutMenu isMenuActive={this.state.menuActive} />}             
+                    && <OpenSignedOutMenu menuActive={this.state.menuActive} />}             
 
             </nav>
          );

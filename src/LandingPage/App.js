@@ -27,17 +27,11 @@ class App extends Component {
     });
   } 
 
-  showModal = () => {
-    this.setState({ showSignupForm: true });
-  }
+  showModal = () => {this.setState({ showSignupForm: true })}
 
-  hideModal = () => {
-      this.setState({ showSignupForm: false });
-  }
+  hideModal = () => {this.setState({ showSignupForm: false })}
 
-  updateSearchResults = (filtered) => {
-    this.setState({ places: filtered });
-  }
+  updateSearchResults = (filtered) => {this.setState({ places: filtered })}
 
   render() {
 
