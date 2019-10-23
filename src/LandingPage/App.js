@@ -28,10 +28,11 @@ class App extends Component {
     });
   } 
 
-  showModal = () => {
+  showModal = () => { 
     this.setState({ 
       showSignupForm: true,
     })
+    this.state.showSignupForm && this.setState({ isMenuActive: false });
   }
 
   hideModal = () => {this.setState({ showSignupForm: false })}
