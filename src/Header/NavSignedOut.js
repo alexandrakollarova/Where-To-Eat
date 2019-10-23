@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import AppContext from '../AppContext';
 import OpenSignedOutMenu from './OpenSignedOutMenu';
 
 class NavSignedOut extends Component {
-    static contextType = AppContext;
-
     state = { isMenuActive: false }
 
     handleOpenMenu = () => {

@@ -12,7 +12,7 @@ class OpenSignedOutMenu extends Component {
         this.setState({ isMenuActive: false });
     }
 
-    render() { console.log(this.state.isMenuActive)
+    render() {
         return ( 
             <ul 
                 className="open-menu" 
