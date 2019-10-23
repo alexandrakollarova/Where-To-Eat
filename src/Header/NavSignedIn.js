@@ -1,28 +1,50 @@
 import React, { Component } from 'react';
-import OpenSignedInMenu from './OpenSignedInMenu';
+import {NavLink} from 'react-router-dom';
 
 class NavSignedIn extends Component {
-    state = {
-        menuActive: false
+    state = { isMenuActive: false }
+
+    handleOpenMenu = () => {
+        this.setState({ isMenuActive: true });
     }
 
-    handleClickMenu = () => {
-        this.setState({ menuActive: true });
+    handleCloseMenu = () => {
+        this.setState({ isMenuActive: false });
+    }
+
+    openSignedInMenu() {
+        return ( 
+            <ul 
+                className="open-menu" 
+                style={{display: this.state.isMenuActive ? 'block' : 'none' }}
+            >
+                <button 
+                    type="button"
+                    className="close-icon"
+                    onClick={this.handleCloseMenu}
+                > 
+                    <i className="material-icons">close</i>
+                </button>
+
+                <NavLink to='/my-collection'>My collection</NavLink>
+                <li>Log out</li>
+            </ul>
+        )
     }
 
     render() {       
         return ( 
-            <nav className="nav-homepage">
+            <nav className="nav-landing">
                 <p>logo!</p>
 
                 <button 
                     className="utensils-icon"
-                    onClick={this.handleClickMenu}
+                    onClick={this.handleOpenMenu}
                 >
                     <i className="material-icons">restaurant</i>
                 </button> 
 
-                 {this.state.menuActive && <OpenSignedInMenu />}             
+                 {this.state.isMenuActive && this.openSignedInMenu()}             
                 
             </nav>
          );

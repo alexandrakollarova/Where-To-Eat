@@ -1,6 +1,5 @@
 /*fake logo */
 .nav-landing p { 
-    float: left;
     margin-top: 20px;
     margin-left: 15px;;
 }
@@ -16,12 +15,6 @@
     border: none;
     background-color: inherit;
 }
-
-/* .nav-landing li {
-    list-style: none;
-    display: inline;
-    padding-left: 15px;
-} */
 
 .open-menu li {
     list-style: none;
@@ -48,14 +41,3 @@
     z-index: 10;
 }
 
-
-
-
-
-.nav-homepage ul {
-    float: right
-}
-
-.nav-homepage {
-    padding: 10px 15px
-}

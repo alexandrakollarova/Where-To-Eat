@@ -3,7 +3,8 @@ import Header from '../Header/Header';
 import Footer from './Footer';
 import Funnels from './Funnels';
 import SignupForm from '../SignupForm/SignupForm';
-import '../Header/Header.css'
+import '../Header/Header.css';
+import {NavLink} from 'react-router-dom';
 
 class LandingMain extends Component {    
        
@@ -27,13 +28,13 @@ class LandingMain extends Component {
                         Let Where To Eat to help you to solve this once for all. 
                     </p>
                         
-                    <button 
-                        type="button"
+                    <NavLink 
+                        to='/demo-page'
                         className="btn-check-it-out"
                     >
                         Check it out
-                    </button>
-
+                    </NavLink>
+        
                     <Funnels />
 
                 </main>

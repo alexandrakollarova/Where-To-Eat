@@ -16,6 +16,11 @@ class NavSignedOut extends Component {
         this.setState({ isMenuActive: false });
     }
 
+    onSignUpClick = () => {
+        this.handleCloseMenu();
+        this.context.showModal();
+    }
+
     openSignedOutMenu() {
         return ( 
             <ul 
@@ -34,7 +39,7 @@ class NavSignedOut extends Component {
                     <button 
                         type="button" 
                         className="btn-signup-modal"
-                        onClick={this.context.showModal}
+                        onClick={this.onSignupClick}
                     >
                         Sign Up
                     </button>
