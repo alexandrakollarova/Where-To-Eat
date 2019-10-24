@@ -32,27 +32,37 @@ class SearchPlaces extends Component {
             <>
                 <Header />
 
-                <main className='home-screen-select'>
+                <main className='search-places-main'>
                     
-                    <h2>Tousands of restaurants in one place!</h2>
+                    <h2 className="headline">Tousands of restaurants 
+                        <br />
+                        in one place!
+                    </h2>
 
                         <form onSubmit={e => this.handleSubmit(e)}>
-
-                            <button 
-                                type="submit"
-                                className="search-icon"
-                            >
-                                <i className="material-icons">search</i>
-                            </button>
+                            <div className="search-input-and-config-wrapper">
+                                <button 
+                                    type="submit"
+                                    className="search-icon"
+                                >
+                                    <i className="material-icons">search</i>
+                                </button>
+                                    
+                                <input 
+                                    className="search-input"
+                                    type="text"
+                                    name="search-input"
+                                    // placeholder="Enter city or name of the place"
+                                    onChange={e => this.updateSearchInput(e.target.value)}
+                                />
                                 
-                            <input 
-                                type="text"
-                                name="search-input"
-                                placeholder="Enter city or name of the place"
-                                onChange={e => this.updateSearchInput(e.target.value)}
-                            />
-
-                           <img src={slider} alt="slider-icon"></img>
+                                <img 
+                                    src={slider} 
+                                    alt="slider-icon"
+                                    className="search-slider"
+                                >                                
+                                </img>
+                            </div>
                         </form>
                         {/* <i className="material-icons">&#xe145;</i> */}
                         <PlacesList />

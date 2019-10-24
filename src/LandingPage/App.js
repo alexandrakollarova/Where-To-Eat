@@ -10,7 +10,7 @@ import places from '../SampleData';
 import users from '../SampleData'
 // import SignupForm from '../SignupForm/SignupForm';
 // import SignInPage from '../SignInPage/SignInPage';
-import Homepage from '../HomePage/Homepage';
+import MyCollectionList from '../HomePage/MyCollectionList';
 
 class App extends Component {
   state = { 
@@ -18,7 +18,8 @@ class App extends Component {
     users: users.users,
     showSignupForm: false,
     isSignedIn: false,
-    isMenuActive: false
+    isMenuActive: false,
+    collectionList: []
   }
 
   cretaeUser = user => {
@@ -50,7 +51,8 @@ class App extends Component {
       hideModal: this.hideModal,
       createUser: this.cretaeUser,
       updateSearchResults: this.updateSearchResults,
-      isMenuActive: this.state.isMenuActive
+      isMenuActive: this.state.isMenuActive,
+      collectionList: this.state.collectionList
     }
 
     return ( 
@@ -66,7 +68,7 @@ class App extends Component {
           
           {/* <Route exact path='/' component={LandingMain} /> */}
 
-          <Route path='/home-page' component={Homepage} />
+          <Route path='/my-collection' component={MyCollectionList} />
 
           <Route path='/demo-page'>
             {this.state.isSignedIn

@@ -26,8 +26,12 @@ class NavSignedIn extends Component {
                     <i className="material-icons">close</i>
                 </button>
 
-                <NavLink to='/my-collection'>My collection</NavLink>
-                <li>Log out</li>
+                <li>
+                    <NavLink to='/my-collection'>My collection</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/'>Log out</NavLink>
+                </li>
             </ul>
         )
     }
@@ -35,6 +39,7 @@ class NavSignedIn extends Component {
     render() {       
         return ( 
             <nav className="nav-landing">
+            {/* wrap the logo as a link to home page */}
                 <p>logo!</p>
 
                 <button 

@@ -1,30 +1,40 @@
-.home-screen-select {
+.search-places-main {
     margin-top: 100px;
-}
-
-.restaurant-card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.restaurant-card-item { 
-    width: 100%;
-    height: 100px;
-    border: solid 1px grey;
-    margin: 5px;
-}
-
-.home-screen-select {
     text-align: center;
 }
 
+.search-places-main .headline {
+    text-align: left;
+    margin-left: 15px;
+    line-height: 40px;
+}
 
 .search-icon {
     border: none;
-    background-color: inherit
+    background-color: inherit;
+    position: absolute;
+    padding-top: 10px;
+    margin-left: -115px;
+}
+
+.search-input {
+    border: none;
+    background-color: wheat;
+    padding: 15px 30px;
+    border-radius: 30px;
+}
+
+.search-slider {
+    transform: rotate(90deg);
+    background-color: wheat;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 100%;    
+}
+
+.search-input-and-config-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 

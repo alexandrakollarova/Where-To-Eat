@@ -16,7 +16,7 @@ class NavSignedOut extends Component {
         this.setState({ isMenuActive: false });
     }
 
-    onSignUpClick = () => {
+    onSignupClick = () => {
         this.handleCloseMenu();
         this.context.showModal();
     }
@@ -54,6 +54,7 @@ class NavSignedOut extends Component {
     render() { 
         return ( 
             <nav className="nav-landing">
+            {/* wrap the logo as a link to home page */}
                 <p>logo!</p>
 
                 <button 
