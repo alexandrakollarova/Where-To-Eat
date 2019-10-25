@@ -5,10 +5,9 @@ import AppContext from '../AppContext';
 class PlacesItem extends Component {
     static contextType = AppContext;
 
-    // state = {
-    //     buttonAddHide: false,
-    //     buttonUndoHide: true
-    // }
+    state = {
+        activeButtonIndex: null
+    }
 
     // addPlaceToCollection = () => {
     //     this.setState({ buttonAddHide: true, buttonUndoHide: false })
@@ -30,29 +29,37 @@ class PlacesItem extends Component {
     //     this.context.collectionList = newPlaces  
     // }
 
-    addPlaceToCollection = () => {        
-        this.context.buttonAddHide = true
-        this.context.buttonUndoHide = false 
+    addPlaceToCollection(index) {        
+        this.setState({ activeButtonIndex: index })
 
-        this.context.collectionList.push({
-                id: this.props.id,
-                name: this.props.name,
-                isOpen: this.props.isOpen
-        })
-       
+        if (this.state.activeButtonIndex === index) {
+            this.context.buttonAddHide = true
+            this.context.buttonUndoHide = false 
+
+            this.context.collectionList.push({
+                    id: this.props.id,
+                    name: this.props.name,
+                    isOpen: this.props.isOpen
+            })
+        }       
     }
 
-    removePlaceFromCollection = () => {
-        this.context.buttonAddHide = false
-        this.context.buttonUndoHide = true
+    removePlaceFromCollection(index) {
+        this.setState({ activeButtonIndex: index })
 
-        const placeId = this.props.id
+        if (this.state.activeButtonIndex === index) {
+            this.context.buttonAddHide = false
+            this.context.buttonUndoHide = true
 
-        const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
-        this.context.collectionList = newPlaces  
+            const placeId = this.props.id
+            
+            const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
+            this.context.collectionList = newPlaces
+        }          
     }
 
     render() {
+        const index = this.props.id
         return ( 
             <>
                 <div className='restaurant-card-item'>
@@ -72,18 +79,20 @@ class PlacesItem extends Component {
                     </div>
 
                     <button
+                        id={index}
                         type="button"
                         className="btn-add-place"
-                        onClick={this.addPlaceToCollection}
+                        onClick={() => this.addPlaceToCollection(index)}
                         style={{display: this.context.buttonAddHide && "none"}}
                     >
                         Add
                     </button>
 
                     <button
+                        id={index}
                         type="button"
                         className="btn-add-place"
-                        onClick={this.removePlaceFromCollection}
+                        onClick={() => this.removePlaceFromCollection(index)}
                         style={{display: this.context.buttonUndoHide && "none"}}
                     >
                         Undo

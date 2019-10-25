@@ -18,6 +18,7 @@ class MyCollectionList extends Component {
                 <Header />
 
                 <h1>Welcome {greetUser.username}</h1>
+                
                 {this.context.collectionList.map(place =>
                     <MyCollectionItem
                         key={place.id}
