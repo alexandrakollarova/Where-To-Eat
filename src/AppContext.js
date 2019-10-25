@@ -14,6 +14,7 @@ const AppContext = React.createContext({
    isMenuActive: false,
 
    createUser: () => {},
+   activeUserId: null,
    
    addPlace: () => {},
 

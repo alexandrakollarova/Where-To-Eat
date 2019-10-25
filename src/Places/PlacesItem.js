@@ -18,6 +18,7 @@ class PlacesItem extends Component {
                 name: this.props.name,
                 isOpen: this.props.isOpen
         })
+       
     }
 
     removePlaceFromCollection = () => {
@@ -25,10 +26,11 @@ class PlacesItem extends Component {
 
         const placeId = this.props.id
 
-        this.context.collectionList.filter(place => place.id !== placeId)        
+        const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
+        this.context.collectionList = newPlaces  
     }
 
-    render() {console.log(this.context.collectionList)
+    render() {
         return ( 
             <>
                 <div className='restaurant-card-item'>

@@ -21,8 +21,14 @@ class SearchPlaces extends Component {
         e.preventDefault();
         const searchInput = this.state.searchInput
 
+        if (searchInput === "") {
+            return this.context.updateSearchResults(this.context.places)
+        }
+           
         const filtered = this.context.places.filter(place => 
-            place.name === searchInput
+           // place.name === searchInput
+            
+           place.name.toLowerCase().includes(searchInput.toLowerCase())
         )   
         this.context.updateSearchResults(filtered)
     }
@@ -34,7 +40,8 @@ class SearchPlaces extends Component {
 
                 <main className='search-places-main'>
                     
-                    <h2 className="headline">Tousands of restaurants 
+                    <h2 className="headline">
+                        Tousands of restaurants 
                         <br />
                         in one place!
                     </h2>
@@ -54,6 +61,7 @@ class SearchPlaces extends Component {
                                     name="search-input"
                                     // placeholder="Enter city or name of the place"
                                     onChange={e => this.updateSearchInput(e.target.value)}
+                                    onKeyUp={e => this.handleSubmit(e)}
                                 />
                                 
                                 <img 

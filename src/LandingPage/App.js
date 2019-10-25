@@ -19,12 +19,14 @@ class App extends Component {
     showSignupForm: false,
     isSignedIn: false,
     isMenuActive: false,
-    collectionList: []
+    collectionList: [],
+    activeUserId: null
   }
 
   cretaeUser = user => {
     this.setState({ 
       users: [...this.state.users, user],
+      activeUserId: user.user_id,
       isSignedIn: true
     });
   } 
@@ -52,7 +54,8 @@ class App extends Component {
       createUser: this.cretaeUser,
       updateSearchResults: this.updateSearchResults,
       isMenuActive: this.state.isMenuActive,
-      collectionList: this.state.collectionList
+      collectionList: this.state.collectionList,
+      activeUserId: this.state.activeUserId
     }
 
     return ( 
@@ -61,7 +64,7 @@ class App extends Component {
 
           <Route exact path='/'>
             {this.state.isSignedIn 
-                ? <Redirect to='/search-places' /> 
+                ? <Redirect to='/my-collection' /> 
                 : <LandingMain />
             }
           </Route>

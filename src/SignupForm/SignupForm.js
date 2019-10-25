@@ -46,8 +46,7 @@ class SignupForm extends Component {
             repeatPassword: repeatPassword.value
         }
 
-        this.context.createUser(user)
-        
+        this.context.createUser(user)        
     }
 
     validateUsername() {
@@ -73,7 +72,9 @@ class SignupForm extends Component {
     validateRepeatPassword() {
         const repeatPassword = this.state.repeatPassword.value.trim();
         const password = this.state.password.value.trim();
-        if (repeatPassword !== password) {
+        if (repeatPassword.length === 0) {
+            return "Confirm your password";
+        } else if (repeatPassword !== password) {
             return "Passwords do not match";
         }
     }

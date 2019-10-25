@@ -30,6 +30,9 @@ class NavSignedIn extends Component {
                     <NavLink to='/my-collection'>My collection</NavLink>
                 </li>
                 <li>
+                    <NavLink to='/search-places'>Add places</NavLink>
+                </li>
+                <li>
                     <NavLink to='/'>Log out</NavLink>
                 </li>
             </ul>
