@@ -20,7 +20,9 @@ class App extends Component {
     isSignedIn: false,
     isMenuActive: false,
     collectionList: [],
-    activeUserId: null
+    activeUserId: null,
+    buttonAddHide: false,
+    buttonUndoHide: true 
   }
 
   cretaeUser = user => {
@@ -55,7 +57,9 @@ class App extends Component {
       updateSearchResults: this.updateSearchResults,
       isMenuActive: this.state.isMenuActive,
       collectionList: this.state.collectionList,
-      activeUserId: this.state.activeUserId
+      activeUserId: this.state.activeUserId,
+      buttonUndoHide: this.state.buttonUndoHide,
+      buttonAddHide: this.state.buttonAddHide
     }
 
     return ( 

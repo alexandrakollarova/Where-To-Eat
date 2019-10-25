@@ -18,7 +18,10 @@ const AppContext = React.createContext({
    
    addPlace: () => {},
 
-   updateSearchResults: () => {}
+   updateSearchResults: () => {},
+
+   buttonAddHide: false,
+   buttonUndoHide: true 
 })
 
 export default AppContext
