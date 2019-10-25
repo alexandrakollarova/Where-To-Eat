@@ -21,7 +21,8 @@ const AppContext = React.createContext({
    updateSearchResults: () => {},
 
    buttonAddHide: false,
-   buttonUndoHide: true 
+   buttonUndoHide: true,
+   activeButtonIndex: null
 })
 
 export default AppContext

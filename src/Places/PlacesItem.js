@@ -5,34 +5,11 @@ import AppContext from '../AppContext';
 class PlacesItem extends Component {
     static contextType = AppContext;
 
-    state = {
-        activeButtonIndex: null
-    }
-
-    // addPlaceToCollection = () => {
-    //     this.setState({ buttonAddHide: true, buttonUndoHide: false })
-
-    //     this.context.collectionList.push({
-    //             id: this.props.id,
-    //             name: this.props.name,
-    //             isOpen: this.props.isOpen
-    //     })
-       
-    // }
-
-    // removePlaceFromCollection = () => {
-    //     this.setState({ buttonAddHide: false, buttonUndoHide: true })
-
-    //     const placeId = this.props.id
-
-    //     const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
-    //     this.context.collectionList = newPlaces  
-    // }
-
     addPlaceToCollection(index) {        
-        this.setState({ activeButtonIndex: index })
+        this.context.activeButtonIndex = index 
 
-        if (this.state.activeButtonIndex === index) {
+        if (this.context.activeButtonIndex === index) {
+
             this.context.buttonAddHide = true
             this.context.buttonUndoHide = false 
 
@@ -45,9 +22,9 @@ class PlacesItem extends Component {
     }
 
     removePlaceFromCollection(index) {
-        this.setState({ activeButtonIndex: index })
+        this.context.activeButtonIndex = index 
 
-        if (this.state.activeButtonIndex === index) {
+        if (this.context.activeButtonIndex === index) {
             this.context.buttonAddHide = false
             this.context.buttonUndoHide = true
 
