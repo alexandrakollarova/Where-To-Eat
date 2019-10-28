@@ -10,11 +10,18 @@ class SearchPlaces extends Component {
     static contextType = AppContext;
 
     state = {
-        searchInput: ""
+        searchInput: "",
+        filteredPlaces: this.context.places
     }
 
     updateSearchInput(searchInput) {
         this.setState({ searchInput: searchInput });
+
+        this.setState({ 
+            filteredPlaces: this.context.places.filter(place =>           
+               place.name.toLowerCase().includes(searchInput.toLowerCase())
+            )   
+        });
     }
 
     handleSubmit(e) {
@@ -25,9 +32,7 @@ class SearchPlaces extends Component {
             return this.context.updateSearchResults(this.context.places)
         }
            
-        const filtered = this.context.places.filter(place => 
-           // place.name === searchInput
-            
+        const filtered = this.context.places.filter(place =>           
            place.name.toLowerCase().includes(searchInput.toLowerCase())
         )   
         this.context.updateSearchResults(filtered)
@@ -59,7 +64,6 @@ class SearchPlaces extends Component {
                                     className="search-input"
                                     type="text"
                                     name="search-input"
-                                    // placeholder="Enter city or name of the place"
                                     onChange={e => this.updateSearchInput(e.target.value)}
                                     onKeyUp={e => this.handleSubmit(e)}
                                 />
@@ -72,9 +76,7 @@ class SearchPlaces extends Component {
                                 </img>
                             </div>
                         </form>
-                        {/* <i className="material-icons">&#xe145;</i> */}
-                        <PlacesList />
-                       
+                        <PlacesList />                       
                 </main>
 
                 <Footer />                

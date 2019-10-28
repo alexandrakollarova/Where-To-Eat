@@ -5,13 +5,20 @@ import AppContext from '../AppContext';
 class PlacesItem extends Component {
     static contextType = AppContext;
 
+    state = {
+        buttonAddHide: false,
+        buttonUndoHide: true
+    }
+
     addPlaceToCollection(index) {        
         this.context.activeButtonIndex = index 
 
         if (this.context.activeButtonIndex === index) {
 
+            this.setState({ buttonAddHide: true, buttonUndoHide: false  });
             this.context.buttonAddHide = true
-            this.context.buttonUndoHide = false 
+            this.context.buttonUndoHide = false
+        
 
             this.context.collectionList.push({
                     id: this.props.id,
@@ -25,6 +32,8 @@ class PlacesItem extends Component {
         this.context.activeButtonIndex = index 
 
         if (this.context.activeButtonIndex === index) {
+            
+            this.setState({ buttonAddHide: false, buttonUndoHide: true  });
             this.context.buttonAddHide = false
             this.context.buttonUndoHide = true
 
@@ -35,8 +44,10 @@ class PlacesItem extends Component {
         }          
     }
 
+
     render() {
         const index = this.props.id
+
         return ( 
             <>
                 <div className='restaurant-card-item'>
@@ -54,7 +65,6 @@ class PlacesItem extends Component {
                         <span className="fa fa-star"></span>
                         <span className="fa fa-star"></span>
                     </div>
-
                     <button
                         id={index}
                         type="button"
