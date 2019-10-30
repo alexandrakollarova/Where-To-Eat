@@ -38,7 +38,8 @@ class SearchPlaces extends Component {
         this.context.updateSearchResults(filtered)
     }
 
-    render() { 
+    render() {
+        
         return ( 
             <>
                 <Header />

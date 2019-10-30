@@ -21,8 +21,8 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
-    buttonAddHide: false,
-    buttonUndoHide: true,
+    // buttonAddHide: false,
+    // buttonUndoHide: true,
     activeButtonIndex: null
   }
 
@@ -59,8 +59,8 @@ class App extends Component {
       isMenuActive: this.state.isMenuActive,
       collectionList: this.state.collectionList,
       activeUserId: this.state.activeUserId,
-      buttonUndoHide: this.state.buttonUndoHide,
-      buttonAddHide: this.state.buttonAddHide,
+      // buttonUndoHide: this.state.buttonUndoHide,
+      // buttonAddHide: this.state.buttonAddHide,
       activeButtonIndex: this.state.activeButtonIndex
     }
 
