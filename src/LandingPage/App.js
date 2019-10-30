@@ -23,7 +23,8 @@ class App extends Component {
     activeUserId: null,
     // buttonAddHide: false,
     // buttonUndoHide: true,
-    activeButtonIndex: null
+    activeButtonIndex: null,
+    placeAdded: null
   }
 
   cretaeUser = user => {
@@ -61,7 +62,8 @@ class App extends Component {
       activeUserId: this.state.activeUserId,
       // buttonUndoHide: this.state.buttonUndoHide,
       // buttonAddHide: this.state.buttonAddHide,
-      activeButtonIndex: this.state.activeButtonIndex
+      activeButtonIndex: this.state.activeButtonIndex,
+      placeAdded: null
     }
 
     return ( 

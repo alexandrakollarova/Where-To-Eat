@@ -7,13 +7,16 @@ import AppContext from '../AppContext';
 class PlacesItem extends Component {
     static contextType = AppContext;
 
+    state = { placeAdded: false }
+
     hasPlaceBeenAdded = (id, bool) => {console.log(id, bool)
         if (bool) {
             this.context.collectionList.map(place => 
-                ( id === place.id && true))
-        }       
-        
-         return false
+                ( id === place.id && 
+                    this.setState({ placeAdded: true }),
+                    this.context.placeAdded = true
+                ))
+        }          
     }
 
     render() {  
@@ -44,9 +47,9 @@ class PlacesItem extends Component {
                         <span className="fa fa-star"></span>
                     </div>  
 
-                    {this.hasPlaceBeenAdded
-                        ? <AddButton {...props} /> 
-                        : <UndoButton {...props} />
+                    {this.state.placeAdded || this.context.placeAdded
+                        ? <UndoButton {...props} />
+                        : <AddButton {...props} /> 
                     }               
                     
                 </div>
