@@ -42,8 +42,9 @@ class NavSignedIn extends Component {
     render() {       
         return ( 
             <nav className="nav-landing">
-            {/* wrap the logo as a link to home page */}
-                <p>logo!</p>
+                <NavLink to='/'>
+                    <p>logo!</p>
+                </NavLink>
 
                 <button 
                     className="utensils-icon"
@@ -52,7 +53,21 @@ class NavSignedIn extends Component {
                     <i className="material-icons">restaurant</i>
                 </button> 
 
-                 {this.state.isMenuActive && this.openSignedInMenu()}             
+                 {this.state.isMenuActive && this.openSignedInMenu()}  
+
+                <ul 
+                    className="desktop-menu" 
+                >
+                    <li>
+                        <NavLink to='/my-collection'>My collection</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/search-places'>Add places</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/'>Log out</NavLink>
+                    </li>
+                </ul>           
                 
             </nav>
          );

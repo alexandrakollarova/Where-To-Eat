@@ -7,11 +7,11 @@ import SearchPlaces from '../HomePage/SearchPlaces';
 class DemoPage extends Component {
     static contextType = AppContext;
     
-    render() { 
+    render() {   console.log(this.props)      
         return ( 
             <>
-                <SignupForm />
-                
+               {/* {this.context.showSignupForm && } */}
+                <SignupForm />                
                 <SearchPlaces />
             </>
          );

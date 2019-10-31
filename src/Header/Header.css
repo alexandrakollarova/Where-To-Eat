@@ -41,3 +41,31 @@
     z-index: 10;
 }
 
+.desktop-menu {
+    display: none;
+}
+
+@media only screen and (min-width: 650px) {
+
+    .utensils-icon, .close-icon, .open-menu {
+        display: none
+    }  
+
+    .desktop-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0; 
+        flex-direction: row;
+        position: absolute;
+        right: 15px;
+        top: 20px;
+    }
+
+    .desktop-menu li {
+        margin-left: 15px;
+    }
+
+    
+}
+

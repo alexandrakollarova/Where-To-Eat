@@ -65,7 +65,7 @@ class App extends Component {
       activeButtonIndex: this.state.activeButtonIndex,
       placeAdded: null
     }
-
+    
     return ( 
       <AppContext.Provider value={contextValue}>      
         <Switch>
@@ -77,18 +77,16 @@ class App extends Component {
             }
           </Route>
           
-          {/* <Route exact path='/' component={LandingMain} /> */}
+          <Route exact path='/' component={LandingMain} />
 
           <Route path='/my-collection' component={MyCollectionList} />
 
-          <Route path='/demo-page'>
+          <Route path='/demo-page' routeProps={this.props.value}>
             {this.state.isSignedIn
                 ? <Redirect to='/search-places' /> 
                 : <DemoPage />
             }
           </Route>
-
-          {/* <Route path='/signup' component={SignupForm} /> */}
 
           <Route path='/search-places' component={SearchPlaces} />
 

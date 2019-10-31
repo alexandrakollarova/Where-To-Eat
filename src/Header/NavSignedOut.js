@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
 import AppContext from '../AppContext';
 import './Header.css';
+import NavSignedIn from './NavSignedIn';
 
 class NavSignedOut extends Component {
     static contextType = AppContext;
@@ -23,39 +24,41 @@ class NavSignedOut extends Component {
 
     openSignedOutMenu() {
         return ( 
-            <ul 
-                className="open-menu" 
-                style={{display: this.state.isMenuActive ? 'block' : 'none' }}
-            >
-                <button 
-                    type="button"
-                    className="close-icon"
-                    onClick={this.handleCloseMenu}
-                > 
-                    <i className="material-icons">close</i>
-                </button>
-
-                <li>
+                <ul 
+                    className="open-menu" 
+                    style={{display: this.state.isMenuActive ? 'block' : 'none' }}
+                >
                     <button 
-                        type="button" 
-                        className="btn-signup-modal"
-                        onClick={this.onSignupClick}
-                    >
-                        Sign Up
+                        type="button"
+                        className="close-icon"
+                        onClick={this.handleCloseMenu}
+                    > 
+                        <i className="material-icons">close</i>
                     </button>
-                </li>
-                <li>
-                    <NavLink to='/demo-page'>Demo</NavLink>
-                </li>
-            </ul>
+
+                    <li>
+                        <button 
+                            type="button" 
+                            className="btn-signup-modal"
+                            onClick={this.onSignupClick}
+                        >
+                            Sign Up
+                        </button>
+                    </li>
+                    <li>
+                        <NavLink to='/demo-page'>Demo</NavLink>
+                    </li>
+                </ul>
         )
     }
    
-    render() { 
+    render() {         
         return ( 
             <nav className="nav-landing">
             {/* wrap the logo as a link to home page */}
-                <p>logo!</p>
+                <NavLink to='/'>
+                    <p>logo!</p>
+                </NavLink>
 
                 <button 
                     type="button"
@@ -65,7 +68,24 @@ class NavSignedOut extends Component {
                     <i className="material-icons">restaurant</i>
                 </button> 
                 
-                {this.state.isMenuActive && this.openSignedOutMenu()}             
+                {this.state.isMenuActive && this.openSignedOutMenu()}   
+
+                 <ul 
+                    className="desktop-menu" 
+                >
+                    <li>
+                        <NavLink to='/demo-page'>Demo</NavLink>
+                    </li>
+                    <li>
+                        <button 
+                            type="button" 
+                            className="btn-signup-modal"
+                            onClick={this.onSignupClick}
+                        >
+                            Sign Up
+                        </button>
+                    </li>                    
+                </ul>          
 
             </nav>
          );

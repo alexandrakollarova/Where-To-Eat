@@ -4,27 +4,25 @@ import AppContext from '../AppContext';
 class UndoButton extends Component {
     static contextType = AppContext;
 
-    // state = { placeAdded: true }
+    state = { placeAdded: true }
 
     removePlaceFromCollection(index) {
         this.context.activeButtonIndex = index 
 
-        if (this.context.activeButtonIndex === index) { 
-         //   this.setState({ placeAdded: false });
-            
-          //  !this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
-          //  console.log(this.props.buttonClicked(index, this.state.placeAdded))
+        this.setState({ placeAdded: false })          
 
-            const placeId = this.props.id
-            
-            const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
-            this.context.collectionList = newPlaces
-        }          
+        const placeId = this.props.id
+          
+        const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
+        this.context.collectionList = newPlaces                 
     }
     
 
     render() { 
         const index = this.props.id
+
+        !this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
+        
         return ( 
             <button
                 id={index}

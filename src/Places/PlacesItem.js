@@ -9,7 +9,7 @@ class PlacesItem extends Component {
 
     state = { placeAdded: false }
 
-    hasPlaceBeenAdded = (id, bool) => {console.log(id, bool)
+    hasPlaceBeenAdded = (id, bool) => {
         if (bool) {
             this.context.collectionList.map(place => 
                 ( id === place.id && 

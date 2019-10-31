@@ -9,22 +9,20 @@ class AddButton extends Component {
     addPlaceToCollection(index) {        
         this.context.activeButtonIndex = index 
 
-        if (this.context.activeButtonIndex === index) {
-            this.setState({ placeAdded: true });
+        this.setState({ placeAdded: true })
 
-            this.context.collectionList.push({
-                id: this.props.id,
-                name: this.props.name,
-                isOpen: this.props.isOpen
-            })
-        }       
+        this.context.collectionList.push({
+            id: index,
+            name: this.props.name,
+            isOpen: this.props.isOpen
+        })       
     }
 
-    render() {  
+    render() { 
         const index = this.props.id
 
         this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
-        console.log(this.props.buttonClicked(index, this.state.placeAdded))
+
         return ( 
             <button
                 id={index}
