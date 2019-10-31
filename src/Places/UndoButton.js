@@ -6,6 +6,11 @@ class UndoButton extends Component {
 
     state = { placeAdded: true }
 
+    componentDidUpdate() {
+        const index = this.props.id
+        !this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
+    }
+
     removePlaceFromCollection(index) {
         this.context.activeButtonIndex = index 
 
@@ -21,8 +26,6 @@ class UndoButton extends Component {
     render() { 
         const index = this.props.id
 
-        !this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
-        
         return ( 
             <button
                 id={index}

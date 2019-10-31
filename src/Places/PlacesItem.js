@@ -9,20 +9,22 @@ class PlacesItem extends Component {
 
     state = { placeAdded: false }
 
-    hasPlaceBeenAdded = (id, bool) => {
+    hasPlaceBeenAdded = (id, bool) => { console.log(id, bool)
+
         if (bool) {
             this.context.collectionList.map(place => 
-                ( id === place.id && 
-                    this.setState({ placeAdded: true }),
+                (id === place.id &&   
+                    this.setState({ placeAdded: true }),                  
                     this.context.placeAdded = true
-                ))
-        }          
+                )
+            )
+        }              
     }
 
     render() {  
         // const placeId = this.props.id   
 
-        let props = {
+        let myProps = {
             id: this.props.id,
             name: this.props.name,
             isOpen: this.props.isOpen,
@@ -48,8 +50,8 @@ class PlacesItem extends Component {
                     </div>  
 
                     {this.state.placeAdded || this.context.placeAdded
-                        ? <UndoButton {...props} />
-                        : <AddButton {...props} /> 
+                        ? <UndoButton {...myProps} />
+                        : <AddButton {...myProps} /> 
                     }               
                     
                 </div>

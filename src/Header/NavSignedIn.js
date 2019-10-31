@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 
 class NavSignedIn extends Component {
     state = { isMenuActive: false }
@@ -65,7 +65,7 @@ class NavSignedIn extends Component {
                         <NavLink to='/search-places'>Add places</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/'>Log out</NavLink>
+                        <Link to='/'>Log out</Link>
                     </li>
                 </ul>           
                 

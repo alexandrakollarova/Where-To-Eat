@@ -5,6 +5,12 @@ class AddButton extends Component {
     static contextType = AppContext;
 
     state = { placeAdded: false }
+
+    componentDidUpdate() {
+        const index = this.props.id
+        this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
+        console.log()
+    }
     
     addPlaceToCollection(index) {        
         this.context.activeButtonIndex = index 
@@ -20,8 +26,6 @@ class AddButton extends Component {
 
     render() { 
         const index = this.props.id
-
-        this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
 
         return ( 
             <button
