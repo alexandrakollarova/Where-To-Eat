@@ -3,12 +3,14 @@ export default {
         { 
              business_id: "1",
              name: "Dominos",
-             is_open: 1
+             is_open: 1,
+             added: false
          },
          { 
              business_id: "2",
              name: "Garaje",
-             is_open: 1
+             is_open: 1,
+             added: false
          },
      ],
      

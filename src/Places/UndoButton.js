@@ -6,7 +6,7 @@ class UndoButton extends Component {
 
     state = { placeAdded: true }
 
-    componentDidUpdate() {
+    componentWillUpdate() {
         const index = this.props.id
         !this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
     }

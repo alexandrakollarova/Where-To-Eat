@@ -6,10 +6,9 @@ class AddButton extends Component {
 
     state = { placeAdded: false }
 
-    componentDidUpdate() {
+    componentWillUpdate() {
         const index = this.props.id
         this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
-        console.log()
     }
     
     addPlaceToCollection(index) {        
@@ -20,7 +19,8 @@ class AddButton extends Component {
         this.context.collectionList.push({
             id: index,
             name: this.props.name,
-            isOpen: this.props.isOpen
+            isOpen: this.props.isOpen,
+            added: this.state.placeAdded
         })       
     }
 

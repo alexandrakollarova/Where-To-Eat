@@ -8,12 +8,13 @@ class PlacesList extends Component {
     render() { 
         return ( 
             <>
-                {this.context.places.map(place => 
+                {this.props.places.map(place => 
                     <PlacesItem 
                         key={place.business_id}
                         id={place.business_id}
                         name={place.name}
                         isOpen={place.is_open}
+                        added={place.added}
                     />
                 )}
             </>

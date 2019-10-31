@@ -10,9 +10,9 @@ class DemoPage extends Component {
     render() {       
         return ( 
             <>
-               {/* {this.context.showSignupForm && } */}
-                <SignupForm />                
-                <SearchPlaces />
+                <SignupForm /> 
+                <SearchPlaces />               
+                
             </>
          );
     }

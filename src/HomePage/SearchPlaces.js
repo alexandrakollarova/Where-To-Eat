@@ -25,21 +25,10 @@ class SearchPlaces extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
-        const searchInput = this.state.searchInput
-
-        if (searchInput === "") {
-            return this.context.updateSearchResults(this.context.places)
-        }
-           
-        const filtered = this.context.places.filter(place =>           
-           place.name.toLowerCase().includes(searchInput.toLowerCase())
-        )   
-        this.context.updateSearchResults(filtered)
+        e.preventDefault()
     }
 
-    render() {
-        
+    render() {        
         return ( 
             <>
                 <Header />
@@ -52,7 +41,7 @@ class SearchPlaces extends Component {
                         in one place!
                     </h2>
 
-                        <form onSubmit={e => this.handleSubmit(e)}>
+                        <form onSubmit={this.handleSubmit}>
                             <div className="search-input-and-config-wrapper">
                                 <button 
                                     type="submit"
@@ -66,7 +55,6 @@ class SearchPlaces extends Component {
                                     type="text"
                                     name="search-input"
                                     onChange={e => this.updateSearchInput(e.target.value)}
-                                    onKeyUp={e => this.handleSubmit(e)}
                                 />
                                 
                                 <img 
@@ -77,7 +65,7 @@ class SearchPlaces extends Component {
                                 </img>
                             </div>
                         </form>
-                        <PlacesList />                       
+                        <PlacesList places={this.state.filteredPlaces} />                       
                 </main>
 
                 <Footer />                

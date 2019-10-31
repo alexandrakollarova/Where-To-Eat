@@ -9,13 +9,16 @@ class PlacesItem extends Component {
 
     state = { placeAdded: false }
 
-    hasPlaceBeenAdded = (id, bool) => { console.log(id, bool)
+    hasPlaceBeenAdded = (id, bool) => { 
 
         if (bool) {
             this.context.collectionList.map(place => 
                 (id === place.id &&   
-                    this.setState({ placeAdded: true }),                  
-                    this.context.placeAdded = true
+                    this.setState({ placeAdded: true }),               
+                    
+                    this.context.places.map(place => 
+                        id === place.id && (place.added = true)
+                    )
                 )
             )
         }              
@@ -28,9 +31,9 @@ class PlacesItem extends Component {
             id: this.props.id,
             name: this.props.name,
             isOpen: this.props.isOpen,
+            added: this.props.added,
             buttonClicked: this.hasPlaceBeenAdded
         }
-
         return ( 
             <>
                 <div className='restaurant-card-item'>

@@ -24,7 +24,7 @@ class App extends Component {
     // buttonAddHide: false,
     // buttonUndoHide: true,
     activeButtonIndex: null,
-    placeAdded: null
+    placeAdded: false
   }
 
   cretaeUser = user => {
@@ -63,7 +63,7 @@ class App extends Component {
       // buttonUndoHide: this.state.buttonUndoHide,
       // buttonAddHide: this.state.buttonAddHide,
       activeButtonIndex: this.state.activeButtonIndex,
-      placeAdded: null
+      placeAdded: this.state.placeAdded
     }
     
     return ( 
@@ -81,12 +81,14 @@ class App extends Component {
 
           <Route path='/my-collection' component={MyCollectionList} />
 
-          <Route path='/demo-page' routeProps={this.props.value}>
+          <Route path='/demo-page'>
             {this.state.isSignedIn
-                ? <Redirect to='/search-places' /> 
-                : <DemoPage />
+              ? <Redirect to='/search-places' /> 
+              : <DemoPage />
             }
           </Route>
+            
+        
 
           <Route path='/search-places' component={SearchPlaces} />
 
