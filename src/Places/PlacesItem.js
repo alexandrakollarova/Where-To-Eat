@@ -7,33 +7,18 @@ import AppContext from '../AppContext';
 class PlacesItem extends Component {
     static contextType = AppContext;
 
-    //state = { placeAdded: false }
-
     isSaved(id) {
         return !!this.context.collectionList.find(place => place.id === id);
     }
 
-    // hasPlaceBeenAdded = (id, bool) => { 
-
-    //     if (bool) {
-    //         this.context.collectionList.map(place => 
-    //             (id === place.id &&   
-    //                 this.setState({ placeAdded: true }),               
-    //                 this.context.placeAdded = true                     
-    //             )
-    //         )
-    //     }              
-    // }
-
     render() {  
-        // const placeId = this.props.id   
 
         let myProps = {
             id: this.props.id,
             name: this.props.name,
             isOpen: this.props.isOpen,
-           // buttonClicked: this.hasPlaceBeenAdded
         }
+        
         return ( 
             <>
                 <div className='restaurant-card-item'>
