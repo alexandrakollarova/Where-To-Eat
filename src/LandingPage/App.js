@@ -42,14 +42,14 @@ class App extends Component {
   updateSearchResults = (filtered) => {this.setState({ places: filtered })}
 
   savePlace = (place) => {
-    const newCollectionList = this.context.collectionList.concat([place]);
+    const newCollectionList = this.state.collectionList.concat([place]);
     this.setState({
         collectionList: newCollectionList
     });
   }
 
   unsavePlace = (id) => {
-      const newCollectionList = this.context.collectionList.filter(place => place.id !== id);
+      const newCollectionList = this.state.collectionList.filter(place => place.id !== id);
       this.setState({
           collectionList: newCollectionList
       });
