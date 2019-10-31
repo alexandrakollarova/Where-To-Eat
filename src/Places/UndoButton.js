@@ -4,22 +4,8 @@ import AppContext from '../AppContext';
 class UndoButton extends Component {
     static contextType = AppContext;
 
-    state = { placeAdded: true }
-
-    componentWillUpdate() {
-        const index = this.props.id
-        !this.state.placeAdded && this.props.buttonClicked(index, this.state.placeAdded)
-    }
-
     removePlaceFromCollection(index) {
-        this.context.activeButtonIndex = index 
-
-        this.setState({ placeAdded: false })          
-
-        const placeId = this.props.id
-          
-        const newPlaces = this.context.collectionList.filter(place => place.id !== placeId)   
-        this.context.collectionList = newPlaces                 
+        this.context.unsavePlace(index);  
     }
     
 

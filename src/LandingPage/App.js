@@ -8,8 +8,6 @@ import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
 import places from '../SampleData';
 import users from '../SampleData'
-// import SignupForm from '../SignupForm/SignupForm';
-// import SignInPage from '../SignInPage/SignInPage';
 import MyCollectionList from '../HomePage/MyCollectionList';
 
 class App extends Component {
@@ -21,10 +19,7 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
-    // buttonAddHide: false,
-    // buttonUndoHide: true,
-    activeButtonIndex: null,
-    placeAdded: false
+   // activeButtonIndex: null,
   }
 
   cretaeUser = user => {
@@ -46,8 +41,21 @@ class App extends Component {
 
   updateSearchResults = (filtered) => {this.setState({ places: filtered })}
 
-  render() {
+  savePlace(place) {
+    const newCollectionList = this.state.collectionList.concat([place]);
+    this.setState({
+        collectionList: newCollectionList
+    });
+  }
 
+  unsavePlace(id) {
+      const newCollectionList = this.state.collectionList.filter(place => place.id !== id);
+      this.setState({
+          collectionList: newCollectionList
+      });
+  }
+
+  render() {
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
@@ -60,10 +68,9 @@ class App extends Component {
       isMenuActive: this.state.isMenuActive,
       collectionList: this.state.collectionList,
       activeUserId: this.state.activeUserId,
-      // buttonUndoHide: this.state.buttonUndoHide,
-      // buttonAddHide: this.state.buttonAddHide,
-      activeButtonIndex: this.state.activeButtonIndex,
-      placeAdded: this.state.placeAdded
+     // activeButtonIndex: this.state.activeButtonIndex,
+      savePlace: this.savePlace,
+      unsavePlace: this.unsavePlace
     }
     
     return ( 
