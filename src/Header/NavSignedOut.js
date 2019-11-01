@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
 import AppContext from '../AppContext';
 import './Header.css';
-import NavSignedIn from './NavSignedIn';
 
 class NavSignedOut extends Component {
     static contextType = AppContext;
@@ -19,7 +18,7 @@ class NavSignedOut extends Component {
 
     onSignupClick = () => {
         this.handleCloseMenu();
-        this.context.showModal();
+        this.context.showModalForSignupForm();
     }
 
     openSignedOutMenu() {

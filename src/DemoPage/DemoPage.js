@@ -6,7 +6,8 @@ import SearchPlaces from '../HomePage/SearchPlaces';
 
 class DemoPage extends Component {
     static contextType = AppContext;
-    
+
+      
     render() {       
         return ( 
             <>

@@ -15,11 +15,11 @@ class App extends Component {
     places: places.places,
     users: users.users,
     showSignupForm: false,
+    showConfigWindow: false,
     isSignedIn: false,
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
-   // activeButtonIndex: null,
   }
 
   cretaeUser = user => {
@@ -30,29 +30,35 @@ class App extends Component {
     });
   } 
 
-  showModal = () => { 
-    this.setState({ 
-      showSignupForm: true,
-    })
+  showModalForSignupForm = () => { 
+    this.setState({ showSignupForm: true })
     this.state.showSignupForm && this.setState({ isMenuActive: false });
   }
 
-  hideModal = () => {this.setState({ showSignupForm: false })}
+  hideModalForSignupForm = () => { 
+    this.setState({ showSignupForm: false }) 
+  }
 
-  updateSearchResults = (filtered) => {this.setState({ places: filtered })}
+  showModalForConfigWindow = () => {
+    this.setState({ showConfigWindow: true })
+  }
+
+  hideModalForConfigWindow = () => {
+    this.setState({ showConfigWindow: false })
+  }
+
+  updateSearchResults = (filtered) => { 
+    this.setState({ places: filtered }) 
+  }
 
   savePlace = (place) => {
-    const newCollectionList = this.state.collectionList.concat([place]);
-    this.setState({
-        collectionList: newCollectionList
-    });
+    const newCollectionList = this.state.collectionList.concat([place])
+    this.setState({ collectionList: newCollectionList })
   }
 
   unsavePlace = (id) => {
       const newCollectionList = this.state.collectionList.filter(place => place.id !== id);
-      this.setState({
-          collectionList: newCollectionList
-      });
+      this.setState({ collectionList: newCollectionList })
   }
 
   render() {
@@ -60,15 +66,17 @@ class App extends Component {
       places: this.state.places,
       users: this.state.users,
       showSignupForm: this.state.showSignupForm,
+      showConfigWindow: this.state.showConfigWindow,
       isSignedIn: this.state.isSignedIn,
-      showModal: this.showModal,
-      hideModal: this.hideModal,
+      showModalForConfigWindow: this.showModalForConfigWindow,
+      showModalForSignupForm: this.showModalForSignupForm,
+      hideModalForSignupForm: this.hideModalForSignupForm,
+      hideModalForConfigWindow: this.hideModalForConfigWindow,
       createUser: this.cretaeUser,
       updateSearchResults: this.updateSearchResults,
       isMenuActive: this.state.isMenuActive,
       collectionList: this.state.collectionList,
       activeUserId: this.state.activeUserId,
-     // activeButtonIndex: this.state.activeButtonIndex,
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace
     }

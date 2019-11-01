@@ -37,4 +37,45 @@
     justify-content: center;
 }
 
+.btn-discover-places {
+    border: solid 1px black;
+    border-radius: 8px;
+    padding: 10px 12px;
+    display: block;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.headline-welcome {
+    margin-top: 50px;
+    margin-left: 30px;
+}
+
+.discover-places-text {
+    padding: 0 30px
+}
+
+#config-window {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: wheat;
+    padding-top: 20px;
+    border-radius: 8px;
+}
+
+#config-window h3 {
+    text-align: left;
+    margin-left: 20px;
+}
+
+
 

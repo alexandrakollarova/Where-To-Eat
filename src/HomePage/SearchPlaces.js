@@ -4,14 +4,20 @@ import Header from '../Header/Header';
 import './Homepage.css';
 import PlacesList from '../Places/PlacesList';
 import AppContext from '../AppContext';
-import slider from './slider.png'
+import slider from './slider.png';
+import ConfigIcon from './ConfigIcon';
 
 class SearchPlaces extends Component {
     static contextType = AppContext;
 
     state = {
         searchInput: "",
-        filteredPlaces: this.context.places
+        filteredPlaces: this.context.places,
+        category: []
+    }
+
+    onConfigIconClick = () => {
+        this.context.showModalForConfigWindow()
     }
 
     updateSearchInput(searchInput) {
@@ -22,6 +28,14 @@ class SearchPlaces extends Component {
                place.name.toLowerCase().includes(searchInput.toLowerCase())
             )   
         });
+    }
+
+    updateCategory = (category) => {
+       
+        this.setState({ filteredPlaces:  this.context.places.filter(place => 
+            place.categories === category && place
+            )  
+        });      
     }
 
     handleSubmit(e) {
@@ -61,8 +75,10 @@ class SearchPlaces extends Component {
                                     src={slider} 
                                     alt="slider-icon"
                                     className="search-slider"
+                                    onClick={this.onConfigIconClick}
                                 >                                
                                 </img>
+                                <ConfigIcon update={this.updateCategory} />
                             </div>
                         </form>
                         <PlacesList places={this.state.filteredPlaces} />                       
