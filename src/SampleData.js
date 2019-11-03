@@ -4,7 +4,7 @@ export default {
              business_id: "1",
              name: "Dominos",
              is_open: 1,
-             stars: 4.5,
+             stars: 1,
              categories: "American",
              added: false
          },
@@ -13,7 +13,7 @@ export default {
              name: "McDonalds",
              is_open: 0,
              stars: 3,
-             categories: ["American", "Fastfood"],
+             categories: "Fastfood",
              added: false
          },
          { 
@@ -21,7 +21,7 @@ export default {
             name: "Chipotle",
             is_open: 1,
             stars: 4,
-            categories: ["Mexican"],
+            categories: "Mexican",
             added: false
         },
         { 
@@ -29,7 +29,7 @@ export default {
             name: "Margaritas",
             is_open: 0,
             stars: 3,
-            categories: ["Mexican", "Texas"],
+            categories: "Mexican",
             added: false
         },
      ],

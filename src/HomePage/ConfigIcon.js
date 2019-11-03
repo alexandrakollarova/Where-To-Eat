@@ -7,20 +7,41 @@ class ConfigIcon extends Component {
     static contextType = AppContext;
 
     state = { 
+        american: "American", 
+        mexican: "Mexican", 
+        fastfood: "Fastfood", 
+        isOn: false 
+    }
+
+    handleSwitch = () => {
+        this.setState(prevState => ({ isOn: !prevState.isOn }));
+        this.props.updateIsOpen(this.state.isOn)
+    }
+
+    handleSubmitFilters(e) {
+        e.preventDefault()        
+        //this.context.hideModalForConfigWindow;
+        this.props.updateCategory(e)
+
+      
     }
 
     render() { 
         const handleShowHideModal = this.context.showConfigWindow ? "display-block" : "display-none";
-        const American = "American"
+
+        const {american, mexican, fastfood} = this.state;
+
+        const isOnLabel = this.state.isOn ? "YES" : "NO";
+       
         return ( 
             <div id="config-window" className={handleShowHideModal}>
 
-                {/* <form> */}
-                    <h3>Stars</h3>
+                <form onSubmit={(e) => this.handleSubmitFilters(e)}>
+                    <h3>Stars</h3>                    
                     <div>
-                        <Rating />
+                        <Rating updateStars={this.props.updateStars} />
                     </div>
-
+                     
                     <h3>Category</h3>
                     <div className="formrow">
                         <input 
@@ -28,9 +49,9 @@ class ConfigIcon extends Component {
                             type="checkbox" 
                             name="check1" 
                             id="check1" 
-                            onChange={() => this.props.update(American)}
+                            onChange={() => this.handleSubmitFilters(american)}
                         />
-                        <label className="checklabel" htmlFor="check1">{American}</label>
+                        <label className="checklabel" htmlFor="check1">{american}</label>
                     </div>
                     <div className="formrow">
                         <input 
@@ -38,16 +59,29 @@ class ConfigIcon extends Component {
                             type="checkbox" 
                             name="check2" 
                             id="check2" 
+                            onChange={() => this.props.updateCategory(mexican)}
                         />
-                        <label className="checklabel" htmlFor="check2">Mexican</label>
+                        <label className="checklabel" htmlFor="check2">{mexican}</label>
+                    </div>
+
+                    <div className="formrow">
+                        <input 
+                            className="checkbox" 
+                            type="checkbox" 
+                            name="check3" 
+                            id="check3" 
+                            onChange={() => this.props.updateCategory(fastfood)}
+                        />
+                        <label className="checklabel" htmlFor="check3">{fastfood}</label>
                     </div>
 
                     <h3>Open Now</h3>
                     <div>
                         <label className="switch">
-                            <input type="checkbox" />
+                            <input type="checkbox" onClick={this.handleSwitch} />
                             <span className="slider round"></span>
-                        </label>   
+                        </label>
+                        {isOnLabel}   
                     </div>
 
                     {/* rename styling for these buttons */}
@@ -69,7 +103,7 @@ class ConfigIcon extends Component {
                             Never mind
                         </button>
                     </div>
-                {/* </form> */}
+                </form>
             </div>
          );
     }

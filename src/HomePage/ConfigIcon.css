@@ -112,7 +112,7 @@
 }
 
 /*  RATING for stars */
-.star-rating__checkbox {
+/* .star-rating__checkbox {
     position: absolute;
     overflow: hidden;
     clip: rect(0 0 0 0);
@@ -141,4 +141,4 @@
   .star-rating__star.is-disabled:hover {
     cursor: default;
   }
-  
+   */

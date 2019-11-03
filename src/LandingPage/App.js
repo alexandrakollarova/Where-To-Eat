@@ -20,6 +20,17 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
+    demoCollectionList: []
+  }
+
+  componentDidUpdate() {
+    //this.convertIsOpenValuesToBoolean()
+  }
+
+  convertIsOpenValuesToBoolean() {
+    let modifiedPlaces = this.state.places.map(p => p.is_open == 1 
+      ? p.is_open = true : p.is_open = false)
+    this.setState({ places: modifiedPlaces });
   }
 
   cretaeUser = user => {
@@ -78,7 +89,8 @@ class App extends Component {
       collectionList: this.state.collectionList,
       activeUserId: this.state.activeUserId,
       savePlace: this.savePlace,
-      unsavePlace: this.unsavePlace
+      unsavePlace: this.unsavePlace,
+      demoCollectionList: this.state.demoCollectionList
     }
     
     return ( 

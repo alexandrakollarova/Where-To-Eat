@@ -20,22 +20,36 @@ class SearchPlaces extends Component {
         this.context.showModalForConfigWindow()
     }
 
-    updateSearchInput(searchInput) {
+    updateSearchInput = (searchInput) => {
         this.setState({ searchInput: searchInput });
 
         this.setState({ 
             filteredPlaces: this.context.places.filter(place =>           
-               place.name.toLowerCase().includes(searchInput.toLowerCase())
+               place.name.toLowerCase().charAt(0).includes(searchInput.toLowerCase())
             )   
         });
     }
 
-    updateCategory = (category) => {
-       
-        this.setState({ filteredPlaces:  this.context.places.filter(place => 
-            place.categories === category && place
+    updateStars = (stars) => {
+        if (stars)
+        this.setState({ filteredPlaces: this.context.places.filter(place => 
+            place.stars == stars
+            ) 
+        });
+    }
+
+    updateCategory = (category) => {       
+        this.setState({ filteredPlaces: this.context.places.filter(place => 
+            place.categories === category
             )  
         });      
+    }
+
+    updateIsOpen = (bool) => {
+        this.setState({ filteredPlaces: this.context.places.filter(place =>           
+            place.is_open === bool
+            ) 
+        });
     }
 
     handleSubmit(e) {
@@ -77,10 +91,14 @@ class SearchPlaces extends Component {
                                     className="search-slider"
                                     onClick={this.onConfigIconClick}
                                 >                                
-                                </img>
-                                <ConfigIcon update={this.updateCategory} />
+                                </img>                                
                             </div>
                         </form>
+                        <ConfigIcon 
+                            updateStars={this.updateStars}
+                            updateCategory={this.updateCategory}
+                            updateIsOpen={this.updateIsOpen}
+                        />
                         <PlacesList places={this.state.filteredPlaces} />                       
                 </main>
 

@@ -12,7 +12,6 @@ class PlacesItem extends Component {
     }
 
     render() {  
-
         let myProps = {
             id: this.props.id,
             name: this.props.name,
