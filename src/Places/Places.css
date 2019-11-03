@@ -16,7 +16,7 @@
     margin-right: auto;
 }
 
-.place-title, .place-rating {
+.place-title, .place-rating, .place-is-open {
     text-align: left;
     padding-left: 15px;
 }
@@ -38,7 +38,6 @@
     font-size: inherit;
     border-radius: 30px;
     padding: 10px 30px;
-    margin-top: 50px
 }
 
 @media only screen and (min-width: 650px) {

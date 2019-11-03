@@ -44,14 +44,20 @@ class NavSignedOut extends Component {
                             Sign Up
                         </button>
                     </li>
+
+                    {/* <NavLink to="">
+                        {!this.context.isSignedIn && "My Collection"}
+                    </NavLink> */}
+
                     <li>
-                        <NavLink to='/demo-page'>Demo</NavLink>
+                        <NavLink to="/demo-page">Demo</NavLink>
                     </li>
                 </ul>
         )
     }
    
-    render() {         
+    render() { 
+        
         return ( 
             <nav className="nav-landing">
             {/* wrap the logo as a link to home page */}
@@ -75,6 +81,11 @@ class NavSignedOut extends Component {
                     <li>
                         <NavLink to='/demo-page'>Demo</NavLink>
                     </li>
+                    
+                    {/* <NavLink to="">
+                        {!this.context.isSignedIn && "My Collection"}
+                    </NavLink> */}
+
                     <li>
                         <button 
                             type="button" 

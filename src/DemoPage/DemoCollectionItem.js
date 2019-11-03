@@ -1,25 +1,17 @@
 import React, { Component } from 'react';
-import './Places.css';
-import AddButton from './AddButton';
-import UndoButton from './UndoButton';
-import AppContext from '../AppContext';
 import StarRatings from 'react-star-ratings';
+import AppContext from '../AppContext';
 
-class PlacesItem extends Component {
+class DemoCollectionItem extends Component {
     static contextType = AppContext;
 
-    isSaved(id) {
-        return !!this.context.collectionList.find(place => place.id === id);
+    removePlaceFromCollection(index) {
+        this.context.unsavePlace(index);  
     }
 
-    render() {  
-        let myProps = {
-            id: this.props.id,
-            name: this.props.name,
-            stars: this.props.stars,
-            isOpen: this.props.isOpen,
-        }
-        
+    render() { 
+        const index = this.props.id
+
         return ( 
             <>
                 <div className='restaurant-card-item'>
@@ -44,16 +36,19 @@ class PlacesItem extends Component {
                     <div className="place-is-open">
                         <p>{this.props.isOpen ? "Open Now" : "Closed Now"}</p>
                     </div>
-
-                    {this.isSaved(this.props.id)
-                        ? <UndoButton {...myProps} />
-                        : <AddButton {...myProps} /> 
-                    }               
                     
+                    <button
+                        id={index}
+                        type="button"
+                        className="btn-add-place"
+                        onClick={() => this.removePlaceFromCollection(index)}
+                    >
+                        Remove
+                    </button>
                 </div>
             </>
          );
     }
 }
  
-export default PlacesItem;
+export default DemoCollectionItem;

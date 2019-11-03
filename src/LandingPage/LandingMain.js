@@ -5,10 +5,16 @@ import Funnels from './Funnels';
 import SignupForm from '../SignupForm/SignupForm';
 import '../Header/Header.css';
 import {NavLink} from 'react-router-dom';
+import AppContext from '../AppContext';
 
-class LandingMain extends Component {    
-       
-    render() {        
+class LandingMain extends Component { 
+    static contextType = AppContext;
+    
+    componentDidMount() {
+        this.context.hideModalForSignupForm()
+    }
+
+    render() {       
         return ( 
             <div>
                 <Header />

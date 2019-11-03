@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import {NavLink, Link} from 'react-router-dom';
+import AppContext from '../AppContext';
 
 class NavSignedIn extends Component {
-    state = { isMenuActive: false }
+    static contextType = AppContext;
+
+    state = { isMenuActive: false, clickedOnLogOut: false }
 
     handleOpenMenu = () => {
         this.setState({ isMenuActive: true });
@@ -10,6 +13,12 @@ class NavSignedIn extends Component {
 
     handleCloseMenu = () => {
         this.setState({ isMenuActive: false });
+    }
+
+    handleLogOut = () => {
+        this.setState({ clickedOnLogOut: true }, () =>
+            this.context.handleClickOnLogOut()
+        );
     }
 
     openSignedInMenu() {
@@ -33,7 +42,12 @@ class NavSignedIn extends Component {
                     <NavLink to='/search-places'>Add places</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/'>Log out</NavLink>
+                    <button 
+                        type="button"
+                        onClick={this.handleLogOut}
+                    >
+                        Log out
+                    </button>
                 </li>
             </ul>
         )

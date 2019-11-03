@@ -45,7 +45,6 @@ class SignupForm extends Component {
             password: password.value,
             repeatPassword: repeatPassword.value
         }
-
         this.context.createUser(user)        
     }
 
@@ -138,7 +137,7 @@ class SignupForm extends Component {
                             <button 
                                 type="reset" 
                                 className="btn-signup-form"
-                                onClick={this.context.hideModal}
+                                onClick={this.context.hideModalForSignupForm}
                             >
                                 Maybe later
                             </button>

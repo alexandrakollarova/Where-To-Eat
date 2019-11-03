@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 import './DemoPage.css';
 import SignupForm from '../SignupForm/SignupForm';
 import AppContext from '../AppContext';
-import SearchPlaces from '../HomePage/SearchPlaces';
+import DemoCollectionList from './DemoCollectionList';
+import {Link} from 'react-router-dom';
 
 class DemoPage extends Component {
     static contextType = AppContext;
 
-      
-    render() {       
+    componentDidMount() {
+        this.context.hideModalForSignupForm()
+    }
+    
+    render() {              
         return ( 
             <>
                 <SignupForm /> 
-                <SearchPlaces />               
-                
+                <DemoCollectionList />
             </>
          );
     }

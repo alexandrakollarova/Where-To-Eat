@@ -14,6 +14,7 @@ class PlacesList extends Component {
                         id={place.business_id}
                         name={place.name}
                         isOpen={place.is_open}
+                        stars={place.stars}
                         added={place.added}
                     />
                 )}

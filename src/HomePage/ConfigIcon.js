@@ -14,16 +14,13 @@ class ConfigIcon extends Component {
     }
 
     handleSwitch = () => {
-        this.setState(prevState => ({ isOn: !prevState.isOn }));
-        this.props.updateIsOpen(this.state.isOn)
+        this.setState(prevState => ({ isOn: !prevState.isOn }), () =>
+            this.props.updateIsOpen(this.state.isOn)
+        );
     }
 
     handleSubmitFilters(e) {
-        e.preventDefault()        
-        //this.context.hideModalForConfigWindow;
-        this.props.updateCategory(e)
-
-      
+       // e.preventDefault();     
     }
 
     render() { 
@@ -36,7 +33,7 @@ class ConfigIcon extends Component {
         return ( 
             <div id="config-window" className={handleShowHideModal}>
 
-                <form onSubmit={(e) => this.handleSubmitFilters(e)}>
+                <form>
                     <h3>Stars</h3>                    
                     <div>
                         <Rating updateStars={this.props.updateStars} />
@@ -49,7 +46,7 @@ class ConfigIcon extends Component {
                             type="checkbox" 
                             name="check1" 
                             id="check1" 
-                            onChange={() => this.handleSubmitFilters(american)}
+                            onChange={() => this.props.updateCategory(american)}
                         />
                         <label className="checklabel" htmlFor="check1">{american}</label>
                     </div>
@@ -87,8 +84,9 @@ class ConfigIcon extends Component {
                     {/* rename styling for these buttons */}
                     <div className='btn-signup-form-wrapper1'>
                         <button 
-                            type="submit"
+                            type="button"
                             className="btn-signup-form"
+                            onClick={this.context.hideModalForConfigWindow}
                         >
                             All set!
                         </button>
@@ -96,7 +94,7 @@ class ConfigIcon extends Component {
 
                         <div className='btn-signup-form-wrapper2'>
                             <button 
-                                type="reset" 
+                                type="button" 
                                 className="btn-signup-form"
                                 onClick={this.context.hideModalForConfigWindow}
                         >

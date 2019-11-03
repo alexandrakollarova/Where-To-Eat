@@ -4,11 +4,12 @@ import AppContext from '../AppContext';
 class AddButton extends Component {
     static contextType = AppContext;
 
-    addPlaceToCollection(index) {
+    addPlaceToCollection(index) {     
         const placeToAdd = {
             id: index,
             name: this.props.name,
             isOpen: this.props.isOpen,
+            stars: this.props.stars
         }
 
         this.context.savePlace(placeToAdd);

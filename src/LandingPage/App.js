@@ -9,6 +9,7 @@ import PageNotFound from './PageNotFound';
 import places from '../SampleData';
 import users from '../SampleData'
 import MyCollectionList from '../HomePage/MyCollectionList';
+import MyCollectionItem from '../HomePage/MyCollectionItem';
 
 class App extends Component {
   state = { 
@@ -20,17 +21,31 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
-    demoCollectionList: []
+    demoCollectionList: [],
+    clickedOnLogOut: false
   }
 
-  componentDidUpdate() {
-    //this.convertIsOpenValuesToBoolean()
+  componentDidMount() {
+    this.convertIsOpenValuesToBoolean()
+  }
+
+  handleClickOnLogOut = () => {
+    this.setState({ clickedOnLogOut: true });
   }
 
   convertIsOpenValuesToBoolean() {
-    let modifiedPlaces = this.state.places.map(p => p.is_open == 1 
-      ? p.is_open = true : p.is_open = false)
-    this.setState({ places: modifiedPlaces });
+    this.setState((prevState, props) => {
+      return {
+        places: prevState.places.map(p => {
+          if (p.is_open) {
+            p.is_open = true;  
+          } else {
+            p.is_open = false;
+         }
+         return p;        
+        })
+      }
+    })       
   }
 
   cretaeUser = user => {
@@ -90,37 +105,44 @@ class App extends Component {
       activeUserId: this.state.activeUserId,
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
-      demoCollectionList: this.state.demoCollectionList
+      demoCollectionList: this.state.demoCollectionList,
+      handleClickOnLogOut: this.handleClickOnLogOut
     }
-    
+
     return ( 
       <AppContext.Provider value={contextValue}>      
         <Switch>
-
           <Route exact path='/'>
-            {this.state.isSignedIn 
-                ? <Redirect to='/my-collection' /> 
+            {
+              this.state.isSignedIn 
+                ? <Redirect to='/my-collection' />
                 : <LandingMain />
             }
-          </Route>
-          
+          </Route>  
+
           <Route exact path='/' component={LandingMain} />
 
           <Route path='/my-collection' component={MyCollectionList} />
 
-          <Route path='/demo-page'>
-            {this.state.isSignedIn
-              ? <Redirect to='/search-places' /> 
+          {/* <Route path='/my-collection'>
+            {
+              this.state.clickedOnLogOut 
+                ? <Redirect to='/' />
+                : <MyCollectionList />
+            }
+          </Route> */}
+
+          <Route path='/demo-page'>  
+            {
+              this.state.isSignedIn 
+              ? <Redirect to='/my-collection' /> 
               : <DemoPage />
             }
-          </Route>
-            
-        
+          </Route>    
 
           <Route path='/search-places' component={SearchPlaces} />
 
           <Route component={PageNotFound} />
-
         </Switch> 
       </AppContext.Provider>     
      );

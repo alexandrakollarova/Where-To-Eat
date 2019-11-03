@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
+import StarRatings from 'react-star-ratings';
+import AppContext from '../AppContext';
 
 class MyCollectionItem extends Component {
-    state = {  }
+    static contextType = AppContext;
+
+    removePlaceFromCollection(index) {
+        this.context.unsavePlace(index);  
+    }
+
     render() { 
+        const index = this.props.id
+
         return ( 
             <>
                 <div className='restaurant-card-item'>
@@ -12,17 +21,30 @@ class MyCollectionItem extends Component {
                     </div>
                     <h3 className="place-title">{this.props.name}</h3>
 
-                    {/* fake rating */}
                     <div className="place-rating">
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
+                        <StarRatings
+                            rating={this.props.stars}
+                            starRatedColor="yellow"
+                            starEmptyColor="grey"
+                            starDimension="20px"
+                            starHoverColor="yellow"
+                            numberOfStars={5}
+                            name='rating'
+                        />
+                    </div>  
+
+                    <div className="place-is-open">
+                        <p>{this.props.isOpen ? "Open Now" : "Closed Now"}</p>
                     </div>
-
-                    {this.props.isOpen == 1 && <h5>Open Now</h5>}
-
+                    
+                    <button
+                        id={index}
+                        type="button"
+                        className="btn-add-place"
+                        onClick={() => this.removePlaceFromCollection(index)}
+                    >
+                        Remove
+                    </button>
                 </div>
             </>
          );

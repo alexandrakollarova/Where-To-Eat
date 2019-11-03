@@ -2,17 +2,17 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import '../Places/Places.css';
 import AppContext from '../AppContext';
-import MyCollectionItem from './MyCollectionItem';
+import DemoCollectionItem from './DemoCollectionItem';
 import Header from '../Header/Header';
 
-class MyCollectionList extends Component {
+class DemoCollectionList extends Component {
     static contextType = AppContext;
 
     render() {
-        const greetUser = this.context.users.find(user =>
-            user.user_id === this.context.activeUserId
-            )
-        const user = greetUser.username.charAt(0).toUpperCase() + greetUser.username.slice(1)
+        // const greetUser = this.context.users.find(user =>
+        //     user.user_id === this.context.activeUserId
+        //     )
+        // const user = greetUser.username.charAt(0).toUpperCase() + greetUser.username.slice(1)
 
         return (
             <>
@@ -20,8 +20,7 @@ class MyCollectionList extends Component {
 
                 {this.context.collectionList.length == 0 &&
                     <>
-                        <h1 className="headline-welcome">Welcome 
-                            <br />{user},</h1>
+                        <h1 className="headline-welcome">Welcome</h1>
 
                         <p className="discover-places-text">
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -37,15 +36,15 @@ class MyCollectionList extends Component {
                     </>
                 }
                 {/* temporary header */}
-                {this.context.collectionList.length > 0 &&               
-                    <>            
+                {this.context.collectionList.length > 0 &&  
+                    <>             
                         <h1>My places</h1>
                         <Link to="/search-places">Go Back</Link>
                     </>
                 }
                 
                 {this.context.collectionList.map(place =>
-                    <MyCollectionItem
+                    <DemoCollectionItem
                         key={place.id}
                         id={place.id}
                         name={place.name}
@@ -58,4 +57,4 @@ class MyCollectionList extends Component {
     }
 }
  
-export default MyCollectionList;
+export default DemoCollectionList;

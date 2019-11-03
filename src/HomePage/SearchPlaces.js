@@ -22,7 +22,7 @@ class SearchPlaces extends Component {
 
     updateSearchInput = (searchInput) => {
         this.setState({ searchInput: searchInput });
-
+        
         this.setState({ 
             filteredPlaces: this.context.places.filter(place =>           
                place.name.toLowerCase().charAt(0).includes(searchInput.toLowerCase())
@@ -31,7 +31,6 @@ class SearchPlaces extends Component {
     }
 
     updateStars = (stars) => {
-        if (stars)
         this.setState({ filteredPlaces: this.context.places.filter(place => 
             place.stars == stars
             ) 
@@ -45,10 +44,10 @@ class SearchPlaces extends Component {
         });      
     }
 
-    updateIsOpen = (bool) => {
-        this.setState({ filteredPlaces: this.context.places.filter(place =>           
-            place.is_open === bool
-            ) 
+    updateIsOpen = (isOpen) => {
+        this.setState({ filteredPlaces: this.context.places.filter(place => 
+            isOpen ? place.is_open == true : place
+            )
         });
     }
 
