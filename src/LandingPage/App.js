@@ -8,14 +8,16 @@ import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
 import places from '../SampleData';
 import users from '../SampleData'
-import MyCollectionList from '../HomePage/MyCollectionList';
-import MyCollectionItem from '../HomePage/MyCollectionItem';
+import SignupForm from '../SignupAndLogin/SignupForm';
+// import SignupForm from '../SignupAndLogin/SignupForm';
+// import LoginForm from '../SignupAndLogin/LoginForm';
 
 class App extends Component {
   state = { 
     places: places.places,
     users: users.users,
     showSignupForm: false,
+    showLoginForm: false,
     showConfigWindow: false,
     isSignedIn: false,
     isMenuActive: false,
@@ -65,6 +67,15 @@ class App extends Component {
     this.setState({ showSignupForm: false }) 
   }
 
+  showModalForLoginForm = () => { 
+    this.setState({ showLoginForm: true })
+    this.state.showLoginForm && this.setState({ isMenuActive: false });
+  }
+
+  hideModalForLoginForm = () => { 
+    this.setState({ showLoginForm: false }) 
+  }
+
   showModalForConfigWindow = () => {
     this.setState({ showConfigWindow: true })
   }
@@ -93,10 +104,13 @@ class App extends Component {
       users: this.state.users,
       showSignupForm: this.state.showSignupForm,
       showConfigWindow: this.state.showConfigWindow,
+      showLoginForm: this.state.showLoginForm,
       isSignedIn: this.state.isSignedIn,
       showModalForConfigWindow: this.showModalForConfigWindow,
       showModalForSignupForm: this.showModalForSignupForm,
       hideModalForSignupForm: this.hideModalForSignupForm,
+      showModalForLoginForm: this.showModalForLoginForm,
+      hideModalForLoginForm: this.hideModalForLoginForm,
       hideModalForConfigWindow: this.hideModalForConfigWindow,
       createUser: this.cretaeUser,
       updateSearchResults: this.updateSearchResults,
@@ -122,7 +136,11 @@ class App extends Component {
 
           <Route exact path='/' component={LandingMain} />
 
-          <Route path='/my-collection' component={MyCollectionList} />
+          {/* <Route path='/login' component={LoginForm} />
+
+          <Route exact path='/signup' component={SignupForm} /> */}
+
+          <Route path='/my-collection' component={SignupForm} />
 
           {/* <Route path='/my-collection'>
             {

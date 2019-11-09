@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './DemoPage.css';
-import SignupForm from '../SignupForm/SignupForm';
+import SignupForm from '../SignupAndLogin/SignupForm';
 import AppContext from '../AppContext';
 import DemoCollectionList from './DemoCollectionList';
-import {Link} from 'react-router-dom';
+import LoginForm from '../SignupAndLogin/LoginForm';
 
 class DemoPage extends Component {
     static contextType = AppContext;
@@ -15,6 +15,7 @@ class DemoPage extends Component {
     render() {              
         return ( 
             <>
+                <LoginForm />
                 <SignupForm /> 
                 <DemoCollectionList />
             </>

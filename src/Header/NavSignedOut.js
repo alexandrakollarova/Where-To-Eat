@@ -21,6 +21,11 @@ class NavSignedOut extends Component {
         this.context.showModalForSignupForm();
     }
 
+    onLoginClick = () => {
+        this.handleCloseMenu();
+        this.context.showModalForLoginForm();
+    }
+
     openSignedOutMenu() {
         return ( 
                 <ul 
@@ -39,15 +44,21 @@ class NavSignedOut extends Component {
                         <button 
                             type="button" 
                             className="btn-signup-modal"
+                            onClick={this.onLoginClick}
+                        >
+                            Log In
+                        </button>
+                    </li>          
+
+                    <li>
+                        <button 
+                            type="button" 
+                            className="btn-signup-modal"
                             onClick={this.onSignupClick}
                         >
                             Sign Up
                         </button>
                     </li>
-
-                    {/* <NavLink to="">
-                        {!this.context.isSignedIn && "My Collection"}
-                    </NavLink> */}
 
                     <li>
                         <NavLink to="/demo-page">Demo</NavLink>
@@ -60,7 +71,6 @@ class NavSignedOut extends Component {
         
         return ( 
             <nav className="nav-landing">
-            {/* wrap the logo as a link to home page */}
                 <NavLink to='/'>
                     <p>logo!</p>
                 </NavLink>
@@ -82,10 +92,6 @@ class NavSignedOut extends Component {
                         <NavLink to='/demo-page'>Demo</NavLink>
                     </li>
                     
-                    {/* <NavLink to="">
-                        {!this.context.isSignedIn && "My Collection"}
-                    </NavLink> */}
-
                     <li>
                         <button 
                             type="button" 
@@ -94,7 +100,17 @@ class NavSignedOut extends Component {
                         >
                             Sign Up
                         </button>
-                    </li>                    
+                    </li>
+
+                     <li>
+                        <button 
+                            type="button" 
+                            className="btn-signup-modal"
+                            onClick={this.onLoginClick}
+                        >
+                            Log In
+                        </button>
+                    </li>                   
                 </ul>          
 
             </nav>

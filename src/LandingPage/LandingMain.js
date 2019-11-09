@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import Footer from './Footer';
 import Funnels from './Funnels';
-import SignupForm from '../SignupForm/SignupForm';
+import SignupForm from '../SignupAndLogin/SignupForm';
+import LoginForm from '../SignupAndLogin/LoginForm';
 import '../Header/Header.css';
 import {NavLink} from 'react-router-dom';
 import AppContext from '../AppContext';
@@ -19,6 +20,7 @@ class LandingMain extends Component {
             <div>
                 <Header />
 
+                <LoginForm />
                 <SignupForm />
 
                 <main className="main-landing">

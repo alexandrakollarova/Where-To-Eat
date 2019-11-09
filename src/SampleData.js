@@ -34,19 +34,19 @@ export default {
         },
      ],
      
-     users: [
-         { 
-             user_id: "1",
-             username: "Sebastien",
-             password: "Foodlover3*",
-             repeatPassword: "Foodlover3*",
-         },
-         { 
-             user_id: "2",
-             username: "Alexandra",
-             password: "Yummyyy1**",
-             repeatPassword: "Yummyyy1**",
-         }
-     ]
+    //  users: [
+    //      { 
+    //          user_id: "1",
+    //          username: "Sebastien",
+    //          password: "Foodlover3*",
+    //          repeatPassword: "Foodlover3*",
+    //      },
+    //      { 
+    //          user_id: "2",
+    //          username: "Alexandra",
+    //          password: "Yummyyy1**",
+    //          repeatPassword: "Yummyyy1**",
+    //      }
+    //  ]
 }
 

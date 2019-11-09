@@ -52,7 +52,7 @@ class SearchPlaces extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
     }
 
     render() {        

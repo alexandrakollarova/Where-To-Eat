@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import ValidationError from './ValidationError';
 import './SignupForm.css';
-import uuid from 'uuid';
+import AuthApiService from '../services/auth-api-service';
 
 const strongRegex = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])");
 
 class SignupForm extends Component {
     static contextType = AppContext;
+
+    static defaultProps = {
+        onRegistrationSuccess: () => {}
+    }
     
     state = {
         username: {
@@ -21,7 +25,8 @@ class SignupForm extends Component {
         repeatPassword: {
             value: "",
             touched: false
-        }
+        },
+        error: null
     }
 
     updateUsername(username) {
@@ -38,14 +43,20 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { username, password, repeatPassword } = this.state;
-        const user = {
-            user_id: uuid(),
-            username: username.value,
-            password: password.value,
-            repeatPassword: repeatPassword.value
-        }
-        this.context.createUser(user)        
+        let { username, password, repeatPassword } = this.state;   
+     
+        AuthApiService.postUser({
+            user_name: username.value,
+            user_password: password.value,
+        })
+        .then(user => {
+            username = ""
+            password = ""
+            this.props.onRegistrationSuccess()
+        })
+        .catch(res => {
+            this.setState({ error: res.error  });
+        })
     }
 
     validateUsername() {
@@ -61,7 +72,7 @@ class SignupForm extends Component {
         const password = this.state.password.value.trim();
         if (password.length === 0) {
             return "Password is required";
-        } else if (password.length < 6 || password.length > 72) {
+        } else if (password.length < 6 && password.length > 72) {
             return "Password must be between 6 and 72 characters long";
         } else if (!password.match(strongRegex)) {
             return "Password must contain at least one upper case letter, one number and one special character";
