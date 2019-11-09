@@ -43,13 +43,13 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let { username, password, repeatPassword } = this.state;   
+        const { username, password, repeatPassword } = this.state;   
      
         AuthApiService.postUser({
-            user_name: username.value,
-            user_password: password.value,
+            user_name: username,
+            user_password: password,
         })
-        .then(user => {
+        .then(user => { 
             username = ""
             password = ""
             this.props.onRegistrationSuccess()
