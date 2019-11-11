@@ -37,7 +37,7 @@ class LandingMain extends Component {
                     </p>
                         
                     <NavLink 
-                        to='/demo-page'
+                        to='/demo'
                         className="btn-check-it-out"
                     >
                         Check it out

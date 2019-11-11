@@ -29,7 +29,7 @@ class DemoCollectionList extends Component {
                         <Link
                             type="button"
                             className="btn-discover-places"
-                            to='/search-places'                    
+                            to='/search'                    
                         >
                             Discover restaurants
                         </Link>

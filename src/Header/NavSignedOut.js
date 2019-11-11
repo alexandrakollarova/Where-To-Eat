@@ -61,7 +61,7 @@ class NavSignedOut extends Component {
                     </li>
 
                     <li>
-                        <NavLink to="/demo-page">Demo</NavLink>
+                        <NavLink to="/demo">Demo</NavLink>
                     </li>
                 </ul>
         )

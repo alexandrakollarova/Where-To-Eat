@@ -9,10 +9,6 @@ const strongRegex = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])");
 class SignupForm extends Component {
     static contextType = AppContext;
 
-    static defaultProps = {
-        onRegistrationSuccess: () => {}
-    }
-    
     state = {
         username: {
             value: "",
@@ -52,7 +48,6 @@ class SignupForm extends Component {
         .then(user => { 
             username = ""
             password = ""
-            this.props.onRegistrationSuccess()
         })
         .catch(res => {
             this.setState({ error: res.error  });

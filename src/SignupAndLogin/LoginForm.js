@@ -7,10 +7,6 @@ import AuthApiService from '../services/auth-api-service';
 class LoginForm extends Component {
     static contextType = AppContext;
 
-    static defaultProps = {
-        onLoginSuccess: () => {}
-    }
-
     state = {
         username: {
             value: "",
@@ -39,10 +35,9 @@ class LoginForm extends Component {
             user_name: username,
             user_password: password
         })
-        .then(res => {
+        .then(res => { 
             username = ""
             password = ""
-            this.props.onLoginSuccess()
         })
         .catch(res => {
             this.setState({ error: res.error });

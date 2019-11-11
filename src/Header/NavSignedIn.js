@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {NavLink, Link} from 'react-router-dom';
 import AppContext from '../AppContext';
+import TokenService from '../services/token-service';
 
 class NavSignedIn extends Component {
     static contextType = AppContext;
@@ -19,6 +20,11 @@ class NavSignedIn extends Component {
         this.setState({ clickedOnLogOut: true }, () =>
             this.context.handleClickOnLogOut()
         );
+
+        TokenService.clearAuthToken()
+
+        /* when logging out, clear the callbacks to the refresh api and idle auto logout */
+        TokenService.clearCallbackBeforeExpiry()
     }
 
     openSignedInMenu() {
@@ -39,7 +45,7 @@ class NavSignedIn extends Component {
                     <NavLink to='/my-collection'>My collection</NavLink>
                 </li>
                 <li>
-                    <NavLink to='/search-places'>Add places</NavLink>
+                    <NavLink to='/search'>Add places</NavLink>
                 </li>
                 <li>
                     <button 
@@ -76,10 +82,15 @@ class NavSignedIn extends Component {
                         <NavLink to='/my-collection'>My collection</NavLink>
                     </li>
                     <li>
-                        <NavLink to='/search-places'>Add places</NavLink>
+                        <NavLink to='/search'>Add places</NavLink>
                     </li>
                     <li>
-                        <Link to='/'>Log out</Link>
+                        <Link 
+                            to='/'
+                            onClick={this.handleLogoutClick}
+                        >
+                            Log out
+                        </Link>
                     </li>
                 </ul>           
                 

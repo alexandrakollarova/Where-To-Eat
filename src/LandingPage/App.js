@@ -7,15 +7,14 @@ import DemoPage from '../DemoPage/DemoPage';
 import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
 import places from '../SampleData';
-import users from '../SampleData'
-import SignupForm from '../SignupAndLogin/SignupForm';
-// import SignupForm from '../SignupAndLogin/SignupForm';
-// import LoginForm from '../SignupAndLogin/LoginForm';
+import users from '../SampleData';
+import MyCollectionList from '../HomePage/MyCollectionList';
+import TokenService from '../services/token-service'
 
 class App extends Component {
   state = { 
     places: places.places,
-    users: users.users,
+    // users: users.users,
     showSignupForm: false,
     showLoginForm: false,
     showConfigWindow: false,
@@ -50,7 +49,7 @@ class App extends Component {
     })       
   }
 
-  cretaeUser = user => {
+  createUser = user => {
     this.setState({ 
       users: [...this.state.users, user],
       activeUserId: user.user_id,
@@ -98,7 +97,7 @@ class App extends Component {
       this.setState({ collectionList: newCollectionList })
   }
 
-  render() {
+  render() { 
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
@@ -112,7 +111,7 @@ class App extends Component {
       showModalForLoginForm: this.showModalForLoginForm,
       hideModalForLoginForm: this.hideModalForLoginForm,
       hideModalForConfigWindow: this.hideModalForConfigWindow,
-      createUser: this.cretaeUser,
+      createUser: this.createUser,
       updateSearchResults: this.updateSearchResults,
       isMenuActive: this.state.isMenuActive,
       collectionList: this.state.collectionList,
@@ -120,7 +119,8 @@ class App extends Component {
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
       demoCollectionList: this.state.demoCollectionList,
-      handleClickOnLogOut: this.handleClickOnLogOut
+      handleClickOnLogOut: this.handleClickOnLogOut,
+      loginUser: this.loginUser
     }
 
     return ( 
@@ -128,37 +128,33 @@ class App extends Component {
         <Switch>
           <Route exact path='/'>
             {
-              this.state.isSignedIn 
+              TokenService.hasAuthToken() 
                 ? <Redirect to='/my-collection' />
                 : <LandingMain />
             }
-          </Route>  
+          </Route>           
 
           <Route exact path='/' component={LandingMain} />
 
-          {/* <Route path='/login' component={LoginForm} />
+          <Route path='/my-collection' component={MyCollectionList} />
 
-          <Route exact path='/signup' component={SignupForm} /> */}
-
-          <Route path='/my-collection' component={SignupForm} />
-
-          {/* <Route path='/my-collection'>
+          <Route path='/my-collection'>
             {
               this.state.clickedOnLogOut 
                 ? <Redirect to='/' />
                 : <MyCollectionList />
             }
-          </Route> */}
+          </Route>
 
-          <Route path='/demo-page'>  
+          <Route path='/demo'>  
             {
               this.state.isSignedIn 
               ? <Redirect to='/my-collection' /> 
               : <DemoPage />
             }
-          </Route>    
+          </Route>   
 
-          <Route path='/search-places' component={SearchPlaces} />
+          <Route path='/search' component={SearchPlaces} />
 
           <Route component={PageNotFound} />
         </Switch> 

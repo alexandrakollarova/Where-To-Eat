@@ -11,9 +11,9 @@ class Header extends Component {
         return ( 
             <header>
                 {
-                    this.context.isSignedIn && TokenService.hasAuthToken()
-                    ? <NavSignedIn /> 
-                    : <NavSignedOut />
+                    TokenService.hasAuthToken()
+                        ? <NavSignedIn /> 
+                        : <NavSignedOut />
                 }
             </header>
          );

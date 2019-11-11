@@ -17,7 +17,7 @@ const AuthApiService = {
         )
     },
 
-    postLogin(credentials) {
+    postLogin(credentials) { 
         return fetch(`${config.API_ENDPOINT}/auth/login`, {
           method: 'POST',
           headers: {
@@ -31,6 +31,7 @@ const AuthApiService = {
               : res.json()
           )
            .then(res => {
+
             /*
               whenever a login is performed:
               1. save the token in local storage
