@@ -42,6 +42,7 @@ class LoginForm extends Component {
         .catch(res => {
             this.setState({ error: res.error });
         })
+        this.context.hideModalForLoginForm()
     }
 
     render() { 

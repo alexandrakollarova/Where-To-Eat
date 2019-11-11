@@ -17,10 +17,6 @@ class NavSignedIn extends Component {
     }
 
     handleLogOut = () => {
-        this.setState({ clickedOnLogOut: true }, () =>
-            this.context.handleClickOnLogOut()
-        );
-
         TokenService.clearAuthToken()
 
         /* when logging out, clear the callbacks to the refresh api and idle auto logout */

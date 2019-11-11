@@ -39,7 +39,7 @@ class DemoCollectionList extends Component {
                 {this.context.collectionList.length > 0 &&  
                     <>             
                         <h1>My places</h1>
-                        <Link to="/search-places">Go Back</Link>
+                        <Link to="/search">Go Back</Link>
                     </>
                 }
                 

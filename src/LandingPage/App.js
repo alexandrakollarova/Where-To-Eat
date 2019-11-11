@@ -23,15 +23,10 @@ class App extends Component {
     collectionList: [],
     activeUserId: null,
     demoCollectionList: [],
-    clickedOnLogOut: false
   }
 
   componentDidMount() {
     this.convertIsOpenValuesToBoolean()
-  }
-
-  handleClickOnLogOut = () => {
-    this.setState({ clickedOnLogOut: true });
   }
 
   convertIsOpenValuesToBoolean() {
@@ -119,8 +114,6 @@ class App extends Component {
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
       demoCollectionList: this.state.demoCollectionList,
-      handleClickOnLogOut: this.handleClickOnLogOut,
-      loginUser: this.loginUser
     }
 
     return ( 
@@ -134,13 +127,11 @@ class App extends Component {
             }
           </Route>           
 
-          <Route exact path='/' component={LandingMain} />
-
-          <Route path='/my-collection' component={MyCollectionList} />
+          {/* <Route exact path='/' component={LandingMain} /> */}
 
           <Route path='/my-collection'>
             {
-              this.state.clickedOnLogOut 
+              !TokenService.hasAuthToken() 
                 ? <Redirect to='/' />
                 : <MyCollectionList />
             }
@@ -148,9 +139,9 @@ class App extends Component {
 
           <Route path='/demo'>  
             {
-              this.state.isSignedIn 
-              ? <Redirect to='/my-collection' /> 
-              : <DemoPage />
+              TokenService.hasAuthToken() 
+                ? <Redirect to='/my-collection' /> 
+                : <DemoPage />
             }
           </Route>   
 
