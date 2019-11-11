@@ -127,7 +127,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/'>
             {
-              this.state.isSignedIn  
+              TokenService.hasAuthToken() 
                 ? <Redirect to='/my-collection' />
                 : <LandingMain />
             }
@@ -137,7 +137,7 @@ class App extends Component {
 
           <Route path='/my-collection'>
             {
-              !this.state.isSignedIn
+              !TokenService.hasAuthToken()
                 ? <Redirect to='/' />
                 : <MyCollectionList />
             }

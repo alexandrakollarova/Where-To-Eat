@@ -31,7 +31,6 @@ const AuthApiService = {
               : res.json()
           )
            .then(res => {
-
             /*
               whenever a login is performed:
               1. save the token in local storage
@@ -41,7 +40,7 @@ const AuthApiService = {
             TokenService.saveAuthToken(res.authToken)
           //  IdleService.regiserIdleTimerResets()
             TokenService.queueCallbackBeforeExpiry(() => {
-              AuthApiService.postRefreshToken()
+              this.AuthApiService.postRefreshToken()
             })
             return res
           })

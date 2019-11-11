@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import './SignupForm.css';
 import AuthApiService from '../services/auth-api-service';
+import TokenService from '../services/token-service';
 
 class LoginForm extends Component {
     static contextType = AppContext;
@@ -34,17 +35,17 @@ class LoginForm extends Component {
             user_name: username,
             user_password: password
         })
-        .then(res => { 
+        .then(res => {
+            this.context.userSignedIn()
+            this.context.hideModalForLoginForm()
+
             username = ""
             password = ""
-            console.log('here')
-            this.context.userSignedIn()
 
         })
         .catch(res => {
             this.setState({ error: res.error });
         })
-        this.context.hideModalForLoginForm()
     }
 
     render() { 
@@ -70,7 +71,7 @@ class LoginForm extends Component {
                             id="password" 
                             onChange={e => this.updatePassword(e.target.value)}
                         />
-                    
+                        {/* style inherited from signup-form */}
                         <div className='btn-signup-form-wrapper1'>
                             <button 
                                 type="submit"
