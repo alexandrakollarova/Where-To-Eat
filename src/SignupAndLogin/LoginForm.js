@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import './SignupForm.css';
-import TokenService from '../services/token-service'
 import AuthApiService from '../services/auth-api-service';
 
 class LoginForm extends Component {
@@ -38,6 +37,9 @@ class LoginForm extends Component {
         .then(res => { 
             username = ""
             password = ""
+            console.log('here')
+            this.context.userSignedIn()
+
         })
         .catch(res => {
             this.setState({ error: res.error });

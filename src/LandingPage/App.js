@@ -52,6 +52,11 @@ class App extends Component {
     });
   } 
 
+  userSignedIn = () => {console.log(TokenService.hasAuthToken())
+    this.setState({ isSignedIn: true });
+    
+  }
+
   showModalForSignupForm = () => { 
     this.setState({ showSignupForm: true })
     this.state.showSignupForm && this.setState({ isMenuActive: false });
@@ -92,7 +97,7 @@ class App extends Component {
       this.setState({ collectionList: newCollectionList })
   }
 
-  render() { 
+  render() {  
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
@@ -114,6 +119,7 @@ class App extends Component {
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
       demoCollectionList: this.state.demoCollectionList,
+      userSignedIn: this.userSignedIn
     }
 
     return ( 
@@ -121,7 +127,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/'>
             {
-              TokenService.hasAuthToken() 
+              this.state.isSignedIn  
                 ? <Redirect to='/my-collection' />
                 : <LandingMain />
             }
@@ -131,7 +137,7 @@ class App extends Component {
 
           <Route path='/my-collection'>
             {
-              !TokenService.hasAuthToken() 
+              !this.state.isSignedIn
                 ? <Redirect to='/' />
                 : <MyCollectionList />
             }
@@ -145,7 +151,13 @@ class App extends Component {
             }
           </Route>   
 
-          <Route path='/search' component={SearchPlaces} />
+          <Route path='/search'>
+            {
+              TokenService.hasAuthToken() 
+                ? <Redirect to='/search' />
+                : <LandingMain />
+            }
+          </Route>
 
           <Route component={PageNotFound} />
         </Switch> 
