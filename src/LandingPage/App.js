@@ -52,9 +52,8 @@ class App extends Component {
     });
   } 
 
-  userSignedIn = () => {console.log(TokenService.hasAuthToken())
-    this.setState({ isSignedIn: true });
-    
+  handleUserSignedIn = () => {
+    this.setState(prevState => ({ isSignedIn: !prevState.isSignedIn }));    
   }
 
   showModalForSignupForm = () => { 
@@ -119,7 +118,7 @@ class App extends Component {
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
       demoCollectionList: this.state.demoCollectionList,
-      userSignedIn: this.userSignedIn
+      handleUserSignedIn: this.handleUserSignedIn,
     }
 
     return ( 
@@ -127,7 +126,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/'>
             {
-              TokenService.hasAuthToken() 
+              this.state.isSignedIn 
                 ? <Redirect to='/my-collection' />
                 : <LandingMain />
             }
@@ -137,7 +136,7 @@ class App extends Component {
 
           <Route path='/my-collection'>
             {
-              !TokenService.hasAuthToken()
+              !this.state.isSignedIn 
                 ? <Redirect to='/' />
                 : <MyCollectionList />
             }
@@ -145,7 +144,7 @@ class App extends Component {
 
           <Route path='/demo'>  
             {
-              TokenService.hasAuthToken() 
+              this.state.isSignedIn  
                 ? <Redirect to='/my-collection' /> 
                 : <DemoPage />
             }
@@ -153,7 +152,7 @@ class App extends Component {
 
           <Route path='/search'>
             {
-              TokenService.hasAuthToken() 
+              this.state.isSignedIn  
                 ? <Redirect to='/search' />
                 : <LandingMain />
             }

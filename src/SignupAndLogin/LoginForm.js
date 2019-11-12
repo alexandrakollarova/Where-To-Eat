@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import './SignupForm.css';
 import AuthApiService from '../services/auth-api-service';
-import TokenService from '../services/token-service';
 
 class LoginForm extends Component {
     static contextType = AppContext;
@@ -30,13 +29,12 @@ class LoginForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         const {username, password} = this.state;
-        
         AuthApiService.postLogin({
             user_name: username,
             user_password: password
         })
         .then(res => {
-            this.context.userSignedIn()
+            this.context.handleUserSignedIn()
             this.context.hideModalForLoginForm()
 
             username = ""

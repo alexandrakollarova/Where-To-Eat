@@ -18,9 +18,8 @@ class NavSignedIn extends Component {
 
     handleLogOut = () => {
         TokenService.clearAuthToken()
-
-        /* when logging out, clear the callbacks to the refresh api and idle auto logout */
-        TokenService.clearCallbackBeforeExpiry()
+        this.context.handleUserSignedIn()
+        this.handleCloseMenu()
     }
 
     openSignedInMenu() {
