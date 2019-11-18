@@ -6,15 +6,13 @@ import LandingMain from './LandingMain';
 import DemoPage from '../DemoPage/DemoPage';
 import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
-import places from '../SampleData';
-import users from '../SampleData';
+
 import MyCollectionList from '../HomePage/MyCollectionList';
 import TokenService from '../services/token-service'
 
 class App extends Component {
   state = { 
-    places: places.places,
-    // users: users.users,
+    places: [],
     showSignupForm: false,
     showLoginForm: false,
     showConfigWindow: false,
@@ -27,6 +25,8 @@ class App extends Component {
 
   componentDidMount() {
     this.convertIsOpenValuesToBoolean()
+
+ 
   }
 
   convertIsOpenValuesToBoolean() {
@@ -53,7 +53,7 @@ class App extends Component {
   } 
 
   handleUserSignedIn = () => {
-    this.setState(prevState => ({ isSignedIn: !prevState.isSignedIn }));    
+    this.setState(prevState => ({ isSignedIn: !prevState.isSignedIn }));  
   }
 
   showModalForSignupForm = () => { 
@@ -126,7 +126,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/'>
             {
-              this.state.isSignedIn 
+              TokenService.hasAuthToken() 
                 ? <Redirect to='/my-collection' />
                 : <LandingMain />
             }
@@ -136,15 +136,15 @@ class App extends Component {
 
           <Route path='/my-collection'>
             {
-              !this.state.isSignedIn 
-                ? <Redirect to='/' />
-                : <MyCollectionList />
+              TokenService.hasAuthToken() 
+                ? <MyCollectionList />
+                : <Redirect to='/' />
             }
           </Route>
 
           <Route path='/demo'>  
             {
-              this.state.isSignedIn  
+              TokenService.hasAuthToken()  
                 ? <Redirect to='/my-collection' /> 
                 : <DemoPage />
             }
@@ -152,9 +152,9 @@ class App extends Component {
 
           <Route path='/search'>
             {
-              this.state.isSignedIn  
-                ? <Redirect to='/search' />
-                : <LandingMain />
+              TokenService.hasAuthToken()  
+                ? <SearchPlaces />
+                : <Redirect to='/' />
             }
           </Route>
 

@@ -10,11 +10,11 @@ class PlacesList extends Component {
             <>
                 {this.props.places.map(place => 
                     <PlacesItem 
-                        key={place.business_id}
-                        id={place.business_id}
+                        key={place.id}
+                        id={place.id}
                         name={place.name}
-                        isOpen={place.is_open}
-                        stars={place.stars}
+                        isClosed={place.is_closed}
+                        rating={place.rating}
                         added={place.added}
                     />
                 )}

@@ -49,8 +49,8 @@ class MyCollectionList extends Component {
                         key={place.id}
                         id={place.id}
                         name={place.name}
-                        isOpen={place.isOpen}
-                        stars={place.stars}
+                        isClosed={place.isClosed}
+                        rating={place.rating}
                     />
                 )}
             </>

@@ -8,8 +8,8 @@ class AddButton extends Component {
         const placeToAdd = {
             id: index,
             name: this.props.name,
-            isOpen: this.props.isOpen,
-            stars: this.props.stars
+            isClosed: this.props.isClosed,
+            rating: this.props.rating
         }
 
         this.context.savePlace(placeToAdd);

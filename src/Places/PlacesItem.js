@@ -16,8 +16,8 @@ class PlacesItem extends Component {
         let myProps = {
             id: this.props.id,
             name: this.props.name,
-            stars: this.props.stars,
-            isOpen: this.props.isOpen,
+            rating: this.props.rating,
+            isClosed: this.props.isClosed,
         }
         
         return ( 
@@ -31,7 +31,7 @@ class PlacesItem extends Component {
 
                     <div className="place-rating">
                         <StarRatings
-                            rating={this.props.stars}
+                            rating={this.props.rating}
                             starRatedColor="yellow"
                             starEmptyColor="grey"
                             starDimension="20px"
@@ -42,7 +42,7 @@ class PlacesItem extends Component {
                     </div>  
 
                     <div className="place-is-open">
-                        <p>{this.props.isOpen ? "Open Now" : "Closed Now"}</p>
+                        <p>{this.props.isClosed ? "Closed Now" : "Open Now"}</p>
                     </div>
 
                     {this.isSaved(this.props.id)

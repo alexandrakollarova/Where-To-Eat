@@ -17,6 +17,7 @@ const TokenService = {
     // create a base64 encoded string
     return window.btoa(`${username}:${password}`)
   },
+  
 }
 
 export default TokenService

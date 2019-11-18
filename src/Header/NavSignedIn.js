@@ -80,12 +80,12 @@ class NavSignedIn extends Component {
                         <NavLink to='/search'>Add places</NavLink>
                     </li>
                     <li>
-                        <Link 
-                            to='/'
-                            onClick={this.handleLogoutClick}
+                        <button 
+                            type="button"
+                            onClick={this.handleLogOut}
                         >
                             Log out
-                        </Link>
+                        </button>
                     </li>
                 </ul>           
                 

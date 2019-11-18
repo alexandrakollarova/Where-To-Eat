@@ -6,14 +6,40 @@ import PlacesList from '../Places/PlacesList';
 import AppContext from '../AppContext';
 import slider from './slider.png';
 import ConfigIcon from './ConfigIcon';
+import config from '../config';
+import latitude from './Geolocation/Geolocation'
 
 class SearchPlaces extends Component {
     static contextType = AppContext;
 
     state = {
         searchInput: "",
+        places: this.context.places,
         filteredPlaces: this.context.places,
         category: []
+    }
+
+    componentDidMount() {
+        // const searchInput = this.state.searchInput
+        // let latitude
+        // let longitude
+
+        fetch(`${config.API_ENDPOINT}/businesses`, {
+            headers: {
+              "Content-Type": "application/json"
+            }      
+          })
+          .then(res => 
+              (!res.ok) 
+                ? res.json().then(e => Promise.reject(e))
+                : res.json()
+          )
+          .then(data => {
+            console.log(data.businesses)
+            this.setState({ 
+                filteredPlaces: data.businesses, 
+                places: data.businesses })
+          })
     }
 
     onConfigIconClick = () => {
@@ -24,8 +50,9 @@ class SearchPlaces extends Component {
         this.setState({ searchInput: searchInput });
         
         this.setState({ 
-            filteredPlaces: this.context.places.filter(place =>           
+            filteredPlaces: this.state.places.filter(place =>           
                place.name.toLowerCase().charAt(0).includes(searchInput.toLowerCase())
+               || place.name.toLowerCase().match(searchInput.toLowerCase())
             )   
         });
     }
@@ -39,7 +66,7 @@ class SearchPlaces extends Component {
 
     updateCategory = (category) => {       
         this.setState({ filteredPlaces: this.context.places.filter(place => 
-            place.categories === category
+            place.categories.map(cat => cat.title === category)
             )  
         });      
     }

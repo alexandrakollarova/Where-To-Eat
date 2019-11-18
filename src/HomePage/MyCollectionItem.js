@@ -23,7 +23,7 @@ class MyCollectionItem extends Component {
 
                     <div className="place-rating">
                         <StarRatings
-                            rating={this.props.stars}
+                            rating={this.props.rating}
                             starRatedColor="yellow"
                             starEmptyColor="grey"
                             starDimension="20px"
@@ -34,7 +34,7 @@ class MyCollectionItem extends Component {
                     </div>  
 
                     <div className="place-is-open">
-                        <p>{this.props.isOpen ? "Open Now" : "Closed Now"}</p>
+                        <p>{this.props.isClosed ? "Closed Now" : "Open Now"}</p>
                     </div>
                     
                     <button

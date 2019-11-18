@@ -69,6 +69,9 @@ class LoginForm extends Component {
                             id="password" 
                             onChange={e => this.updatePassword(e.target.value)}
                         />
+
+                        <div>{this.state.error}</div>
+
                         {/* style inherited from signup-form */}
                         <div className='btn-signup-form-wrapper1'>
                             <button 

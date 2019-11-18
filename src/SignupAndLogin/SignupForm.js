@@ -39,13 +39,16 @@ class SignupForm extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const { username, password, repeatPassword } = this.state;   
+        const { username, password } = this.state;   
      
         AuthApiService.postUser({
             user_name: username,
             user_password: password,
         })
-        .then(user => { 
+        .then(res => { 
+            this.context.handleUserSignedIn()
+            this.context.hideModalForSignupForm()
+
             username = ""
             password = ""
         })
@@ -125,6 +128,8 @@ class SignupForm extends Component {
                         />
                         {this.state.repeatPassword.touched && 
                             <ValidationError message={repeatPasswordError} />}
+
+                       {this.state.error &&  <div>{this.state.error}</div>}
 
                         <div className='btn-signup-form-wrapper1'>
                             <button 

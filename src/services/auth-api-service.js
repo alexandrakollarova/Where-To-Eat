@@ -10,15 +10,20 @@ const AuthApiService = {
             },
             body: JSON.stringify(user)
         })
-        .then(res => 
+        .then(res =>  
             (!res.ok) 
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
         )
+        .then(res => {          
+          // whenever a login is performed save the token in local storage
+          TokenService.saveAuthToken(res.authToken)
+          return res
+        })
     },
 
     postLogin(credentials) { 
-        return fetch(`${config.API_ENDPOINT}/auth/login`, {
+        return fetch(`${config.API_ENDPOINT}/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -30,11 +35,8 @@ const AuthApiService = {
               ? res.json().then(e => Promise.reject(e))  
               : res.json()
           )
-           .then(res => {             
-            /*
-              whenever a login is performed:
-              1. save the token in local storage
-            */
+           .then(res => {     console.log(res)         
+            // whenever a login is performed save the token in local storage
             TokenService.saveAuthToken(res.authToken)
             return res
           })
