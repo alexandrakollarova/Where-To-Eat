@@ -69,23 +69,24 @@
 	background-color: inherit;
 }
 .checklabel {
-	display:inline-block;
+	display:inline;
 	background: white;
 	border-radius:80px;
-	text-align:center;
-	padding:10px 3em;
+	/* text-align:center; */
+  padding:10px;
+  font-size: 10px;
 }
 
 .checklabel:hover {
 	background: lightblue;
 }
 
-.checkbox {
+/* .checkbox {
 	position:absolute;
 	right:10px;
 	top:15px;
-	width: 2.2em;
-	height: 2.2em;
+	width: 1em;
+	height: 1em;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-ms-appearance: none;
@@ -100,15 +101,19 @@
 	background-position:-10em -10em;
 	transition:.3s ease;
 	outline:0;
-}
-.checkbox:focus + label{
+} */
+
+
+/* .checkbox:focus + label{
 	border-color:blue;
-} 
-.checkbox:active + label {
+}  */
+/* .checkbox:active + label {
 	background-color: #ddd;
-}
+} */
+
 .checkbox:checked {
-	background-position: 0 0;
+  /* background-position: 0 0; */
+  /* background-color: lightcoral; */
 }
 
 /*  RATING for stars */

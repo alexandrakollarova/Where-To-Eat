@@ -6,16 +6,11 @@ import Rating from './Rating';
 class ConfigIcon extends Component {
     static contextType = AppContext;
 
-    state = { 
-        american: "American", 
-        mexican: "Mexican", 
-        fastfood: "Fastfood", 
-        isOn: false 
-    }
+    state = { isOn: false }
 
     handleSwitch = () => {
         this.setState(prevState => ({ isOn: !prevState.isOn }), () =>
-            this.props.updateIsOpen(this.state.isOn)
+            this.props.updateIsClosed(this.state.isOn)
         );
     }
 
@@ -26,9 +21,9 @@ class ConfigIcon extends Component {
     render() { 
         const handleShowHideModal = this.context.showConfigWindow ? "display-block" : "display-none";
 
-        const {american, mexican, fastfood} = this.state;
-
         const isOnLabel = this.state.isOn ? "YES" : "NO";
+
+        const categories = [ "American", "Italian", "Indian", "Chinese", "Japanese", "Asian", "Korean", "Mexican", "Seafood", "Sushi", "Spanish", "Sandwiches", "Pizza", "Breakfast & Brunch", "French" ]
        
         return ( 
             <div id="config-window" className={handleShowHideModal}>
@@ -40,38 +35,22 @@ class ConfigIcon extends Component {
                     </div>
                      
                     <h3>Category</h3>
-                    <div className="formrow">
-                        <input 
-                            className="checkbox" 
-                            type="checkbox" 
-                            name="check1" 
-                            id="check1" 
-                            onChange={() => this.props.updateCategory(american)}
-                        />
-                        <label className="checklabel" htmlFor="check1">{american}</label>
-                    </div>
-                    <div className="formrow">
-                        <input 
-                            className="checkbox" 
-                            type="checkbox" 
-                            name="check2" 
-                            id="check2" 
-                            onChange={() => this.props.updateCategory(mexican)}
-                        />
-                        <label className="checklabel" htmlFor="check2">{mexican}</label>
-                    </div>
-
-                    <div className="formrow">
-                        <input 
-                            className="checkbox" 
-                            type="checkbox" 
-                            name="check3" 
-                            id="check3" 
-                            onChange={() => this.props.updateCategory(fastfood)}
-                        />
-                        <label className="checklabel" htmlFor="check3">{fastfood}</label>
-                    </div>
-
+                    {categories.map(category => {
+                        return (
+                            <div className="formrow" key={category}
+>
+                                <input 
+                                    className="checkbox" 
+                                    type="checkbox" 
+                                    name="check" 
+                                    id="check"
+                                    onChange={(e) => this.props.updateCategory(category, e.target.checked)}
+                                />
+                                <label className="checklabel" htmlFor="check1">{category}</label>
+                            </div>
+                        )}
+                    )}                 
+                   
                     <h3>Open Now</h3>
                     <div>
                         <label className="switch">
@@ -96,7 +75,7 @@ class ConfigIcon extends Component {
                             <button 
                                 type="button" 
                                 className="btn-signup-form"
-                                onClick={this.context.hideModalForConfigWindow}
+                                onClick={() => this.props.handleNeverMind()}
                         >
                             Never mind
                         </button>

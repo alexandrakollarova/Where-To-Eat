@@ -8,6 +8,7 @@ import slider from './slider.png';
 import ConfigIcon from './ConfigIcon';
 import config from '../config';
 import latitude from './Geolocation/Geolocation'
+import { all } from 'q';
 
 class SearchPlaces extends Component {
     static contextType = AppContext;
@@ -16,7 +17,7 @@ class SearchPlaces extends Component {
         searchInput: "",
         places: this.context.places,
         filteredPlaces: this.context.places,
-        category: []
+        allPassedCategories: []
     }
 
     componentDidMount() {
@@ -35,7 +36,6 @@ class SearchPlaces extends Component {
                 : res.json()
           )
           .then(data => {
-            console.log(data.businesses)
             this.setState({ 
                 filteredPlaces: data.businesses, 
                 places: data.businesses })
@@ -58,31 +58,51 @@ class SearchPlaces extends Component {
     }
 
     updateStars = (stars) => {
-        this.setState({ filteredPlaces: this.context.places.filter(place => 
+        this.setState({ filteredPlaces: this.state.places.filter(place => 
             place.stars == stars
             ) 
         });
     }
 
-    updateCategory = (category) => {       
-        this.setState({ filteredPlaces: this.context.places.filter(place => 
-            place.categories.map(cat => cat.title === category)
-            )  
-        });      
+    updateCategory = (category, e) => {
+        const {allPassedCategories} = this.state
+       
+        // e
+        // ? allPassedCategories.push(category)
+        // : allPassedCategories.filter(cat => cat != category)
+            
+        if (e) {
+            for (let i = 0; i < allPassedCategories.length; i++) {
+                console.log('here')
+            }
+        }
+        
+        this.setState({
+            filteredPlaces: this.state.places.filter(place => {
+                return !!place.categories.find(cat => {
+                    return cat.title === category && place;
+                });
+            })
+        });
     }
 
-    updateIsOpen = (isOpen) => {
-        this.setState({ filteredPlaces: this.context.places.filter(place => 
-            isOpen ? place.is_open == true : place
+    updateIsClosed = (isClosed) => {
+        this.setState({ filteredPlaces: this.state.places.filter(place => 
+            isClosed && place.is_closed === false
             )
         });
+    }
+
+    handleNeverMind() {//console.log(this.state.places)
+        //this.context.hideModalForConfigWindow;    
+        //this.setState({ filteredPlaces: this.state.places });            
     }
 
     handleSubmit(e) {
         e.preventDefault();
     }
 
-    render() {        
+    render() {   console.log(this.state.allPassedCategories)   
         return ( 
             <>
                 <Header />
@@ -123,7 +143,8 @@ class SearchPlaces extends Component {
                         <ConfigIcon 
                             updateStars={this.updateStars}
                             updateCategory={this.updateCategory}
-                            updateIsOpen={this.updateIsOpen}
+                            updateIsClosed={this.updateIsClosed}
+                            handleNeverMind={this.handleNeverMind}
                         />
                         <PlacesList places={this.state.filteredPlaces} />                       
                 </main>
