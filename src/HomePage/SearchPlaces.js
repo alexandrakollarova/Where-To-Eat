@@ -74,13 +74,15 @@ class SearchPlaces extends Component {
                 cat => cat != category)
             this.setState({ allPassedCategories: newPassedCategories })
         }        
-               
-        this.setState({
-            filteredPlaces: this.state.places.filter(place => {
-                return !!place.categories.find(cat => {
-                    return this.state.allPassedCategories.includes(cat.title);
-                });
-            })
+       
+        this.setState((state) => { 
+            return {
+                filteredPlaces: this.state.places.filter(place => {
+                    return !!place.categories.find(cat => {
+                        return state.allPassedCategories.includes(cat.title);
+                    });
+                })
+            }
         });
     }
 
