@@ -46,63 +46,63 @@ class SearchPlaces extends Component {
         this.context.showModalForConfigWindow()
     }
 
-    updateSearchInput = (searchInput) => {
+    updateSearch = ({searchInput, rating, category, isClosed}) => {
         this.setState({ searchInput: searchInput });
         
-        this.setState({ 
-            filteredPlaces: this.state.places.filter(place =>           
+        
+        let filteredPlaces = this.state.places.filter(place =>           
                place.name.toLowerCase().charAt(0).includes(searchInput.toLowerCase())
                || place.name.toLowerCase().match(searchInput.toLowerCase())
             )   
-        });
-    }
-
-    updateStars = (stars) => {
-        this.setState({ filteredPlaces: this.state.places.filter(place => 
-            place.stars == stars
-            ) 
-        });
-    }
-
-    updateCategory = (category, isChecked) => {      
-        if (isChecked) {             
-            this.setState({ 
-                allPassedCategories: this.state.allPassedCategories.concat(category) 
-            })
-        }  else { 
-            const newPassedCategories = this.state.allPassedCategories.filter(
-                cat => cat != category)
-            this.setState({ allPassedCategories: newPassedCategories })
-        }        
-       
-        this.setState((state) => { 
-            return {
-                filteredPlaces: this.state.places.filter(place => {
-                    return !!place.categories.find(cat => {
-                        return state.allPassedCategories.includes(cat.title);
-                    });
-                })
+        
+        if (rating) {
+            this.updateStars = (stars) => {
+                filteredPlaces = this.state.places.filter(place => 
+                    place.stars == stars
+                    ) 
             }
-        });
-    }
+        }
 
-    updateIsClosed = (isClosed) => {  
+        if (category) {
+            this.updateCategory = (category, isChecked) => {      
+                if (isChecked) {             
+                    this.setState({ 
+                        allPassedCategories: this.state.allPassedCategories.concat(category) 
+                    })
+                }  else { 
+                    const newPassedCategories = this.state.allPassedCategories.filter(
+                        cat => cat != category)
+                    this.setState({ allPassedCategories: newPassedCategories })
+                }        
+               
+                filteredPlaces = this.state.places.filter(place => {
+                    return !!place.categories.find(cat => {
+                        return this.state.allPassedCategories.includes(cat.title);
+                        });
+                    })                      
+            }
+        }
+
         if (isClosed) {
-            this.setState({ filteredPlaces: this.state.places.filter(place => 
-                isClosed && place.is_closed === false 
-                )
-            }); 
-        } else {
-            this.setState({ filteredPlaces: this.state.places.filter(place => 
-                isClosed && place.is_closed === true 
-                )
-            }); 
-        } 
-            
+            this.updateIsClosed = (isClosed) => {  
+                if (isClosed) {
+                    filteredPlaces = this.state.places.filter(place => 
+                        isClosed && place.is_closed === false 
+                        )                 
+                } else {
+                    filteredPlaces = this.state.places.filter(place => 
+                        isClosed && place.is_closed === true 
+                        )
+                } 
+                    
+            }
+        }
+
+        this.setState({ filteredPlaces });
     }
 
-    handleNeverMind() {//console.log(this.state.places)
-        //this.context.hideModalForConfigWindow;    
+    handleNeverMind() {//console.log(this.state.places)   
+        // this.context.hideModalForConfigWindow;    
         //this.setState({ filteredPlaces: this.state.places });            
     }
 
@@ -110,7 +110,7 @@ class SearchPlaces extends Component {
         e.preventDefault();
     }
 
-    render() {   console.log(this.state.filteredPlaces)   
+    render() {   console.log(this.state.filteredPlaces)  
         return ( 
             <>
                 <Header />
@@ -136,7 +136,7 @@ class SearchPlaces extends Component {
                                     className="search-input"
                                     type="text"
                                     name="search-input"
-                                    onChange={e => this.updateSearchInput(e.target.value)}
+                                    onChange={e => this.updateSearch(e.target.value)}
                                 />
                                 
                                 <img 
