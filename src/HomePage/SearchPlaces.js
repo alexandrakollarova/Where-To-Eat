@@ -86,11 +86,19 @@ class SearchPlaces extends Component {
         });
     }
 
-    updateIsClosed = (isClosed) => {
-        this.setState({ filteredPlaces: this.state.places.filter(place => 
-            isClosed && place.is_closed === false
-            )
-        });
+    updateIsClosed = (isClosed) => {  
+        if (isClosed) {
+            this.setState({ filteredPlaces: this.state.places.filter(place => 
+                isClosed && place.is_closed === false 
+                )
+            }); 
+        } else {
+            this.setState({ filteredPlaces: this.state.places.filter(place => 
+                isClosed && place.is_closed === true 
+                )
+            }); 
+        } 
+            
     }
 
     handleNeverMind() {//console.log(this.state.places)
