@@ -3,16 +3,16 @@ import './ConfigIcon.css';
 import StarRatings from 'react-star-ratings';
 
 class Rating extends Component {
- 
+
     state = {
       rating: 1
     };
- 
+
   changeRating(newRating, name) {
     this.setState({
       rating: newRating
     });
-    this.props.updateStars(this.state.rating)
+    this.props.updateStars(newRating)
   }
 
   render() {
@@ -31,6 +31,3 @@ class Rating extends Component {
   }
 }
  export default Rating;
-
-
-
