@@ -64,23 +64,21 @@ class SearchPlaces extends Component {
         });
     }
 
-    updateCategory = (category, e) => {
-        const {allPassedCategories} = this.state
-       
-        // e
-        // ? allPassedCategories.push(category)
-        // : allPassedCategories.filter(cat => cat != category)
-            
-        if (e) {
-            for (let i = 0; i < allPassedCategories.length; i++) {
-                console.log('here')
-            }
-        }
-        
+    updateCategory = (category, isChecked) => {      
+        if (isChecked) {             
+            this.setState({ 
+                allPassedCategories: this.state.allPassedCategories.concat(category) 
+            })
+        }  else { 
+            const newPassedCategories = this.state.allPassedCategories.filter(
+                cat => cat != category)
+            this.setState({ allPassedCategories: newPassedCategories })
+        }        
+               
         this.setState({
             filteredPlaces: this.state.places.filter(place => {
                 return !!place.categories.find(cat => {
-                    return cat.title === category && place;
+                    return this.state.allPassedCategories.includes(cat.title);
                 });
             })
         });
@@ -102,7 +100,7 @@ class SearchPlaces extends Component {
         e.preventDefault();
     }
 
-    render() {   console.log(this.state.allPassedCategories)   
+    render() {   console.log(this.state.filteredPlaces)   
         return ( 
             <>
                 <Header />
