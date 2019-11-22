@@ -16,8 +16,54 @@ class SearchPlaces extends Component {
     state = {
         searchInput: "",
         places: this.context.places,
-        filteredPlaces: this.context.places,
-        allPassedCategories: []
+        rating: 0,
+        allPassedCategories: [],
+        isOpen: false
+    }
+
+    updateSearchInput = (searchInput) => this.setState({ searchInput })
+
+    updateStars = (rating) => this.setState({ rating })
+
+    updateIsOpen = (isOpen) => this.setState({ isOpen: !isOpen })
+
+    updateCategory = (category, isChecked) => {
+        let { allPassedCategories } = this.state;
+        if (isChecked) {
+            allPassedCategories = allPassedCategories.concat([category]);
+        } else {
+            allPassedCategories = allPassedCategories.filter(cat => cat !== category);
+        }
+        this.setState({ allPassedCategories });
+    }
+
+    searchResults = () => {
+        let results = this.state.places;
+
+        if (this.state.searchInput) {
+            results = results.filter(place =>
+               place.name.toLowerCase().charAt(0).includes(this.state.searchInput.toLowerCase())
+               || place.name.toLowerCase().match(this.state.searchInput.toLowerCase())
+            )
+        }
+
+        if (this.state.allPassedCategories.length > 0) {
+            results = results.filter(place => {
+                return !!place.categories.find(cat => {
+                    return this.state.allPassedCategories.includes(cat.title);
+                });
+            })
+        }
+
+        if (this.state.rating > 0) {
+            results = results.filter(place => place.rating >= this.state.rating);
+        }
+
+        if (this.state.isOpen) {
+            results = results.filter(place => !place.is_closed);
+        }
+
+        return results;
     }
 
     componentDidMount() {
@@ -28,17 +74,15 @@ class SearchPlaces extends Component {
         fetch(`${config.API_ENDPOINT}/businesses`, {
             headers: {
               "Content-Type": "application/json"
-            }      
+            }
           })
-          .then(res => 
-              (!res.ok) 
+          .then(res =>
+              (!res.ok)
                 ? res.json().then(e => Promise.reject(e))
                 : res.json()
           )
           .then(data => {
-            this.setState({ 
-                filteredPlaces: data.businesses, 
-                places: data.businesses })
+            this.setState({ places: data.businesses })
           })
     }
 
@@ -46,121 +90,73 @@ class SearchPlaces extends Component {
         this.context.showModalForConfigWindow()
     }
 
-    updateSearch = ({searchInput, rating, category, isClosed}) => {
-        this.setState({ searchInput: searchInput });
-        
-        
-        let filteredPlaces = this.state.places.filter(place =>           
-               place.name.toLowerCase().charAt(0).includes(searchInput.toLowerCase())
-               || place.name.toLowerCase().match(searchInput.toLowerCase())
-            )   
-        
-        if (rating) {
-            this.updateStars = (stars) => {
-                filteredPlaces = this.state.places.filter(place => 
-                    place.stars == stars
-                    ) 
-            }
-        }
 
-        if (category) {
-            this.updateCategory = (category, isChecked) => {      
-                if (isChecked) {             
-                    this.setState({ 
-                        allPassedCategories: this.state.allPassedCategories.concat(category) 
-                    })
-                }  else { 
-                    const newPassedCategories = this.state.allPassedCategories.filter(
-                        cat => cat != category)
-                    this.setState({ allPassedCategories: newPassedCategories })
-                }        
-               
-                filteredPlaces = this.state.places.filter(place => {
-                    return !!place.categories.find(cat => {
-                        return this.state.allPassedCategories.includes(cat.title);
-                        });
-                    })                      
-            }
-        }
-
-        if (isClosed) {
-            this.updateIsClosed = (isClosed) => {  
-                if (isClosed) {
-                    filteredPlaces = this.state.places.filter(place => 
-                        isClosed && place.is_closed === false 
-                        )                 
-                } else {
-                    filteredPlaces = this.state.places.filter(place => 
-                        isClosed && place.is_closed === true 
-                        )
-                } 
-                    
-            }
-        }
-
-        this.setState({ filteredPlaces });
-    }
-
-    handleNeverMind() {//console.log(this.state.places)   
-        // this.context.hideModalForConfigWindow;    
-        //this.setState({ filteredPlaces: this.state.places });            
+    handleNeverMind() {//console.log(this.state.places)
+        //this.context.hideModalForConfigWindow;
+        //this.setState({ filteredPlaces: this.state.places });
     }
 
     handleSubmit(e) {
         e.preventDefault();
     }
 
-    render() {   console.log(this.state.filteredPlaces)  
-        return ( 
+
+    render() {
+        const searchResults = this.searchResults();
+        console.log(this.state);
+        console.log(searchResults);
+
+        return (
+
             <>
                 <Header />
 
                 <main className='search-places-main'>
-                    
+
                     <h2 className="headline">
-                        Tousands of restaurants 
+                        Tousands of restaurants
                         <br />
                         in one place!
                     </h2>
 
                         <form onSubmit={this.handleSubmit}>
                             <div className="search-input-and-config-wrapper">
-                                <button 
+                                <button
                                     type="submit"
                                     className="search-icon"
                                 >
                                     <i className="material-icons">search</i>
                                 </button>
-                                    
-                                <input 
+
+                                <input
                                     className="search-input"
                                     type="text"
                                     name="search-input"
                                     onChange={e => this.updateSearch(e.target.value)}
                                 />
-                                
-                                <img 
-                                    src={slider} 
+
+                                <img
+                                    src={slider}
                                     alt="slider-icon"
                                     className="search-slider"
                                     onClick={this.onConfigIconClick}
-                                >                                
-                                </img>                                
+                                >
+                                </img>
                             </div>
                         </form>
-                        <ConfigIcon 
+                        <ConfigIcon
                             updateStars={this.updateStars}
                             updateCategory={this.updateCategory}
-                            updateIsClosed={this.updateIsClosed}
+                            updateIsOpen={this.updateIsOpen}
                             handleNeverMind={this.handleNeverMind}
                         />
-                        <PlacesList places={this.state.filteredPlaces} />                       
+                        <PlacesList places={searchResults} />
                 </main>
 
-                <Footer />                
+                <Footer />
             </>
          );
     }
 }
- 
+
 export default SearchPlaces;
