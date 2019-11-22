@@ -90,6 +90,7 @@ class SearchPlaces extends Component {
         this.context.showModalForConfigWindow()
     }
 
+
     handleNeverMind() {//console.log(this.state.places)
         //this.context.hideModalForConfigWindow;
         //this.setState({ filteredPlaces: this.state.places });
@@ -99,12 +100,14 @@ class SearchPlaces extends Component {
         e.preventDefault();
     }
 
+
     render() {
         const searchResults = this.searchResults();
         console.log(this.state);
         console.log(searchResults);
 
         return (
+
             <>
                 <Header />
 
@@ -129,7 +132,7 @@ class SearchPlaces extends Component {
                                     className="search-input"
                                     type="text"
                                     name="search-input"
-                                    onChange={e => this.updateSearchInput(e.target.value)}
+                                    onChange={e => this.updateSearch(e.target.value)}
                                 />
 
                                 <img
