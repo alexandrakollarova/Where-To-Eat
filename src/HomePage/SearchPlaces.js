@@ -7,13 +7,14 @@ import AppContext from '../AppContext';
 import slider from './slider.png';
 import ConfigIcon from './ConfigIcon';
 import config from '../config';
-import latitude from './Geolocation/Geolocation'
-import { all } from 'q';
+import Geolocation from './Geolocation/Geolocation';
 
 class SearchPlaces extends Component {
     static contextType = AppContext;
 
     state = {
+        latitude: "",
+        longitude: "",
         searchInput: "",
         places: this.context.places,
         rating: 0,
@@ -25,7 +26,8 @@ class SearchPlaces extends Component {
 
     updateStars = (rating) => this.setState({ rating })
 
-    updateIsOpen = (isOpen) => this.setState({ isOpen: !isOpen })
+    //updateIsOpen = (isOpen) => this.setState({ isOpen: !isOpen })
+    updateIsOpen = (isOpen) => this.setState({ isOpen: isOpen })
 
     updateCategory = (category, isChecked) => {
         let { allPassedCategories } = this.state;
@@ -57,19 +59,31 @@ class SearchPlaces extends Component {
 
         if (this.state.rating > 0) {
             results = results.filter(place => place.rating >= this.state.rating);
+            console.log(results)
         }
 
         if (this.state.isOpen) {
             results = results.filter(place => !place.is_closed);
-        }
-
+        } 
+        // else {
+        //     results = results.filter(place => place.is_closed)
+        // }
+   
         return results;
     }
 
+    showPosition = (position) => {
+        this.setState({ 
+            latitude: position.coords.latitude, 
+            longitude: position.coords.longitude 
+        }, () => {
+            
+        });    
+    }
+
     componentDidMount() {
-        // const searchInput = this.state.searchInput
-        // let latitude
-        // let longitude
+        
+       console.log(this.state.latitude)
 
         fetch(`${config.API_ENDPOINT}/businesses`, {
             headers: {
@@ -103,12 +117,11 @@ class SearchPlaces extends Component {
 
     render() {
         const searchResults = this.searchResults();
-        console.log(this.state);
-        console.log(searchResults);
-
+    
         return (
-
             <>
+                <Geolocation showPosition={this.showPosition} />
+
                 <Header />
 
                 <main className='search-places-main'>
@@ -132,7 +145,7 @@ class SearchPlaces extends Component {
                                     className="search-input"
                                     type="text"
                                     name="search-input"
-                                    onChange={e => this.updateSearch(e.target.value)}
+                                    onChange={e => this.updateSearchInput(e.target.value)}
                                 />
 
                                 <img

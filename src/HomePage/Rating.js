@@ -5,7 +5,7 @@ import StarRatings from 'react-star-ratings';
 class Rating extends Component {
 
     state = {
-      rating: 1
+      rating: 0
     };
 
   changeRating(newRating, name) {

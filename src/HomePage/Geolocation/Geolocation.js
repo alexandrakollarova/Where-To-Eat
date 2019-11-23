@@ -1,34 +1,17 @@
 import React, { Component } from 'react';
 
 class Geolocation extends Component {
-    state = { 
-        latitude: "",
-        longitude: ""
-    }
 
-    componentDidMount() {        
-        this.getLocation()
-    }
-
-    getLocation() {
+    componentDidMount() {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(this.showPosition);
+            navigator.geolocation.getCurrentPosition(this.props.showPosition);
         } else {
-          console.log("Geolocation is not supported by this browser.");
+            console.log("Geolocation is not supported by this browser.");
         }
-      }
-      
-    showPosition(position) {
-        this.setState({ 
-            latitude: position.coords.latitude, 
-            longitude: position.coords.longitude 
-        });      
     }
-
-    render() { 
-        return ( 
-            <></>
-         );
+    
+    render() {         
+        return <></>
     }
 }
  
