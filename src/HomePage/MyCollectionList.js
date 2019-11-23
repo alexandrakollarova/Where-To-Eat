@@ -4,9 +4,24 @@ import '../Places/Places.css';
 import AppContext from '../AppContext';
 import MyCollectionItem from './MyCollectionItem';
 import Header from '../Header/Header';
+import Carousel from "nuka-carousel";
+import './Carousel.css'
 
 class MyCollectionList extends Component {
     static contextType = AppContext;
+    
+    constructor() {
+        super(...arguments);
+        this.state = {
+          slideIndex: 0,
+          length: 6,
+          wrapAround: false,
+          slidesToShow: 1,
+          cellAlign: "left",
+          transitionMode: "scroll",
+          withoutControls: false
+        };
+    }
 
     render() {
         // const greetUser = this.context.users.find(user =>
@@ -43,8 +58,28 @@ class MyCollectionList extends Component {
                         <Link to="/search">Go Back</Link>
                     </>
                 }
+
+                <Carousel
+                    withoutControls={this.state.withoutControls}
+                    transitionMode={this.state.transitionMode}
+                    cellAlign={this.state.cellAlign}
+                    slidesToShow={this.state.slidesToShow}
+                    wrapAround={this.state.wrapAround}
+                    slideIndex={this.state.slideIndex}
+                >
+                    {this.context.collectionList.slice(0, this.state.length).map((place, index) => (
+                        <MyCollectionItem
+                            key={place.id}
+                            id={place.id}
+                            name={place.name}
+                            isClosed={place.isClosed}
+                            rating={place.rating}
+                            onClick={this.handleImageClick}
+                        />
+                    ))}
+                </Carousel>
                 
-                {this.context.collectionList.map(place =>
+                {/* {this.context.collectionList.map(place =>
                     <MyCollectionItem
                         key={place.id}
                         id={place.id}
@@ -52,7 +87,7 @@ class MyCollectionList extends Component {
                         isClosed={place.isClosed}
                         rating={place.rating}
                     />
-                )}
+                )} */}
             </>
          );
     }

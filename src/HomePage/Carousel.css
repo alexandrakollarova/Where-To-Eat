@@ -1,0 +1,21 @@
+.slider {
+    background-color: inherit;
+}
+
+.slider-control-bottomcenter {
+    display: none;
+}
+
+.slider-control-centerleft {
+    top: 350px!important;
+    left: 10px!important;
+}
+
+.slider-control-centerright {
+    top: 350px!important;
+    right: 10px!important;
+}
+
+.slider-list {
+    height: 350px!important;
+}

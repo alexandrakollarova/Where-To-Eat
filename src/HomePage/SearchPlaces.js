@@ -7,7 +7,6 @@ import AppContext from '../AppContext';
 import slider from './slider.png';
 import ConfigIcon from './ConfigIcon';
 import config from '../config';
-import Geolocation from './Geolocation/Geolocation';
 
 class SearchPlaces extends Component {
     static contextType = AppContext;
@@ -75,11 +74,31 @@ class SearchPlaces extends Component {
     }
 
     componentDidMount() {
+
+        let lat = ""
+        let long = ""
         
         const showPosition = (position) => {
             this.setState({ 
                 latitude: position.coords.latitude, 
                 longitude: position.coords.longitude 
+            }, () => {
+                lat = this.state.latitude
+                long = this.state.longitude
+
+                fetch(`${config.API_ENDPOINT}/businesses?lat=${lat}&long=${long}`, {
+                    headers: {
+                      "Content-Type": "application/json",
+                    }
+                  })
+                  .then(res =>
+                      (!res.ok)
+                        ? res.json().then(e => Promise.reject(e))
+                        : res.json()
+                  )
+                  .then(data => {
+                    this.setState({ places: data.businesses })
+                  })
             })   
         }
         
@@ -87,23 +106,7 @@ class SearchPlaces extends Component {
             navigator.geolocation.getCurrentPosition(showPosition);
         } else {
             console.log("Geolocation is not supported by this browser.");
-        }
-
-        console.log(this.state.latitude)
-
-        fetch(`${config.API_ENDPOINT}/businesses`, {
-            headers: {
-              "Content-Type": "application/json"
-            }
-          })
-          .then(res =>
-              (!res.ok)
-                ? res.json().then(e => Promise.reject(e))
-                : res.json()
-          )
-          .then(data => {
-            this.setState({ places: data.businesses })
-          })
+        }           
     }
 
     onConfigIconClick = () => {

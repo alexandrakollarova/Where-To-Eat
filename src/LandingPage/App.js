@@ -6,7 +6,7 @@ import LandingMain from './LandingMain';
 import DemoPage from '../DemoPage/DemoPage';
 import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
-
+import config from '../config';
 import MyCollectionList from '../HomePage/MyCollectionList';
 import TokenService from '../services/token-service'
 
@@ -24,9 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.convertIsOpenValuesToBoolean()
-
- 
+    this.convertIsOpenValuesToBoolean() 
   }
 
   convertIsOpenValuesToBoolean() {
@@ -86,9 +84,34 @@ class App extends Component {
     this.setState({ places: filtered }) 
   }
 
-  savePlace = (place) => {
+  savePlace = (place) => { 
     const newCollectionList = this.state.collectionList.concat([place])
     this.setState({ collectionList: newCollectionList })
+    
+    // let businessId = place.id
+
+    // fetch(`${config.API_ENDPOINT}/users_businesses`, {
+    //   method: 'POST',
+    //   body: JSON.stringify({ businessId }),      
+    //   headers: {
+    //       'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then(res => {
+    //     if (!res.ok) {
+    //       return res.json().then(error => {
+    //         throw error
+    //       })
+    //     }
+    //     return res.json()
+    //   })
+    //   .then(() => { 
+    //     const newCollectionList = this.state.collectionList.concat([place])
+    //     this.setState({ collectionList: newCollectionList })
+    //   })
+    //   .catch(error => {
+    //       console.log(error)
+    //   })
   }
 
   unsavePlace = (id) => {

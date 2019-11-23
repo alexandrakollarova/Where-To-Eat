@@ -15,7 +15,7 @@ class MyCollectionItem extends Component {
         return ( 
             <>
                 <div className='restaurant-card-item'>
-
+                    
                     <div className="image-placeholder">
                         <img src="" alt="temporary-placeholder"></img>
                     </div>
