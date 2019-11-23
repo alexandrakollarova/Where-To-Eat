@@ -31,11 +31,13 @@ class SearchPlaces extends Component {
 
     updateCategory = (category, isChecked) => {
         let { allPassedCategories } = this.state;
+
         if (isChecked) {
             allPassedCategories = allPassedCategories.concat([category]);
         } else {
             allPassedCategories = allPassedCategories.filter(cat => cat !== category);
         }
+
         this.setState({ allPassedCategories });
     }
 
@@ -72,18 +74,22 @@ class SearchPlaces extends Component {
         return results;
     }
 
-    showPosition = (position) => {
-        this.setState({ 
-            latitude: position.coords.latitude, 
-            longitude: position.coords.longitude 
-        }, () => {
-            
-        });    
-    }
-
     componentDidMount() {
         
-       console.log(this.state.latitude)
+        const showPosition = (position) => {
+            this.setState({ 
+                latitude: position.coords.latitude, 
+                longitude: position.coords.longitude 
+            })   
+        }
+        
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+
+        console.log(this.state.latitude)
 
         fetch(`${config.API_ENDPOINT}/businesses`, {
             headers: {
@@ -105,9 +111,9 @@ class SearchPlaces extends Component {
     }
 
 
-    handleNeverMind() {//console.log(this.state.places)
-        //this.context.hideModalForConfigWindow;
-        //this.setState({ filteredPlaces: this.state.places });
+    handleNeverMind = () => { 
+        this.setState({ allPassedCategories: [], isOpen: true, rating: 0 });
+        this.context.hideModalForConfigWindow();
     }
 
     handleSubmit(e) {
@@ -120,7 +126,7 @@ class SearchPlaces extends Component {
     
         return (
             <>
-                <Geolocation showPosition={this.showPosition} />
+                {/* <Geolocation showPosition={this.showPosition} /> */}
 
                 <Header />
 
