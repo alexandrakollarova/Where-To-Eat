@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #E7E8EC;
+    /* background-color: #E7E8EC; */
 }
 
 button, link, a {
@@ -23,7 +23,7 @@ button, link, a {
     font-size: 50px;
     line-height: 55px;
     transform: rotate(-10deg);
-    color: #F9A825     
+    color: #FFBB2E;    
 }
 
 .main-landing p {
@@ -64,11 +64,17 @@ footer {
 }
 
 .btn-check-it-out {
-    border: solid 1px black;
-    border-radius: 8px;
-    padding: 10px 12px;
+    background-color: #EC3A69;
+    border-radius: 25px;
+    padding: 15px 20px;
     margin-top: 10px
 }
+
+
+.design-icon {
+    width: 50px;;
+}
+
 
 @media only screen and (min-width: 500px) {
 

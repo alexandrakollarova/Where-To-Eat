@@ -104,7 +104,6 @@ class App extends Component {
             throw error;
           });
         }
-        return res.json();
       })
       .then(data => {
         // const newCollectionList = this.state.collectionList.concat([place]);

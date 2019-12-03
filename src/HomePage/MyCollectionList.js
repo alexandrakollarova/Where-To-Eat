@@ -14,7 +14,7 @@ class MyCollectionList extends Component {
         super(...arguments);
         this.state = {
           slideIndex: 0,
-          length: 6,
+          length: 100,
           wrapAround: false,
           slidesToShow: 1,
           cellAlign: "left",

@@ -12,6 +12,7 @@
 .search-icon {
     border: none;
     background-color: inherit;
+    color: white;
     position: absolute;
     padding-top: 10px;
     margin-left: -115px;
@@ -19,17 +20,18 @@
 
 .search-input {
     border: none;
-    background-color: wheat;
-    padding: 15px 30px;
+    background-color: #FFBB2E;
+    padding: 15px 30px; 
     border-radius: 30px;
 }
 
 .search-slider {
     transform: rotate(90deg);
-    background-color: wheat;
+    background-color: #FFBB2E;
     margin-left: 20px;
     padding: 10px;
-    border-radius: 100%;    
+    border-radius: 100%;  
+    width: 25px
 }
 
 .search-input-and-config-wrapper {

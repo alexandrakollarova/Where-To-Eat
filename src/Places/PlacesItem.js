@@ -1,59 +1,76 @@
 import React, { Component } from 'react';
 import './Places.css';
+import StarRatings from 'react-star-ratings';
 import AddButton from './AddButton';
 import UndoButton from './UndoButton';
 import AppContext from '../AppContext';
-import StarRatings from 'react-star-ratings';
+import pasta from './icons/pasta.png';
+import taco from './icons/taco.png';
 
 class PlacesItem extends Component {
-    static contextType = AppContext;
+  // eslint-disable-next-line react/static-property-placement
+  static contextType = AppContext;
 
-    isSaved(id) {
-        return !!this.context.collectionList.find(place => place.id === id);
-    }
+  isSaved(id) {
+    const { collectionList } = this.context;
+    return !!collectionList.find((place) => place.id === id);
+  }
 
-    render() {  
-        let myProps = {
-            id: this.props.id,
-            name: this.props.name,
-            rating: this.props.rating,
-            isClosed: this.props.isClosed,
-        }
-        
-        return ( 
-            <>
-                <div className='restaurant-card-item'>
+  renderCategoryIcons() {
+    const { categories } = this.props;
 
-                    <div className="image-placeholder">
-                        <img src={this.props.img} alt="restaurant" className="restaurant-image"></img>
-                    </div>
-                    <h3 className="place-title">{this.props.name}</h3>
+    return categories.map((cat) => {
+      if (cat.title === 'Italian') {
+        return <img src={pasta} alt="pasta-icon" className="pasta-icon" />;
+      }
+      
+      if (cat.title === 'Mexican') {
+        return <img src={taco} alt="taco-icon" className="taco-icon" />;
+      }
+    })
+  }
 
-                    <div className="place-rating">
-                        <StarRatings
-                            rating={this.props.rating}
-                            starRatedColor="yellow"
-                            starEmptyColor="grey"
-                            starDimension="20px"
-                            starHoverColor="yellow"
-                            numberOfStars={5}
-                            name='rating'
-                        />
-                    </div>  
+  render() {
+    // eslint-disable-next-line object-curly-newline
+    const { id, name, rating, isClosed, img } = this.props;
+    // eslint-disable-next-line object-curly-newline
+    const myProps = { id, name, rating, isClosed };
 
-                    <div className="place-is-open">
-                        <p>{this.props.isClosed ? "Closed Now" : "Open Now"}</p>
-                    </div>
+    return (
+      <>
+        <div className="restaurant-card-item">
 
-                    {this.isSaved(this.props.id)
-                        ? <UndoButton {...myProps} />
-                        : <AddButton {...myProps} /> 
-                    }               
-                    
-                </div>
-            </>
-         );
-    }
+          <div className="image-placeholder">
+            <img src={img} alt="restaurant" className="restaurant-image" />
+          </div>
+          <h3 className="place-title">{name}</h3>
+
+          <div className="place-rating">
+            <StarRatings
+              rating={rating}
+              starRatedColor="#FFBB2E"
+              starEmptyColor="grey"
+              starDimension="20px"
+              starHoverColor="yellow"
+              numberOfStars={5}
+              name="rating"
+            />
+          </div>
+
+          <div>{this.renderCategoryIcons()}</div>
+
+          <div className="place-is-open">
+            <p>{isClosed ? 'Closed Now' : 'Open Now'}</p>
+          </div>
+
+          {this.isSaved(id)
+            ? <UndoButton {...myProps} />
+            : <AddButton {...myProps} />}
+
+        </div>
+      </>
+    );
+  }
 }
- 
+
 export default PlacesItem;

@@ -1,121 +1,132 @@
 import React, { Component } from 'react';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AppContext from '../AppContext';
 import './Header.css';
+import logo from './logo.png';
 
 class NavSignedOut extends Component {
+    // eslint-disable-next-line react/static-property-placement
     static contextType = AppContext;
 
+    // eslint-disable-next-line react/state-in-constructor
     state = { isMenuActive: false }
 
     handleOpenMenu = () => {
-        this.setState({ isMenuActive: true });
+      this.setState({ isMenuActive: true });
     }
 
     handleCloseMenu = () => {
-        this.setState({ isMenuActive: false });
+      this.setState({ isMenuActive: false });
     }
 
     onSignupClick = () => {
-        this.handleCloseMenu();
-        this.context.showModalForSignupForm();
+      const { showModalForSignupForm } = this.context;
+      this.handleCloseMenu();
+      showModalForSignupForm();
     }
 
     onLoginClick = () => {
-        this.handleCloseMenu();
-        this.context.showModalForLoginForm();
+      const { showModalForLoginForm } = this.context;
+      this.handleCloseMenu();
+      showModalForLoginForm();
     }
 
     openSignedOutMenu() {
-        return ( 
-                <ul 
-                    className="open-menu" 
-                    style={{display: this.state.isMenuActive ? 'block' : 'none' }}
-                >
-                    <button 
-                        type="button"
-                        className="close-icon"
-                        onClick={this.handleCloseMenu}
-                    > 
-                        <i className="material-icons">close</i>
-                    </button>
+      const { isMenuActive } = this.state;
+      return (
+        <ul
+          className="open-menu"
+          style={{ display: isMenuActive ? 'block' : 'none' }}
+        >
+          <button
+            type="button"
+            className="close-icon"
+            onClick={this.handleCloseMenu}
+          >
+            <i className="material-icons">close</i>
+          </button>
 
-                    <li>
-                        <button 
-                            type="button" 
-                            className="btn-signup-modal"
-                            onClick={this.onLoginClick}
-                        >
-                            Log In
-                        </button>
-                    </li>          
+          <li>
+            <button
+              type="button"
+              className="btn-signup-modal"
+              onClick={this.onLoginClick}
+            >
+                        Log In
+            </button>
+          </li>
 
-                    <li>
-                        <button 
-                            type="button" 
-                            className="btn-signup-modal"
-                            onClick={this.onSignupClick}
-                        >
-                            Sign Up
-                        </button>
-                    </li>
+          <li>
+            <button
+              type="button"
+              className="btn-signup-modal"
+              onClick={this.onSignupClick}
+            >
+                        Sign Up
+            </button>
+          </li>
 
-                    <li>
-                        <NavLink to="/demo">Demo</NavLink>
-                    </li>
-                </ul>
-        )
+          <li>
+            <NavLink to="/demo">Demo</NavLink>
+          </li>
+        </ul>
+      );
     }
-   
-    render() { 
-        
-        return ( 
-            <nav className="nav-landing">
-                <NavLink to='/'>
-                    <p>logo!</p>
-                </NavLink>
 
-                <button 
-                    type="button"
-                    className="utensils-icon"
-                    onClick={this.handleOpenMenu}
-                >
-                    <i className="material-icons">restaurant</i>
-                </button> 
-                
-                {this.state.isMenuActive && this.openSignedOutMenu()}   
+    render() {
+      const { isMenuActive } = this.state;
 
-                 <ul 
-                    className="desktop-menu" 
-                >
-                    <li>
-                        <NavLink to='/demo-page'>Demo</NavLink>
-                    </li>
-                    
-                    <li>
-                        <button 
-                            type="button" 
-                            className="btn-signup-modal"
-                            onClick={this.onSignupClick}
-                        >
+      return (
+        <nav className="nav-landing">
+          <NavLink to="/">
+            <img
+              src={logo}
+              alt="meal-icon-logo"
+              className="logo-icon"
+            />
+          </NavLink>
+
+          <button
+            type="button"
+            className="utensils-icon"
+            onClick={this.handleOpenMenu}
+          >
+            <i className="material-icons">restaurant</i>
+          </button>
+
+          {isMenuActive && this.openSignedOutMenu()}
+
+          <ul
+            className="desktop-menu"
+          >
+            <li>
+              <NavLink to="/demo-page">Demo</NavLink>
+            </li>
+
+            <li>
+              <button
+                type="button"
+                className="btn-signup-modal"
+                onClick={this.onSignupClick}
+              >
                             Sign Up
-                        </button>
-                    </li>
+              </button>
+            </li>
 
-                     <li>
-                        <button 
-                            type="button" 
-                            className="btn-signup-modal"
-                            onClick={this.onLoginClick}
-                        >
+            <li>
+              <button
+                type="button"
+                className="btn-signup-modal"
+                onClick={this.onLoginClick}
+              >
                             Log In
-                        </button>
-                    </li>                   
-                </ul>          
+              </button>
+            </li>
+          </ul>
 
-            </nav>
-         );
+        </nav>
+      );
     }
 }
- 
+
 export default NavSignedOut;

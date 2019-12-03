@@ -4,86 +4,82 @@ import './ConfigIcon.css';
 import Rating from './Rating';
 
 class ConfigIcon extends Component {
-    static contextType = AppContext;
+  // eslint-disable-next-line react/static-property-placement
+  static contextType = AppContext;
 
-    state = { isOn: false }
+  // eslint-disable-next-line react/state-in-constructor
+  state = { isOn: false }
 
-    handleSwitch = () => {
-        this.setState(prevState => ({ isOn: !prevState.isOn }), () =>
-            this.props.updateIsOpen(this.state.isOn)
-        );
-    }
+  handleSwitch = () => {
+    this.setState((prevState) => ({ isOn: !prevState.isOn }), () => this.props.updateIsOpen(this.state.isOn));
+  }
+  
+  render() {
+    const handleShowHideModal = this.context.showConfigWindow ? 'display-block' : 'display-none';
 
-    handleSubmitFilters(e) {
-       // e.preventDefault();
-    }
+    const isOnLabel = this.state.isOn ? 'YES' : 'NO';
 
-    render() {
-        const handleShowHideModal = this.context.showConfigWindow ? "display-block" : "display-none";
+    const categories = ['American', 'Italian', 'Indian', 'Chinese', 'Japanese', 'Asian', 'Korean', 'Mexican', 'Seafood', 'Sushi', 'Spanish', 'Sandwiches', 'Pizza', 'Breakfast & Brunch', 'French'];
 
-        const isOnLabel = this.state.isOn ? "YES" : "NO";
+    return (
+      <div id="config-window" className={handleShowHideModal}>
 
-        const categories = [ "American", "Italian", "Indian", "Chinese", "Japanese", "Asian", "Korean", "Mexican", "Seafood", "Sushi", "Spanish", "Sandwiches", "Pizza", "Breakfast & Brunch", "French" ]
+        <form>
+          <h3>Stars</h3>
+          <div>
+            <Rating updateStars={this.props.updateStars} />
+          </div>
 
-        return (
-            <div id="config-window" className={handleShowHideModal}>
-
-                <form>
-                    <h3>Stars</h3>
-                    <div>
-                        <Rating updateStars={this.props.updateStars} />
-                    </div>
-
-                    <h3>Category</h3>
-                    {categories.map(category => {
-                        return (
-                            <div className="formrow" key={category}
->
-                                <input
-                                    className="checkbox"
-                                    type="checkbox"
-                                    name="check"
-                                    id="check"
-                                    onChange={(e) => this.props.updateCategory(category, e.target.checked)}
-                                />
-                                <label className="checklabel" htmlFor="check1">{category}</label>
-                            </div>
-                        )}
-                    )}
-
-                    <h3>Open Now</h3>
-                    <div>
-                        <label className="switch">
-                            <input type="checkbox" onClick={this.handleSwitch} />
-                            <span className="slider round"></span>
-                        </label>
-                        {isOnLabel}
-                    </div>
-
-                    {/* rename styling for these buttons */}
-                    <div className='btn-signup-form-wrapper1'>
-                        <button
-                            type="button"
-                            className="btn-signup-form"
-                            onClick={this.context.hideModalForConfigWindow}
-                        >
-                            All set!
-                        </button>
-                        </div>
-
-                        <div className='btn-signup-form-wrapper2'>
-                            <button
-                                type="button"
-                                className="btn-signup-form"
-                                onClick={() => this.props.handleNeverMind()}
-                        >
-                            Never mind
-                        </button>
-                    </div>
-                </form>
+          <h3>Category</h3>
+          {categories.map((category) => (
+            <div
+              className="formrow"
+              key={category}
+            >
+              <input
+                className="checkbox"
+                type="checkbox"
+                name="check"
+                id="check"
+                onChange={(e) => this.props.updateCategory(category, e.target.checked)}
+              />
+              <label className="checklabel" htmlFor="check1">{category}</label>
             </div>
-         );
-    }
+          ))}
+
+          <h3>Open Now</h3>
+          <div>
+            <label className="switch">
+              <input type="checkbox" onClick={this.handleSwitch} />
+              <span className="slider round" />
+            </label>
+            {isOnLabel}
+          </div>
+
+          {/* rename styling for these buttons */}
+          <div className="btn-signup-form-wrapper1">
+            <button
+              type="button"
+              className="btn-signup-form"
+              onClick={this.context.hideModalForConfigWindow}
+            >
+              All set!
+              </button>
+          </div>
+
+          <div className="btn-signup-form-wrapper2">
+            <button
+              type="button"
+              className="btn-signup-form"
+              onClick={() => this.props.handleNeverMind()}
+            >
+              Never mind
+              </button>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default ConfigIcon;
