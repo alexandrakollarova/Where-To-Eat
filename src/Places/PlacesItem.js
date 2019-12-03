@@ -25,7 +25,7 @@ class PlacesItem extends Component {
                 <div className='restaurant-card-item'>
 
                     <div className="image-placeholder">
-                        <img src="" alt="temporary-placeholder"></img>
+                        <img src={this.props.img} alt="restaurant" className="restaurant-image"></img>
                     </div>
                     <h3 className="place-title">{this.props.name}</h3>
 

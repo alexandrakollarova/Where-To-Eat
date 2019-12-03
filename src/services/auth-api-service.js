@@ -35,7 +35,7 @@ const AuthApiService = {
               ? res.json().then(e => Promise.reject(e))  
               : res.json()
           )
-           .then(res => {     console.log(res)         
+           .then(res => {       
             // whenever a login is performed save the token in local storage
             TokenService.saveAuthToken(res.authToken)
             return res

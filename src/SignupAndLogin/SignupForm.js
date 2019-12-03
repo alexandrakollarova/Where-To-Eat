@@ -48,9 +48,6 @@ class SignupForm extends Component {
         .then(res => { 
             this.context.handleUserSignedIn()
             this.context.hideModalForSignupForm()
-
-            username = ""
-            password = ""
         })
         .catch(res => {
             this.setState({ error: res.error  });

@@ -37,8 +37,8 @@ class LoginForm extends Component {
             this.context.handleUserSignedIn()
             this.context.hideModalForLoginForm()
 
-            username = ""
-            password = ""
+            // username = ""
+            // password = ""
 
         })
         .catch(res => {

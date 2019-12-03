@@ -16,6 +16,7 @@ class PlacesList extends Component {
                         isClosed={place.is_closed}
                         rating={place.rating}
                         added={place.added}
+                        img={place.image_url}
                     />
                 )}
             </>

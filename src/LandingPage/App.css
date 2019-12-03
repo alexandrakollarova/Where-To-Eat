@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #E7E8EC;
 }
 
 button, link, a {
@@ -19,9 +20,10 @@ button, link, a {
 
 .main-landing .headline {
     font-family: 'Merienda', cursive;
-    font-size: 35px;
-    line-height: 40px;
-    transform: rotate(-5deg);
+    font-size: 50px;
+    line-height: 55px;
+    transform: rotate(-10deg);
+    color: #F9A825     
 }
 
 .main-landing p {
