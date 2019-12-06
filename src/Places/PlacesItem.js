@@ -4,8 +4,16 @@ import StarRatings from 'react-star-ratings';
 import AddButton from './AddButton';
 import UndoButton from './UndoButton';
 import AppContext from '../AppContext';
-import pasta from './icons/pasta.png';
-import taco from './icons/taco.png';
+// import pasta from './icons/pasta.png';
+// import taco from './icons/taco.png';
+// import burger from './icons/burger.png';
+// import pizza from './icons/pizza.png';
+// import seafood from './icons/seafood.png';
+// import sushi from './icons/sushi.png';
+// import sandwich from './icons/sandwich.png';
+// import bb from './icons/bb.png';
+// import medi from './icons/medi.png';
+// import bakeries from './icons/bakeries.png'
 
 class PlacesItem extends Component {
   // eslint-disable-next-line react/static-property-placement
@@ -14,20 +22,6 @@ class PlacesItem extends Component {
   isSaved(id) {
     const { collectionList } = this.context;
     return !!collectionList.find((place) => place.id === id);
-  }
-
-  renderCategoryIcons() {
-    const { categories } = this.props;
-
-    return categories.map((cat) => {
-      if (cat.title === 'Italian') {
-        return <img src={pasta} alt="pasta-icon" className="pasta-icon" />;
-      }
-      
-      if (cat.title === 'Mexican') {
-        return <img src={taco} alt="taco-icon" className="taco-icon" />;
-      }
-    })
   }
 
   render() {
@@ -43,7 +37,7 @@ class PlacesItem extends Component {
           <div className="image-placeholder">
             <img src={img} alt="restaurant" className="restaurant-image" />
           </div>
-          <h3 className="place-title">{name}</h3>
+          <h2 className="place-title">{name}</h2>
 
           <div className="place-rating">
             <StarRatings
@@ -57,15 +51,17 @@ class PlacesItem extends Component {
             />
           </div>
 
-          <div>{this.renderCategoryIcons()}</div>
+          {/* <div>{this.renderCategoryIcons()}</div> */}
 
           <div className="place-is-open">
             <p>{isClosed ? 'Closed Now' : 'Open Now'}</p>
           </div>
 
-          {this.isSaved(id)
-            ? <UndoButton {...myProps} />
-            : <AddButton {...myProps} />}
+          <div>
+            {this.isSaved(id)
+              ? <UndoButton {...myProps} />
+              : <AddButton {...myProps} />}
+          </div>
 
         </div>
       </>

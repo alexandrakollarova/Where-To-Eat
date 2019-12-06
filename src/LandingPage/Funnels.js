@@ -1,6 +1,6 @@
 import React from 'react';
-import design from './design.png';
-import upToDate from './up-to-date.png';
+import design from './icons/design.png';
+import upToDate from './icons/up-to-date.png';
 
 const Funnels = () => (
   <section className="funnels">

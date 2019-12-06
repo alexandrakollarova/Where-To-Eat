@@ -8,7 +8,7 @@
 
 .restaurant-card-item { 
     width: 90%;
-    height: 250px;
+    height: 300px;
     border-radius: 8px;
     margin-top: 50px;
     margin-left: auto;
@@ -19,16 +19,20 @@
 
 .place-title, .place-rating, .place-is-open {
     text-align: left;
-    padding-left: 15px;
+    padding-left: 30px;
+}
+
+.place-title {
+    padding-top: 40px;
+    line-height: 35px;
 }
 
 .image-placeholder {
-    width: 100px;
-    height: 100px;
     border-radius: 100%;
     float: right;
     margin-top: -30px;
     margin-right: -20px;
+    padding-left: 15px
 }
 
 .btn-add-place {
@@ -38,18 +42,19 @@
     color: white;
     border-radius: 30px;
     padding: 10px 30px;
+
 }
 
 .restaurant-image {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%; 
     object-fit: cover;
 }
 
-.pasta-icon, .taco-icon {
+/* .pasta-icon, .taco-icon, .burger-icon, .sushi-icon, .pizza-icon, .seafood-icon, .sandwich-icon, .bb-icon, .medi-icon {
     width: 50px;
-}
+} */
 
 @media only screen and (min-width: 650px) {
 

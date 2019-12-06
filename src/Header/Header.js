@@ -5,19 +5,20 @@ import AppContext from '../AppContext';
 import TokenService from '../services/token-service';
 
 class Header extends Component {
-    static contextType = AppContext;
+  // eslint-disable-next-line react/static-property-placement
+  static contextType = AppContext;
 
-    render() { 
-        return ( 
-            <header>
-                {
-                    TokenService.hasAuthToken()
-                        ? <NavSignedIn /> 
-                        : <NavSignedOut />
-                }
-            </header>
-         );
-    }
+  render() {
+    return (
+      <header>
+        {
+          TokenService.hasAuthToken()
+            ? <NavSignedIn />
+            : <NavSignedOut />
+        }
+      </header>
+    );
+  }
 }
- 
+
 export default Header;

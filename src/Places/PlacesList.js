@@ -7,7 +7,7 @@ class PlacesList extends Component {
   static contextType = AppContext;
 
   render() {
-    const { places } = this.props;
+    const { places } = this.props; 
     return (
       <>
         {places.map((place) => (

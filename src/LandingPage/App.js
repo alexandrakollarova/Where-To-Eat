@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
-import AppContext from "../AppContext";
-import "./App.css";
-import LandingMain from "./LandingMain";
-import DemoPage from "../DemoPage/DemoPage";
-import SearchPlaces from "../HomePage/SearchPlaces";
-import PageNotFound from "./PageNotFound";
-import config from "../config";
-import MyCollectionList from "../HomePage/MyCollectionList";
-import TokenService from "../services/token-service";
+/* eslint-disable react/state-in-constructor */
+import React, { Component } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import AppContext from '../AppContext';
+import './App.css';
+import LandingMain from './LandingMain';
+import DemoPage from '../DemoPage/DemoPage';
+import SearchPlaces from '../HomePage/SearchPlaces';
+import PageNotFound from './PageNotFound';
+import config from '../config';
+import MyCollectionList from '../HomePage/MyCollectionList';
+import TokenService from '../services/token-service';
 
 class App extends Component {
   state = {
@@ -20,38 +21,25 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
-    demoCollectionList: []
+    demoCollectionList: [],
   };
 
   componentDidMount() {
     this.convertIsOpenValuesToBoolean();
-  }
-
-  convertIsOpenValuesToBoolean() {
-    this.setState((prevState, props) => {
-      return {
-        places: prevState.places.map(p => {
-          if (p.is_open) {
-            p.is_open = true;
-          } else {
-            p.is_open = false;
-          }
-          return p;
-        })
-      };
+    this.setState({
+      activeUserId: TokenService.getAuthToken(),
     });
   }
 
-  createUser = user => {
+  createUser = (user) => {
     this.setState({
       users: [...this.state.users, user],
-      activeUserId: user.user_id,
-      isSignedIn: true
+      isSignedIn: true,
     });
   };
 
   handleUserSignedIn = () => {
-    this.setState(prevState => ({ isSignedIn: !prevState.isSignedIn }));
+    this.setState((prevState) => ({ isSignedIn: !prevState.isSignedIn }));
   };
 
   showModalForSignupForm = () => {
@@ -80,72 +68,85 @@ class App extends Component {
     this.setState({ showConfigWindow: false });
   };
 
-  updateSearchResults = filtered => {
+  updateSearchResults = (filtered) => {
     this.setState({ places: filtered });
   };
 
-  savePlace = place => {
-    const newCollectionList = this.state.collectionList.concat([place])
-    this.setState({ collectionList: newCollectionList })
+  savePlace = (place) => {
+    const newCollectionList = this.state.collectionList.concat([place]);
+    this.setState({ collectionList: newCollectionList });
 
-    let businessId = place.id;
-    let userId = TokenService.getAuthToken();
+    const businessId = place.id;
+    const userId = TokenService.getAuthToken();
 
     fetch(`${config.API_ENDPOINT}/users_businesses`, {
-      method: "POST",
+      method: 'POST',
       body: JSON.stringify({ userId, businessId }),
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
-          return res.json().then(error => {
+          return res.json().then((error) => {
             throw error;
           });
         }
       })
-      .then(data => {
+      .then((data) => {
         // const newCollectionList = this.state.collectionList.concat([place]);
         // this.setState({ collectionList: newCollectionList });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
 
-  unsavePlace = id => {
-    const newCollectionList = this.state.collectionList.filter(place => place.id !== id);
-    this.setState({ collectionList: newCollectionList })
+  unsavePlace = (id) => {
+    const newCollectionList = this.state.collectionList.filter((place) => place.id !== id);
+    this.setState({ collectionList: newCollectionList });
 
-    let businessId = id;
-    let userId = TokenService.getAuthToken();
+    const businessId = id;
+    const userId = TokenService.getAuthToken();
 
     fetch(`${config.API_ENDPOINT}/users_businesses`, {
-      method: "DELETE",
+      method: 'DELETE',
       body: JSON.stringify({ userId, businessId }),
       headers: {
-        "Content-Type": "application/json"
-      }
+        'Content-Type': 'application/json',
+      },
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) {
-          return res.json().then(error => {
+          return res.json().then((error) => {
             throw error;
           });
         }
         return res.json();
       })
-      .then(data => {
+      .then((data) => {
         // const newCollectionList = this.state.collectionList.filter(
         //   place => place.id !== id
-        //);
+        // );
         this.setState({ collectionList: newCollectionList });
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   };
+
+  convertIsOpenValuesToBoolean() {
+    this.setState((prevState) => ({
+      places: prevState.places.map((p) => {
+        if (p.is_open) {
+          p.is_open = true;
+        } else {
+          p.is_open = false;
+        }
+        return p;
+      }),
+    }));
+  }
 
   render() {
     const contextValue = {
@@ -165,11 +166,11 @@ class App extends Component {
       updateSearchResults: this.updateSearchResults,
       isMenuActive: this.state.isMenuActive,
       collectionList: this.state.collectionList,
-      activeUserId: this.state.activeUserId,
+      activeUserId: TokenService.getAuthToken(),
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
       demoCollectionList: this.state.demoCollectionList,
-      handleUserSignedIn: this.handleUserSignedIn
+      handleUserSignedIn: this.handleUserSignedIn,
     };
 
     return (

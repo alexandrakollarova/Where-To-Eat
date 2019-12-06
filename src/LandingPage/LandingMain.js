@@ -5,52 +5,52 @@ import Funnels from './Funnels';
 import SignupForm from '../SignupAndLogin/SignupForm';
 import LoginForm from '../SignupAndLogin/LoginForm';
 import '../Header/Header.css';
-import {NavLink} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import AppContext from '../AppContext';
 
-class LandingMain extends Component { 
-    static contextType = AppContext;
-    
-    componentDidMount() {
-        this.context.hideModalForSignupForm()
-    }
+class LandingMain extends Component {
+  static contextType = AppContext;
 
-    render() {       
-        return ( 
-            <div>
-                <Header />
+  componentDidMount() {
+    this.context.hideModalForSignupForm()
+  }
 
-                <LoginForm />
-                <SignupForm />
+  render() {
+    return (
+      <div className="landing-main-container">
+        <Header />
 
-                <main className="main-landing">
-                    <h1 className="headline">
-                        Where 
-                        <br />
-                        to eat?
-                    </h1>
+        <LoginForm />
+        <SignupForm />
 
-                    <p>
-                        Craving something yummy, don't feel like experimenting, 
-                        and nothing comes to your mind?
-                        Let Where To Eat to help you to solve this once for all. 
-                    </p>
-                        
-                    <NavLink 
-                        to='/demo'
-                        className="btn-check-it-out"
-                    >
-                        Check it out
-                    </NavLink>
-        
-                    <Funnels />
+        <main className="main-landing">
+          <h1 className="headline">
+            Where
+            <br />
+            to eat?
+          </h1>
 
-                </main>
+          <p>
+            Craving something yummy, don't feel like experimenting,
+            and nothing comes to your mind?
+            Let Where To Eat to help you to solve this once for all.
+          </p>
 
-                <Footer />
-            </div>
-         );
-    }
+          <NavLink
+            to="/demo"
+            className="btn-check-it-out"
+          >
+            Check it out
+          </NavLink>
+
+          <Funnels />
+
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
 }
- 
+
 export default LandingMain;

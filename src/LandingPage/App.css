@@ -4,7 +4,8 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* background-color: #E7E8EC; */
+    /* background-image: url('./icons/img.jpg');
+    background-size: cover; */
 }
 
 button, link, a {

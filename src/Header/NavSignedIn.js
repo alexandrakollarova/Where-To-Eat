@@ -39,21 +39,22 @@ class NavSignedIn extends Component {
           className="close-icon"
           onClick={this.handleCloseMenu}
         >
-          <i className="material-icons">close</i>
+          <i className="material-icons close">close</i>
         </button>
 
         <li>
-          <NavLink to="/my-collection">My collection</NavLink>
+          <NavLink to="/my-collection">my collection</NavLink>
         </li>
         <li>
-          <NavLink to="/search">Add places</NavLink>
+          <NavLink to="/search">add places</NavLink>
         </li>
         <li>
           <button
             type="button"
             onClick={this.handleLogOut}
+            className="btn-log-out"
           >
-            Log out
+            log out!
           </button>
         </li>
       </ul>
@@ -65,20 +66,25 @@ class NavSignedIn extends Component {
 
     return (
       <nav className="nav-landing">
-        <NavLink to="/">
+        {/* <NavLink to="/">
           <img
             src={logo}
             alt="meal-icon-logo"
             className="logo-icon"
           />
-        </NavLink>
+        </NavLink> */}
 
         <button
           type="button"
           className="utensils-icon"
           onClick={this.handleOpenMenu}
         >
-          <i className="material-icons">restaurant</i>
+          <img
+            src={logo}
+            alt="meal-icon-logo"
+            className="logo-icon"
+          />
+          {/* <i className="material-icons">restaurant</i> */}
         </button>
 
         {isMenuActive && this.openSignedInMenu()}
