@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from './Footer';
 import Funnels from './Funnels';
 import SignupForm from '../SignupAndLogin/SignupForm';
 import LoginForm from '../SignupAndLogin/LoginForm';
 import '../Header/Header.css';
-import { NavLink } from 'react-router-dom';
 import AppContext from '../AppContext';
+import egg from './icons/egg-img.jpg';
 
 class LandingMain extends Component {
   static contextType = AppContext;
@@ -24,6 +25,8 @@ class LandingMain extends Component {
         <SignupForm />
 
         <main className="main-landing">
+          <img src={egg} alt="egg-background" className="egg-img" />
+
           <h1 className="headline">
             Where
             <br />
@@ -40,7 +43,7 @@ class LandingMain extends Component {
             to="/demo"
             className="btn-check-it-out"
           >
-            Check it out
+            check it out
           </NavLink>
 
           <Funnels />

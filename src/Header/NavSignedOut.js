@@ -33,6 +33,8 @@ class NavSignedOut extends Component {
 
   openSignedOutMenu() {
     const { isMenuActive } = this.state;
+    const logoutLoginStyle = { color: '#F9643A' };
+
     return (
       <ul
         className="open-menu"
@@ -51,6 +53,7 @@ class NavSignedOut extends Component {
             type="button"
             className="btn-signup-modal"
             onClick={this.onLoginClick}
+            style={logoutLoginStyle}
           >
             log in
           </button>
@@ -75,6 +78,7 @@ class NavSignedOut extends Component {
 
   render() {
     const { isMenuActive } = this.state;
+    const logoutLoginStyle = { color: '#F9643A' };
 
     return (
       <nav className="nav-landing">
@@ -123,6 +127,7 @@ class NavSignedOut extends Component {
               type="button"
               className="btn-signup-modal"
               onClick={this.onLoginClick}
+              style={logoutLoginStyle}
             >
               log in
             </button>

@@ -9,7 +9,7 @@ class PlacesList extends Component {
   render() {
     const { places } = this.props; 
     return (
-      <>
+      <div className="restaurant-card-grid">
         {places.map((place) => (
           <PlacesItem
             key={place.id}
@@ -22,7 +22,7 @@ class PlacesList extends Component {
             categories={place.categories}
           />
         ))}
-      </>
+      </div>
     );
   }
 }

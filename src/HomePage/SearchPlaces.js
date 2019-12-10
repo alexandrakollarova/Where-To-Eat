@@ -87,7 +87,7 @@ class SearchPlaces extends Component {
     if (searchInput) {
       // eslint-disable-next-line max-len
       results = results.filter((place) => (place.name.toLowerCase().charAt(0).includes(searchInput.toLowerCase())
-          || place.name.toLowerCase().match(searchInput.toLowerCase())));
+        || place.name.toLowerCase().match(searchInput.toLowerCase())));
     }
 
     if (allPassedCategories.length > 0) {
@@ -139,12 +139,6 @@ class SearchPlaces extends Component {
 
           <form onSubmit={this.handleSubmit}>
             <div className="search-input-and-config-wrapper">
-              <button
-                type="submit"
-                className="search-icon"
-              >
-                <i className="material-icons">search</i>
-              </button>
 
               <div>
                 <input
@@ -153,6 +147,12 @@ class SearchPlaces extends Component {
                   name="search-input"
                   onChange={(e) => this.updateSearchInput(e.target.value)}
                 />
+                <button
+                  type="submit"
+                  className="search-icon"
+                >
+                  <i className="material-icons">search</i>
+                </button>
               </div>
 
               <div

@@ -30,7 +30,7 @@ class MyCollectionList extends Component {
   componentDidMount() {
     const { activeUserId } = this.context;
 
-    fetch(`${config.API_ENDPOINT}/user_businesses?user=${activeUserId}`, {
+    fetch(`${config.API_ENDPOINT}/users_businesses?user=${activeUserId}`, {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -50,13 +50,15 @@ class MyCollectionList extends Component {
   }
 
   render() {
+    const { collectionList } = this.context;
+
     // const greetUser = this.context.users.find((user) => user.user_id === this.context.activeUserId);
     // const user = greetUser.username.charAt(0).toUpperCase() + greetUser.username.slice(1);
     return (
       <>
         <Header />
 
-        {this.context.collectionList.length == 0
+        {collectionList.length == 0
           && (
             <>
               <h1 className="headline-welcome">
@@ -81,7 +83,7 @@ class MyCollectionList extends Component {
             </>
           )}
 
-        {this.context.collectionList.length > 0
+        {collectionList.length > 0
           && (
             <>
               <h1>My places</h1>
@@ -97,7 +99,7 @@ class MyCollectionList extends Component {
           wrapAround={this.state.wrapAround}
           slideIndex={this.state.slideIndex}
         >
-          {this.context.collectionList.slice(0, this.state.length).map((place) => (
+          {collectionList.slice(0, this.state.length).map((place) => (
             <MyCollectionItem
               key={place.id}
               id={place.id}

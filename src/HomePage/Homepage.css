@@ -5,8 +5,12 @@
 
 .search-places-main .headline {
     text-align: left;
-    margin-left: 15px;
-    line-height: 40px;
+    margin-left: 10%;
+    line-height: 25px;
+}
+
+.material-icons {
+    font-size: 30px
 }
 
 .search-icon {
@@ -14,15 +18,17 @@
     background-color: inherit;
     color: white;
     position: absolute;
-    padding-top: 10px;
-    margin-left: -115px;
+    padding-top: 8px;
+    margin-left: -50px;
 }
 
 .search-input {
     border: none;
     background-color: #FFBB2E;
-    padding: 15px 30px; 
+    padding: 10px;
     border-radius: 30px;
+    font-size: 18px;
+    font-family: inherit;
 }
 
 .search-slider {
@@ -40,19 +46,21 @@
 }
 
 .btn-discover-places {
-    border: solid 1px black;
-    border-radius: 8px;
-    padding: 10px 12px;
+    text-align: center;
     display: block;
     width: 200px;
     margin-right: auto;
     margin-left: auto;
     margin-top: 50px;
-    text-align: center;
+    background-color: #EC3A69;
+    border-radius: 25px;
+    padding: 15px 20px;
+    margin-top: 10px;
+    color: white
 }
 
 .headline-welcome {
-    margin-top: 50px;
+    margin-top: 100px;
     margin-left: 30px;
 }
 
@@ -78,6 +86,34 @@
     text-align: left;
     margin-left: 20px;
     color: white
+}
+
+@media only screen and (min-width: 450px) {
+    .search-places-main .headline {
+        font-size: 25px;
+        line-height: 30px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+
+    .search-places-main .headline {
+        margin-left: 15%;
+        font-size: 35px;
+        line-height: 40px;
+    }
+
+    .search-input {
+        width: 250px;
+        font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+
+    .search-input {
+        width: 350px;
+    }
 }
 
 

@@ -4,8 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* background-image: url('./icons/img.jpg');
-    background-size: cover; */
+    background-color: #222439;
 }
 
 button, link, a {
@@ -15,26 +14,44 @@ button, link, a {
 }
 
 .main-landing {
-    padding: 130px 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 100px;
+    padding-bottom: 20px;
     text-align: center;
+}
+
+.egg-img {
+    width: 300px;
 }
 
 .main-landing .headline {
     font-family: 'Merienda', cursive;
-    font-size: 50px;
-    line-height: 55px;
+    font-size: 65px;
+    line-height: 60px;
     transform: rotate(-10deg);
-    color: #FFBB2E;    
+    color: #FFBB2E;  
+    position: absolute;
+    top: 200px;
+    left: 0;
+    right: 0;  
 }
 
 .main-landing p {
-    padding-top: 20px;
+    padding-top: 50px;
     line-height: 25px;
     letter-spacing: 0.8px;
+    margin-bottom: 50px;
+    color: #FCF5E2
 }
 
 footer {
     text-align: center;
+    color: #FCF5E2
+}
+
+.funnels {
+    margin-top: 50px;
 }
 
 .funnels ul {
@@ -45,12 +62,12 @@ footer {
 
 .funnels li {
     list-style: none;
-    margin-bottom: 50px;
     padding: 0 20px
 }
 
 .funnels h3 {
     font-family: 'Merienda', cursive;
+    color: #FCF5E2
 }
 
 .btn-signup-modal, .btn-check-it-out, .btn-signup-form {
@@ -65,15 +82,17 @@ footer {
 }
 
 .btn-check-it-out {
-    background-color: #EC3A69;
-    border-radius: 25px;
+    background-color: #F9643A;
+    border-radius: 20px;
     padding: 15px 20px;
-    margin-top: 10px
+    margin-top: 10px;
+    color: #FCF5E2;
+    font-weight: 600;
+    font-size: 20px;
 }
 
-
 .design-icon {
-    width: 50px;;
+    width: 150px;;
 }
 
 
@@ -83,6 +102,11 @@ footer {
         padding-left: 100px;
         padding-right: 100px;
     }    
+
+    .main-landing .headline {
+        font-size: 80px;
+        line-height: 80px;  
+    }
 }
 
 @media only screen and (min-width: 900px) {

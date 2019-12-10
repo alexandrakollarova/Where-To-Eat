@@ -1,34 +1,39 @@
 import React from 'react';
-import design from './icons/design.png';
-import upToDate from './icons/up-to-date.png';
+
+const funnel1SpecialSize = { width: '185px' };
 
 const Funnels = () => (
   <section className="funnels">
     <ul>
       <li>
-        <img
-          src={design}
+        {/* <img
+          src={funnel1}
+          style={funnel1SpecialSize}
           alt="design-icon"
           className="design-icon"
-        />
+        /> */}
         <h3>Design it yourself</h3>
         <p>
           Design a portfolio of your preferred eateries & fast food joints.
         </p>
       </li>
       <li>
-        <p>(icon)</p>
+        {/* <img
+          src={funnel2}
+          alt="design-icon"
+          className="design-icon"
+        /> */}
         <h3>Let it decide for you</h3>
         <p>
           Have fun swapping through your fav spots and narrow down your options!
         </p>
       </li>
       <li>
-        <img
-          src={upToDate}
+        {/* <img
+          src={funnel3}
           alt="design-icon"
           className="design-icon"
-        />
+        /> */}
         <h3>Keep it up-to-date</h3>
         <p>
           Found a new cool restaurant? Add it into your portfolio, so you don't forget it.

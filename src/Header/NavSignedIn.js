@@ -28,6 +28,7 @@ class NavSignedIn extends Component {
 
   openSignedInMenu() {
     const { isMenuActive } = this.state;
+    const logoutLoginStyle = { color: '#F9643A' };
 
     return (
       <ul
@@ -53,6 +54,7 @@ class NavSignedIn extends Component {
             type="button"
             onClick={this.handleLogOut}
             className="btn-log-out"
+            style={logoutLoginStyle}
           >
             log out!
           </button>
@@ -63,6 +65,7 @@ class NavSignedIn extends Component {
 
   render() {
     const { isMenuActive } = this.state;
+    const logoutLoginStyle = { color: '#F9643A' };
 
     return (
       <nav className="nav-landing">
@@ -93,17 +96,18 @@ class NavSignedIn extends Component {
           className="desktop-menu"
         >
           <li>
-            <NavLink to="/my-collection">My collection</NavLink>
+            <NavLink to="/my-collection">my collection</NavLink>
           </li>
           <li>
-            <NavLink to="/search">Add places</NavLink>
+            <NavLink to="/search">add places</NavLink>
           </li>
           <li>
             <button
               type="button"
               onClick={this.handleLogOut}
+              style={logoutLoginStyle}
             >
-              Log out
+              log out
             </button>
           </li>
         </ul>
