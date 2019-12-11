@@ -3,7 +3,6 @@ import AppContext from '../AppContext';
 import PlacesItem from './PlacesItem';
 
 class PlacesList extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
   render() {
@@ -19,7 +18,7 @@ class PlacesList extends Component {
             rating={place.rating}
             added={place.added}
             img={place.image_url}
-            categories={place.categories}
+            isSaved={false}
           />
         ))}
       </div>

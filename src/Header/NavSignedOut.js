@@ -5,10 +5,8 @@ import './Header.css';
 import logo from './logo.png';
 
 class NavSignedOut extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
-  // eslint-disable-next-line react/state-in-constructor
   state = { isMenuActive: false }
 
   handleOpenMenu = () => {
@@ -34,6 +32,7 @@ class NavSignedOut extends Component {
   openSignedOutMenu() {
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
+    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
 
     return (
       <ul
@@ -45,7 +44,7 @@ class NavSignedOut extends Component {
           className="close-icon"
           onClick={this.handleCloseMenu}
         >
-          <i className="material-icons close">close</i>
+          <i className="material-icons close" style={openCloseIconsStyle}>close</i>
         </button>
 
         <li>
@@ -76,31 +75,19 @@ class NavSignedOut extends Component {
     );
   }
 
-  render() {
+  render() {    
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
+    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
 
     return (
       <nav className="nav-landing">
-        {/* <NavLink to="/">
-            <img
-              src={logo}
-              alt="meal-icon-logo"
-              className="logo-icon"
-            />
-          </NavLink> */}
-
         <button
           type="button"
           className="utensils-icon"
           onClick={this.handleOpenMenu}
         >
-          <img
-            src={logo}
-            alt="meal-icon-logo"
-            className="logo-icon"
-          />
-          {/* <i className="material-icons">restaurant</i> */}
+          <i className="material-icons" style={openCloseIconsStyle}>restaurant</i>
         </button>
 
         {isMenuActive && this.openSignedOutMenu()}
@@ -109,7 +96,7 @@ class NavSignedOut extends Component {
           className="desktop-menu"
         >
           <li>
-            <NavLink to="/demo-page">demo</NavLink>
+            <NavLink to="/demo">demo</NavLink>
           </li>
 
           <li>

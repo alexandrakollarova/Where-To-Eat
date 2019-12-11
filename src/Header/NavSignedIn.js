@@ -5,10 +5,8 @@ import TokenService from '../services/token-service';
 import logo from './logo.png';
 
 class NavSignedIn extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
-  // eslint-disable-next-line react/state-in-constructor
   state = { isMenuActive: false }
 
   handleOpenMenu = () => {
@@ -29,6 +27,7 @@ class NavSignedIn extends Component {
   openSignedInMenu() {
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
+    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
 
     return (
       <ul
@@ -40,7 +39,7 @@ class NavSignedIn extends Component {
           className="close-icon"
           onClick={this.handleCloseMenu}
         >
-          <i className="material-icons close">close</i>
+          <i className="material-icons close" style={openCloseIconsStyle}>close</i>
         </button>
 
         <li>
@@ -66,28 +65,18 @@ class NavSignedIn extends Component {
   render() {
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
+    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
 
     return (
       <nav className="nav-landing">
-        {/* <NavLink to="/">
-          <img
-            src={logo}
-            alt="meal-icon-logo"
-            className="logo-icon"
-          />
-        </NavLink> */}
-
+      
         <button
           type="button"
           className="utensils-icon"
           onClick={this.handleOpenMenu}
         >
-          <img
-            src={logo}
-            alt="meal-icon-logo"
-            className="logo-icon"
-          />
-          {/* <i className="material-icons">restaurant</i> */}
+          <i className="material-icons" style={openCloseIconsStyle}>restaurant</i>
+
         </button>
 
         {isMenuActive && this.openSignedInMenu()}

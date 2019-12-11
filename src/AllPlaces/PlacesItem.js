@@ -4,19 +4,8 @@ import StarRatings from 'react-star-ratings';
 import AddButton from './AddButton';
 import UndoButton from './UndoButton';
 import AppContext from '../AppContext';
-// import pasta from './icons/pasta.png';
-// import taco from './icons/taco.png';
-// import burger from './icons/burger.png';
-// import pizza from './icons/pizza.png';
-// import seafood from './icons/seafood.png';
-// import sushi from './icons/sushi.png';
-// import sandwich from './icons/sandwich.png';
-// import bb from './icons/bb.png';
-// import medi from './icons/medi.png';
-// import bakeries from './icons/bakeries.png'
 
 class PlacesItem extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
   isSaved(id) {
@@ -25,9 +14,7 @@ class PlacesItem extends Component {
   }
 
   render() {
-    // eslint-disable-next-line object-curly-newline
     const { id, name, rating, isClosed, img } = this.props;
-    // eslint-disable-next-line object-curly-newline
     const myProps = { id, name, rating, isClosed };
 
     return (
@@ -50,8 +37,6 @@ class PlacesItem extends Component {
               name="rating"
             />
           </div>
-
-          {/* <div>{this.renderCategoryIcons()}</div> */}
 
           <div className="place-is-open">
             <p>{isClosed ? 'Closed Now' : 'Open Now'}</p>

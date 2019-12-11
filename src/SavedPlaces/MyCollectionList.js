@@ -1,17 +1,16 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import '../Places/Places.css';
+import '../AllPlaces/Places.css';
 import Carousel from 'nuka-carousel';
 import AppContext from '../AppContext';
 import MyCollectionItem from './MyCollectionItem';
 import Header from '../Header/Header';
-import './Carousel.css';
+import '../HomePage/Carousel.css';
 import config from '../config';
+import avo from './icons/avo.png';
+import './MyCollection.css'
 
 class MyCollectionList extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
   constructor() {
@@ -24,6 +23,7 @@ class MyCollectionList extends Component {
       cellAlign: 'left',
       transitionMode: 'scroll',
       withoutControls: false,
+      usersPlaces: []
     };
   }
 
@@ -35,14 +35,16 @@ class MyCollectionList extends Component {
         'Content-Type': 'application/json',
       },
     })
-      .then(async (res) => {
+      .then(res => {
         if (!res.ok) {
-          const error = await res.json();
+          const error = res.json();
           throw error;
+        } else {
+          return res.json();
         }
       })
       .then((data) => {
-        console.log(data);
+        this.setState({ usersPlaces: data });
       })
       .catch((error) => {
         console.log(error);
@@ -50,46 +52,35 @@ class MyCollectionList extends Component {
   }
 
   render() {
-    const { collectionList } = this.context;
 
-    // const greetUser = this.context.users.find((user) => user.user_id === this.context.activeUserId);
-    // const user = greetUser.username.charAt(0).toUpperCase() + greetUser.username.slice(1);
     return (
-      <>
+      <div className="my-collection-container">
         <Header />
+        <>
+          <img src={avo} alt="avo-background" className="avo-img" />
 
-        {collectionList.length == 0
-          && (
-            <>
-              <h1 className="headline-welcome">
-              Welcome
-                <br />
-                {/* {user} */}
-              ,
+          <h1 className="headline-welcome">
+            Welcome
               </h1>
 
-              <p className="discover-places-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <p className="discover-places-text">
+            Enjoy swiping through your list of restaurants and narrow down your choice.
+            Don't have any saved restaurants in your collection? Discover them now!
               </p>
 
-              <Link
-                type="button"
-                className="btn-discover-places"
-                to="/search"
-              >
-              Discover restaurants
-              </Link>
-            </>
-          )}
+          {this.state.usersPlaces.length == 0
+            &&
+            <Link
+              type="button"
+              className="btn-discover-places"
+              to="/search"
+            >
+              Discover Restaurants
+                </Link>
+          }
+        </>
 
-        {collectionList.length > 0
-          && (
-            <>
-              <h1>My places</h1>
-              <Link to="/search">Go Back</Link>
-            </>
-          )}
+        {/* <Link to="/search">Go Back</Link> */}
 
         <Carousel
           withoutControls={this.state.withoutControls}
@@ -99,7 +90,7 @@ class MyCollectionList extends Component {
           wrapAround={this.state.wrapAround}
           slideIndex={this.state.slideIndex}
         >
-          {collectionList.slice(0, this.state.length).map((place) => (
+          {this.state.usersPlaces.slice(0, this.state.length).map((place) => (
             <MyCollectionItem
               key={place.id}
               id={place.id}
@@ -107,11 +98,12 @@ class MyCollectionList extends Component {
               isClosed={place.isClosed}
               rating={place.rating}
               onClick={this.handleImageClick}
+              img={place.image_url}
             />
           ))}
         </Carousel>
 
-      </>
+      </div>
     );
   }
 }

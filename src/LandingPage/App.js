@@ -1,4 +1,3 @@
-/* eslint-disable react/state-in-constructor */
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import AppContext from '../AppContext';
@@ -8,8 +7,9 @@ import DemoPage from '../DemoPage/DemoPage';
 import SearchPlaces from '../HomePage/SearchPlaces';
 import PageNotFound from './PageNotFound';
 import config from '../config';
-import MyCollectionList from '../HomePage/MyCollectionList';
+import MyCollectionList from '../SavedPlaces/MyCollectionList';
 import TokenService from '../services/token-service';
+import DemoSearchPlaces from '../DemoPage/DemoSearchPlaces';
 
 class App extends Component {
   state = {
@@ -184,8 +184,6 @@ class App extends Component {
             )}
           </Route>
 
-          {/* <Route exact path='/' component={LandingMain} /> */}
-
           <Route path="/my-collection">
             {TokenService.hasAuthToken() ? (
               <MyCollectionList />
@@ -210,6 +208,8 @@ class App extends Component {
             )}
           </Route>
 
+          <Route path="/demo-search" component={DemoSearchPlaces} />
+          
           <Route component={PageNotFound} />
         </Switch>
       </AppContext.Provider>

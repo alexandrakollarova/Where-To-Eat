@@ -4,6 +4,7 @@
     width: 80%;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 30px;
 }
 
 .restaurant-card-item { 
@@ -37,12 +38,13 @@
 
 .btn-add-place {
     border: none;
-    background-color: #F9643A;
+    background-color: #EC3A69;;
     font-size: inherit;
-    color: white;
-    border-radius: 30px;
     padding: 10px 30px;
-
+    color: #FCF5E2;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .restaurant-image {

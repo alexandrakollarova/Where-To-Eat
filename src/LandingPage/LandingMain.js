@@ -7,7 +7,7 @@ import SignupForm from '../SignupAndLogin/SignupForm';
 import LoginForm from '../SignupAndLogin/LoginForm';
 import '../Header/Header.css';
 import AppContext from '../AppContext';
-import egg from './icons/egg-img.jpg';
+import egg from './icons/egg.png';
 
 class LandingMain extends Component {
   static contextType = AppContext;
@@ -35,7 +35,7 @@ class LandingMain extends Component {
 
           <p>
             Craving something yummy, don't feel like experimenting,
-            and nothing comes to your mind?
+            and nothing comes to your mind?<br />
             Let Where To Eat to help you to solve this once for all.
           </p>
 
@@ -43,7 +43,7 @@ class LandingMain extends Component {
             to="/demo"
             className="btn-check-it-out"
           >
-            check it out
+            Check it out
           </NavLink>
 
           <Funnels />

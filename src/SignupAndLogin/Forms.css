@@ -1,4 +1,4 @@
-.signup-form {
+.forms {
     margin-top: 80px;
     margin-left: auto;
     margin-right: auto;
@@ -10,62 +10,66 @@
     color: white
 }
 
-.signup-form fieldset {
+.forms fieldset {
     border-style: none;
     background-image: linear-gradient(to right, #5C344F, #551843);
     padding-top: 20px;
     border-radius: 8px;
 }
 
-.signup-form legend {
+.forms legend {
     font-size: 20px;
-    padding-top: 80px
+    padding-top: 80px;
+    padding-bottom: 20px;
 }
 
-.signup-form label {
+.forms label {
     padding-left: 6px
 }
 
-.signup-form input {
+.forms input {
     display: block;
     width: 90%;
     padding: 10px;
     margin: auto;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-top: 20px;
     border-style: none;
     border-radius: 5px;
     font-family: 'Libre Franklin', sans-serif;
     font-size: 15px
 }
 
-.btn-signup-form {
+.btn-forms {
     border: none;
     background-color: inherit;
     font-family: 'Libre Franklin', sans-serif;
     font-size: inherit;
 }
 
-.btn-signup-form {
+.btn-forms {
     background-color: #FFBB2E;
-    border-radius: 25px;
     padding: 15px 20px;
-    margin-top: 10px
+    margin-top: 10px;
+    border-radius: 20px;
+    color: #FCF5E2;
+    font-weight: 600;
+    font-size: 18px;
 }
 
-.btn-signup-form:disabled {
+.btn-forms:disabled {
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;
 }
 
-.btn-signup-form-wrapper1 {
+.btn-forms-wrapper-left {
     float: left;
     margin-left: 15px;
     padding: 10px 0;
 }
 
-.btn-signup-form-wrapper2 {
+.btn-forms-wrapper-right {
     float: right;
     margin-right: 15px;
     padding: 10px 0;
@@ -87,7 +91,7 @@
 
 @media only screen and (min-width: 650px) {
 
-    .signup-form {
+    .forms {
         width: 450px;
     }
 }

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AppContext from '../AppContext';
 
 class AddButton extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
   addPlaceToCollection(index) {

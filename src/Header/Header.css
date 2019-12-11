@@ -12,7 +12,7 @@
     right: 10px;
     border: none;
     background-color: inherit;
-    color: white;
+    color: red;
 }
 
 .open-menu li {
@@ -53,10 +53,6 @@
     display: none;
 }
 
-.logo-icon {
-    width: 50px;
-}
-
 .btn-log-out {
   border: none;
   background-color: inherit;
@@ -80,8 +76,8 @@
         padding: 0;
         flex-direction: row;
         position: absolute;
-        right: 15px;
-        top: 20px;
+        right: 25px;
+        top: 25px;
     }
 
     .desktop-menu li {
@@ -104,6 +100,13 @@
 
     .desktop-menu li {
         font-size: 20px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .desktop-menu {
+        top: 40px;
+        right: 40px;
     }
 }
 

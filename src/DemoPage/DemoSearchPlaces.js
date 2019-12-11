@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
-import './Homepage.css';
-import PlacesList from '../AllPlaces/PlacesList';
+import '../HomePage/Homepage.css';
+import DemoPlacesList from './DemoPlacesList';
 import AppContext from '../AppContext';
-import slider from './slider.png';
-import ConfigIcon from './ConfigIcon';
+import slider from '../HomePage/slider.png';
+import ConfigIcon from '../HomePage/ConfigIcon';
 import config from '../config';
 
-class SearchPlaces extends Component {
+class DemoSearchPlaces extends Component {
   static contextType = AppContext;
 
   state = {
@@ -159,7 +159,7 @@ class SearchPlaces extends Component {
             updateIsOpen={this.updateIsOpen}
             handleNeverMind={this.handleNeverMind}
           />
-          <PlacesList places={searchResults} />
+          <DemoPlacesList places={searchResults} />
         </main>
 
       </>
@@ -167,4 +167,4 @@ class SearchPlaces extends Component {
   }
 }
 
-export default SearchPlaces;
+export default DemoSearchPlaces;

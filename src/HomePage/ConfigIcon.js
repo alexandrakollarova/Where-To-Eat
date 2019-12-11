@@ -4,10 +4,8 @@ import './ConfigIcon.css';
 import Rating from './Rating';
 
 class ConfigIcon extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
-  // eslint-disable-next-line react/state-in-constructor
   state = { isOn: false }
 
   handleSwitch = () => {
@@ -21,7 +19,6 @@ class ConfigIcon extends Component {
     const { showConfigWindow } = this.context;
     const handleShowHideModal = showConfigWindow ? 'display-block' : 'display-none';
 
-    // eslint-disable-next-line react/destructuring-assignment
     const isOnLabel = this.state.isOn ? 'YES' : 'NO';
 
     const categories = [
@@ -51,7 +48,6 @@ class ConfigIcon extends Component {
         <form>
           <h3>Stars</h3>
           <div>
-            {/* eslint-disable-next-line react/destructuring-assignment */}
             <Rating updateStars={this.props.updateStars} />
           </div>
 
@@ -73,7 +69,7 @@ class ConfigIcon extends Component {
           <div className="open-now-container">
             <label className="switch">
               <input type="checkbox" onClick={this.handleSwitch} />
-              <span className="slider round" />
+              <span className="slider-open-now round" />
             </label>
             <h4>{isOnLabel}</h4>
           </div>
@@ -83,7 +79,6 @@ class ConfigIcon extends Component {
             <button
               type="button"
               className="btn-all-set"
-              // eslint-disable-next-line react/destructuring-assignment
               onClick={this.context.hideModalForConfigWindow}
             >
               All set!
@@ -106,18 +101,3 @@ class ConfigIcon extends Component {
 }
 
 export default ConfigIcon;
-
-
- {/* <div
-              className="formrow"
-              key={category}
-            >
-              <input
-                className="checkbox"
-                type="checkbox"
-                name="check"
-                id="check"
-                onChange={(e) => this.props.updateCategory(category, e.target.checked)}
-              />
-              <label className="checklabel" htmlFor="check1">{category}</label>
-            </div> */}

@@ -5,7 +5,6 @@ import AppContext from '../AppContext';
 import TokenService from '../services/token-service';
 
 class Header extends Component {
-  // eslint-disable-next-line react/static-property-placement
   static contextType = AppContext;
 
   render() {

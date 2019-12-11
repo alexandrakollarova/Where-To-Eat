@@ -7,6 +7,7 @@
     text-align: left;
     margin-left: 10%;
     line-height: 25px;
+    color: #FCF5E2; 
 }
 
 .material-icons {
@@ -28,7 +29,8 @@
     padding: 10px;
     border-radius: 30px;
     font-size: 18px;
-    font-family: inherit;
+    font-family: inherit;  
+    outline: none;
 }
 
 .search-slider {
@@ -43,29 +45,6 @@
 .search-input-and-config-wrapper {
     display: flex;
     justify-content: center;
-}
-
-.btn-discover-places {
-    text-align: center;
-    display: block;
-    width: 200px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 50px;
-    background-color: #EC3A69;
-    border-radius: 25px;
-    padding: 15px 20px;
-    margin-top: 10px;
-    color: white
-}
-
-.headline-welcome {
-    margin-top: 100px;
-    margin-left: 30px;
-}
-
-.discover-places-text {
-    padding: 0 30px
 }
 
 #config-window {

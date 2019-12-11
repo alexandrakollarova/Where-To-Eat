@@ -1,30 +1,30 @@
 /* CHECKBOX AS TOGGLE BUTTON for Open Now */
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin-right: 20px;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-right: 20px;
 }
   
 .switch input { 
-    opacity: 0;
-    width: 0;
-    height: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
 }
   
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
+.slider-open-now {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
   
- .slider:before {
+.slider-open-now:before {
   position: absolute;
   content: "";
   height: 26px;
@@ -36,24 +36,22 @@
   transition: .4s;
 }
   
-input:checked + .slider {
+input:checked + .slider-open-now {
   background-color: white;
-}
- 
+} 
   
-input:checked + .slider:before {
+input:checked + .slider-open-now:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);
 }
-  
-  /* Rounded sliders */
-.slider.round {
+
+.slider-open-now.round {
   border-radius: 34px;
   background-color: grey;
 }
   
-.slider.round:before {
+.slider-open-now.round:before {
   border-radius: 50%;
 }
 
@@ -75,7 +73,7 @@ input:checked + .slider:before {
 
 .category-label span {
   background-color:	#673B58;
-  border-radius: 50px;
+  border-radius: 15px;
   color: white;
   font-size: 12px;
   letter-spacing: 3px;
@@ -89,14 +87,14 @@ input:checked + .slider:before {
 }
 
 .category-label span:hover {
-  background-color: white;
-  color: #551843;
+  background-color:#EC3A69;;
+  color: white;
 }
   
 .category-inputs[type=checkbox]:checked + .category-label span {
-  background-color: white;
+  background-color:  #EC3A69;
   text-decoration: none;
-  color: #551843;
+  color: white;
 }
 
 .category-inputs[type=checkbox]:checked:hover + .category-label span {
@@ -107,13 +105,14 @@ input:checked + .slider:before {
 
 .btn-all-set, .btn-never-mind {
   background-color: #EC3A69;
-  border-radius: 25px;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 20px;
   padding: 15px 20px;
   margin-top: 20px;
   margin-bottom: 20px;
   color: white;
   border: none;
   font-family: 'Libre Franklin', sans-serif;
-  font-size: inherit;
 }
   
