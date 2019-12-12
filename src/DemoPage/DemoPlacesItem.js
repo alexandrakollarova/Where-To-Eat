@@ -6,11 +6,11 @@ import AppContext from '../AppContext';
 class DemoPlacesItem extends Component {
   static contextType = AppContext;
 
-  renderPopup() {
-    return <p>Signup for more</p>
+  onAddClick() {
+    this.context.showModalForPopup();
   }
 
-  render() {
+  render() { 
     const { id, name, rating, isClosed, img } = this.props;
 
     return (
@@ -38,16 +38,15 @@ class DemoPlacesItem extends Component {
             <p>{isClosed ? 'Closed Now' : 'Open Now'}</p>
           </div>
 
-          <div>
+          <div className="btns-wrapper">
             <button
               type="button"
               className="btn-add-place"
-              onClick={() => this.renderPopup()}
+              onClick={() => this.onAddClick()}
             >
               Add
             </button>
           </div>
-
         </div>
       </>
     );

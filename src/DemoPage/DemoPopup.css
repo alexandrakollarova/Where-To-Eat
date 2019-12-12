@@ -1,0 +1,34 @@
+#popup-window {
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  height: 250px;;
+  position: fixed;
+  top: 250px;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-image: linear-gradient(to right, #5C344F, #551843);
+  padding-top: 20px;
+  border-radius: 8px;
+  color: white;
+  line-height: 25px;
+}
+
+#popup-window .text {
+  margin: 35px;
+  letter-spacing: 0.5px;
+}
+
+.btn-signup {
+  border: none;
+  background-color: inherit;
+  font-family: 'Libre Franklin', sans-serif;
+  background-color: #EC3A69;
+  padding: 15px 20px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 600;
+  font-size: 18px;
+  outline: none;
+}

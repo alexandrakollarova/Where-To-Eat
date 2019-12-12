@@ -17,6 +17,7 @@ class App extends Component {
     showSignupForm: false,
     showLoginForm: false,
     showConfigWindow: false,
+    showPopup: false,
     isSignedIn: false,
     isMenuActive: false,
     collectionList: [],
@@ -66,6 +67,14 @@ class App extends Component {
 
   hideModalForConfigWindow = () => {
     this.setState({ showConfigWindow: false });
+  };
+
+  showModalForPopup= () => {
+    this.setState({ showPopup: true });
+  };
+
+  hideModalForPopup = () => {
+    this.setState({ showPopup: false });
   };
 
   updateSearchResults = (filtered) => {
@@ -148,20 +157,23 @@ class App extends Component {
     }));
   }
 
-  render() {
+  render() { 
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
       showSignupForm: this.state.showSignupForm,
       showConfigWindow: this.state.showConfigWindow,
+      showPopup: this.state.showPopup,
       showLoginForm: this.state.showLoginForm,
       isSignedIn: this.state.isSignedIn,
       showModalForConfigWindow: this.showModalForConfigWindow,
+      showModalForPopup: this.showModalForPopup,
       showModalForSignupForm: this.showModalForSignupForm,
       hideModalForSignupForm: this.hideModalForSignupForm,
       showModalForLoginForm: this.showModalForLoginForm,
       hideModalForLoginForm: this.hideModalForLoginForm,
       hideModalForConfigWindow: this.hideModalForConfigWindow,
+      hideModalForPopup: this.hideModalForPopup,
       createUser: this.createUser,
       updateSearchResults: this.updateSearchResults,
       isMenuActive: this.state.isMenuActive,

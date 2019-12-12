@@ -42,7 +42,7 @@ class PlacesItem extends Component {
             <p>{isClosed ? 'Closed Now' : 'Open Now'}</p>
           </div>
 
-          <div>
+          <div className="btns-wrapper">
             {this.isSaved(id)
               ? <UndoButton {...myProps} />
               : <AddButton {...myProps} />}

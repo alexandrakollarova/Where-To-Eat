@@ -17,7 +17,7 @@ class DemoSearchPlaces extends Component {
     places: this.context.places,
     rating: 0,
     allPassedCategories: [],
-    isOpen: false,
+    isOpen: true,
   }
 
   componentDidMount() {
@@ -49,9 +49,7 @@ class DemoSearchPlaces extends Component {
     }
   }
 
-  updateSearchInput = (searchInput) => {
-    this.setState({ searchInput });
-  }
+  updateSearchInput = (searchInput) => this.setState({ searchInput }) 
 
   updateStars = (rating) => this.setState({ rating })
 
@@ -86,8 +84,10 @@ class DemoSearchPlaces extends Component {
       results = results.filter((place) => place.rating >= rating);
     }
 
-    if (isOpen) {
+    if (isOpen) { 
       results = results.filter((place) => !place.is_closed);
+    } else {
+      results = results.filter((place) => place.is_closed);
     }
 
     return results;

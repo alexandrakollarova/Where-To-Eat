@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '../AppContext';
 import Header from '../Header/Header';
-import config from '../config';
 import avo from '../SavedPlaces/icons/avo.png';
 
 class DemoWelcomePage extends Component {
@@ -19,30 +18,6 @@ class DemoWelcomePage extends Component {
       transitionMode: 'scroll',
       withoutControls: false,
     };
-  }
-
-  componentDidMount() {
-    const { activeUserId } = this.context;
-
-    fetch(`${config.API_ENDPOINT}/users_businesses?user=${activeUserId}`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(res => {
-        if (!res.ok) {
-          const error = res.json();
-          throw error;
-        } else {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        this.setState({ usersPlaces: data });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
   }
 
   render() {

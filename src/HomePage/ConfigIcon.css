@@ -81,26 +81,23 @@ input:checked + .slider-open-now:before {
   text-align: center;
   padding: 4px 8px;
   line-height: 30px;
-  cursor:pointer;
-  display: inline-block;
+  cursor: pointer;
+  display: inline-block; 
   margin: 5px
 }
 
 .category-label span:hover {
-  background-color:#EC3A69;;
-  color: white;
+  background-color:#EC3A69;
 }
   
-.category-inputs[type=checkbox]:checked + .category-label span {
+.category-inputs[type=checkbox]:checked + span {
   background-color:  #EC3A69;
   text-decoration: none;
-  color: white;
 }
 
-.category-inputs[type=checkbox]:checked:hover + .category-label span {
-  background-color: white;
+.category-inputs[type=checkbox]:checked:hover + span {
+  background-color: #EC3A69;
   text-decoration: none;
-  color: #551843;
 }
 
 .btn-all-set, .btn-never-mind {
@@ -115,4 +112,6 @@ input:checked + .slider-open-now:before {
   border: none;
   font-family: 'Libre Franklin', sans-serif;
 }
+
+
   

@@ -74,8 +74,7 @@ class ConfigIcon extends Component {
             <h4>{isOnLabel}</h4>
           </div>
 
-          {/* rename styling for these buttons */}
-          <div className="btn-signup-form-wrapper1">
+          <div className="btn-forms-wrapper-left">
             <button
               type="button"
               className="btn-all-set"
@@ -85,7 +84,7 @@ class ConfigIcon extends Component {
             </button>
           </div>
 
-          <div className="btn-signup-form-wrapper2">
+          <div className="btn-forms-wrapper-right">
             <button
               type="button"
               className="btn-never-mind"
