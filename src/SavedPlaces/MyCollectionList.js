@@ -19,11 +19,13 @@ class MyCollectionList extends Component {
       slideIndex: 0,
       length: 100,
       wrapAround: false,
-      slidesToShow: 1,
-      cellAlign: 'left',
-      transitionMode: 'scroll',
+      slidesToShow: 3,
+      cellAlign: 'center',
+      transitionMode: 'scroll3d',
       withoutControls: false,
-      usersPlaces: []
+      usersPlaces: [],
+      framePadding: '0px',
+      enableKeyboardControls: true,
     };
   }
 
@@ -45,6 +47,7 @@ class MyCollectionList extends Component {
       })
       .then((data) => {
         this.setState({ usersPlaces: data });
+        this.context.setCollectionList(data);
       })
       .catch((error) => {
         console.log(error);
@@ -58,29 +61,32 @@ class MyCollectionList extends Component {
         <Header />
         <>
           <img src={avo} alt="avo-background" className="avo-img" />
-
-          <h1 className="headline-welcome">
-            Welcome
-              </h1>
-
-          <p className="discover-places-text">
-            Enjoy swiping through your list of restaurants and narrow down your choice.
-            Don't have any saved restaurants in your collection? Discover them now!
-              </p>
-
+           {/* eslint-disable-next-line */}
           {this.state.usersPlaces.length == 0
-            &&
-            <Link
-              type="button"
-              className="btn-discover-places"
-              to="/search"
-            >
-              Discover Restaurants
+            && 
+              <>
+                <h1 className="headline-welcome">
+                  Welcome
+                </h1>
+
+                <p className="discover-places-text">
+                  Enjoy swiping through your list of restaurants and narrow down your choice.
+                  <br />
+                  Don't have any saved restaurants in your collection? Discover them now!
+                </p>         
+                
+                <Link
+                  type="button"
+                  className="btn-discover-places"
+                  to="/search"
+                >
+                  Discover Restaurants
                 </Link>
+              </>
           }
         </>
 
-        {/* <Link to="/search">Go Back</Link> */}
+        {/* <h3 className="swipe-left-right-text">Swipe left and right</h3> */}
 
         <Carousel
           withoutControls={this.state.withoutControls}
@@ -89,6 +95,8 @@ class MyCollectionList extends Component {
           slidesToShow={this.state.slidesToShow}
           wrapAround={this.state.wrapAround}
           slideIndex={this.state.slideIndex}
+          framePadding={this.state.framePadding}
+          enableKeyboardControls={this.state.enableKeyboardControls}
         >
           {this.state.usersPlaces.slice(0, this.state.length).map((place) => (
             <MyCollectionItem

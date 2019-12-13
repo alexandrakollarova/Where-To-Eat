@@ -23,7 +23,7 @@ button, link, a {
 
 .egg-img {
     width: 300px;
-    padding-bottom: 50px;
+    min-height: 305px;
 }
 
 .main-landing .headline {
@@ -93,7 +93,8 @@ footer {
 
 .design-icon, .scale-icon, .calendar-icon {
     width: 80px;
-    margin-top: 20px
+    margin-top: 20px;
+    min-height: 80px;
 }
 
 
@@ -108,7 +109,6 @@ footer {
 @media only screen and (min-width: 900px) {
 
     .funnels ul {
-
         flex-direction: row;
         justify-content: space-evenly;
     }
@@ -136,6 +136,7 @@ footer {
     .egg-img {
         width: 400px;
         padding-bottom: 0;
+        min-height: 340px;
     }
 
     .main-landing p {

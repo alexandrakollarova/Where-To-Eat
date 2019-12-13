@@ -22,7 +22,6 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
-    demoCollectionList: [],
   };
 
   componentDidMount() {
@@ -82,8 +81,8 @@ class App extends Component {
   };
 
   savePlace = (place) => {
-    const newCollectionList = this.state.collectionList.concat([place]);
-    this.setState({ collectionList: newCollectionList });
+    // const newCollectionList = this.state.collectionList.concat([place]);
+    // this.setState({ collectionList: newCollectionList });
 
     const businessId = place.id;
     const userId = TokenService.getAuthToken();
@@ -103,17 +102,17 @@ class App extends Component {
         }
       })
       .then((data) => {
-        // const newCollectionList = this.state.collectionList.concat([place]);
-        // this.setState({ collectionList: newCollectionList });
+        const newCollectionList = this.state.collectionList.concat([place]);
+        this.setState({ collectionList: newCollectionList });
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  unsavePlace = (id) => {
-    const newCollectionList = this.state.collectionList.filter((place) => place.id !== id);
-    this.setState({ collectionList: newCollectionList });
+  unsavePlace = (id) => { 
+    // const newCollectionList = this.state.collectionList.filter((place) => place.id !== id);
+    // this.setState({ collectionList: newCollectionList });
 
     const businessId = id;
     const userId = TokenService.getAuthToken();
@@ -134,15 +133,19 @@ class App extends Component {
         return res.json();
       })
       .then((data) => {
-        // const newCollectionList = this.state.collectionList.filter(
-        //   place => place.id !== id
-        // );
+        const newCollectionList = this.state.collectionList.filter(
+          place => place.id !== id
+        );
         this.setState({ collectionList: newCollectionList });
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  setCollectionList = collectionList => {
+    this.setState({ collectionList });
+  }
 
   convertIsOpenValuesToBoolean() {
     this.setState((prevState) => ({
@@ -181,8 +184,8 @@ class App extends Component {
       activeUserId: TokenService.getAuthToken(),
       savePlace: this.savePlace,
       unsavePlace: this.unsavePlace,
-      demoCollectionList: this.state.demoCollectionList,
       handleUserSignedIn: this.handleUserSignedIn,
+      setCollectionList: this.setCollectionList
     };
 
     return (
@@ -220,7 +223,13 @@ class App extends Component {
             )}
           </Route>
 
-          <Route path="/demo-search" component={DemoSearchPlaces} />
+          <Route path="/demo-search">
+            {TokenService.hasAuthToken() ? (
+              <Redirect to="/my-collection" />
+            ) : (
+              <DemoSearchPlaces />
+            )}
+          </Route>
           
           <Route component={PageNotFound} />
         </Switch>

@@ -6,6 +6,8 @@ import AppContext from '../AppContext';
 import slider from '../HomePage/slider.png';
 import ConfigIcon from '../HomePage/ConfigIcon';
 import config from '../config';
+import SignupForm from '../SignupAndLogin/SignupForm';
+import LoginForm from '../SignupAndLogin/LoginForm';
 
 class DemoSearchPlaces extends Component {
   static contextType = AppContext;
@@ -108,10 +110,14 @@ class DemoSearchPlaces extends Component {
 
   render() {
     const searchResults = this.searchResults();
+    const specialTopMarginForLogin = { "marginTop": "0px" };
+    const specialTopMarginForSignup = { "marginTop": "-50px" };
 
     return (
       <>
         <Header />
+        <LoginForm style={specialTopMarginForLogin} />
+        <SignupForm style={specialTopMarginForSignup} />
 
         <main className="search-places-main">
 

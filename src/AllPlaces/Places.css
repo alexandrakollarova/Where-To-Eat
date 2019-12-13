@@ -16,6 +16,7 @@
     margin-right: auto;
     color: white;
     background-image: linear-gradient(to bottom right, #5D6D7E, #283747);
+    position: relative;
 }
 
 .place-title, .place-rating, .place-is-open {
@@ -33,6 +34,14 @@
     float: right;
     margin-top: -30px;
     margin-right: -20px;
+}
+
+.btns-wrapper {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
 
 .btn-add-place {

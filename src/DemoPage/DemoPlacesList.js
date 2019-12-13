@@ -9,14 +9,14 @@ class DemoPlacesList extends Component {
   render() {
     const { places } = this.props;
     return (
-      <div className="restaurant-card-grid">
+      <div className="restaurant-card-grid">        
         <DemoPopup />
-
+        
         {places.map((place) => (
           <DemoPlacesItem
             key={place.id}
             id={place.id}
-            name="Some Title Some Title"
+            name={place.name}
             isClosed={place.is_closed}
             rating={place.rating}
             added={place.added}

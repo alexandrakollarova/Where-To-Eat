@@ -11,7 +11,7 @@ class DemoPlacesItem extends Component {
   }
 
   render() { 
-    const { id, name, rating, isClosed, img } = this.props;
+    const { name, rating, isClosed, img } = this.props;
 
     return (
       <>

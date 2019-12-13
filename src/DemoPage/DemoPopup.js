@@ -7,7 +7,7 @@ class DemoPopup extends Component {
 
   openSignUpForm = () => {
     this.context.hideModalForPopup();
-    //this.context.showModalForSignupForm();
+    this.context.showModalForSignupForm();
   }
 
   render() {
@@ -20,13 +20,15 @@ class DemoPopup extends Component {
           Sign up and create your own portfolio of restaurants & fast food joint!
         </h3>
 
-        <button
-          type="button"
-          className="btn-signup"
-          onClick={() => this.openSignUpForm()}
-        >
-          Sign up
-        </button>
+        <div className="btn-signup-wrapper">
+          <button
+            type="button"
+            className="btn-signup"
+            onClick={() => this.openSignUpForm()}
+          >
+            Sign up
+          </button>
+        </div>        
       </div>
     );
   }

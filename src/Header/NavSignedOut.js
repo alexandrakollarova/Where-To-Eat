@@ -23,7 +23,7 @@ class NavSignedOut extends Component {
     showModalForSignupForm();
   }
 
-  onLoginClick = () => { 
+  onLoginClick = () => {
     const { showModalForLoginForm, hideModalForSignupForm } = this.context;
     this.handleCloseMenu();
     hideModalForSignupForm();

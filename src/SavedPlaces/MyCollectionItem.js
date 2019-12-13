@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import AppContext from '../AppContext';
-import trash from './icons/trash.png'
 
 class MyCollectionItem extends Component {
   static contextType = AppContext;
@@ -12,11 +11,11 @@ class MyCollectionItem extends Component {
 
   render() {
     const { id, name, rating, isClosed, img } = this.props;
-
+    const specialPosition = { 'marginTop': '0px' };
 
     return (
       <>
-        <div className='restaurant-card-item'>
+        <div className='restaurant-card-item' style={specialPosition}>
 
           <div className="image-placeholder">
             <img src={img} alt="restaurant" className="restaurant-image" />
@@ -36,17 +35,17 @@ class MyCollectionItem extends Component {
           </div>
 
           <div className="place-is-open">
-            <p>{this.props.isClosed ? "Closed Now" : "Open Now"}</p>
+            <p>{isClosed ? "Closed Now" : "Open Now"}</p>
           </div>
 
-          {/* <button
+          <button
             id={id}
             type="button"
             className="btn-remove-place"
             onClick={() => this.removePlaceFromCollection(id)}
           >
-            <img src={trash} alt="trash-icon" className="trash-icon" />
-          </button> */}
+            Remove
+          </button>
         </div>
       </>
     );

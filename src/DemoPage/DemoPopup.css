@@ -18,6 +18,7 @@
 #popup-window .text {
   margin: 35px;
   letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .btn-signup {
@@ -31,4 +32,15 @@
   font-weight: 600;
   font-size: 18px;
   outline: none;
+}
+
+.btn-signup-wrapper {
+  text-align: center;
+}
+
+@media only screen and (min-width: 650px) {
+
+  #popup-window {
+    width: 500px;
+  }
 }

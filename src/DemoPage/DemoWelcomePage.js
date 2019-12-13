@@ -25,12 +25,13 @@ class DemoWelcomePage extends Component {
     return (
       <div className="my-collection-container">
         <Header />
+        
         <>
           <img src={avo} alt="avo-background" className="avo-img" />
 
           <h1 className="headline-welcome">
             Welcome
-            </h1>
+          </h1>
 
           <p className="discover-places-text">
             Enjoy swiping through your list of restaurants and narrow down your choice.
@@ -38,14 +39,13 @@ class DemoWelcomePage extends Component {
             Don't have any saved restaurants in your collection? Discover them now!
           </p>
 
-            <Link
-              type="button"
-              className="btn-discover-places"
-              to="/demo-search"
-            >
-              Discover Restaurants
-            </Link>
-          }
+          <Link
+            type="button"
+            className="btn-discover-places"
+            to="/demo-search"
+          >
+            Discover Restaurants
+          </Link>
         </>
       </div>
     );

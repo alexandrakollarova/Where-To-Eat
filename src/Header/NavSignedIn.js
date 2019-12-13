@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import AppContext from '../AppContext';
 import TokenService from '../services/token-service';
-import logo from './logo.png';
 
 class NavSignedIn extends Component {
   static contextType = AppContext;

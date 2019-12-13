@@ -13,6 +13,8 @@ const TokenService = {
   hasAuthToken() {
     return !!TokenService.getAuthToken()
   },
+
+  // not in use anymore
   makeBasicAuthToken(username, password) {
     // create a base64 encoded string
     return window.btoa(`${username}:${password}`)

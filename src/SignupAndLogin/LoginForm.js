@@ -42,11 +42,11 @@ class LoginForm extends Component {
       })
   }
 
-  render() {
+  render() { 
     const handleShowHideModal = this.context.showLoginForm ? "display-block" : "display-none";
 
     return (
-      <div className="forms">
+      <div className="forms login" style={this.props.style}>
         <form onSubmit={e => this.handleSubmit(e)} className={handleShowHideModal}>
           <fieldset>
             <legend>Login</legend>

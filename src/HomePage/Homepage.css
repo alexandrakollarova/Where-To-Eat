@@ -1,6 +1,5 @@
 .search-places-main {
     margin-top: 100px;
-    text-align: center;
 }
 
 .search-places-main .headline {
@@ -52,7 +51,7 @@
     margin-right: auto;
     width: 90%;
     position: absolute;
-    top: 100px;
+    top: 15px;
     left: 0;
     right: 0;
     z-index: 10;
@@ -64,7 +63,12 @@
 #config-window h3 {
     text-align: left;
     margin-left: 20px;
-    color: white
+    color: white;
+    margin-block-start: 0;
+}
+
+.form-config-window {
+    text-align: center;
 }
 
 @media only screen and (min-width: 450px) {
@@ -74,7 +78,8 @@
     }
 
     #config-window {
-        width: 400px
+        width: 400px;
+        top: 10%;
     }
 }
 
@@ -89,6 +94,15 @@
     .search-input {
         width: 250px;
         font-size: 20px;
+        padding: 15px;
+    }
+
+    .search-slider {
+        width: 35px;
+    }
+
+    .material-icons {
+        font-size: 35px;
     }
 }
 

@@ -4,6 +4,7 @@ import ValidationError from './ValidationError';
 import './Forms.css';
 import AuthApiService from '../services/auth-api-service';
 
+// eslint-disable-next-line
 const strongRegex = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])");
 
 class SignupForm extends Component {
@@ -92,7 +93,7 @@ class SignupForm extends Component {
     const repeatPasswordError = this.validateRepeatPassword();
 
     return (
-      <div className="forms">
+      <div className="forms signup" style={this.props.style} >
         <form onSubmit={e => this.handleSubmit(e)} className={handleShowHideModal}>
           <fieldset>
             <legend>Sign Up</legend>

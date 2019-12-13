@@ -2,27 +2,36 @@ import React from 'react';
 
 const AppContext = React.createContext({
    places: [],
-   users: [],
-   collectionList: [],
-   
-   showSignupForm: false,   
-   showModal: () => {},
-   hideModal: () => {},
-
-   isSignedIn: "",
-
-   isMenuActive: false,
-
-   createUser: () => {},
-   activeUserId: null,
-   
-   addPlace: () => {},
-
+   savePlace: () => {},
+   unsavePlace: () => { }, 
    updateSearchResults: () => {},
 
-   buttonAddHide: false,
-   buttonUndoHide: true,
-   activeButtonIndex: null
+   activeButtonIndex: null,
+
+   users: [],
+   isSignedIn: "",
+   createUser: () => {},
+   activeUserId: null,
+   handleUserSignedIn: () => {},
+
+   collectionList: [],
+   setCollectionList: () => {},
+   
+   showSignupForm: false, 
+   showConfigWindow: false,
+   showPopup: false,
+   showLoginForm: false,
+ 
+   showModalForConfigWindow: () => {},
+   showModalForPopup: () => {},
+   showModalForSignupForm: () => {},
+   hideModalForSignupForm: () => {},
+   showModalForLoginForm: () => {},
+   hideModalForLoginForm: () => {},
+   hideModalForConfigWindow: () => {},
+   hideModalForPopup: () => {},   
+
+   isMenuActive: false,    
 })
 
-export default AppContext
+export default AppContext;

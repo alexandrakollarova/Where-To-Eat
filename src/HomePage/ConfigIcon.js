@@ -45,7 +45,7 @@ class ConfigIcon extends Component {
     return (
       <div id="config-window" className={handleShowHideModal}>
 
-        <form>
+        <form className="form-config-window">
           <h3>Stars</h3>
           <div>
             <Rating updateStars={this.props.updateStars} />
