@@ -54,7 +54,7 @@ class LoginForm extends Component {
             <input
               type="text"
               name="username"
-              id="username"
+              // id="username"
               onChange={e => this.updateUsername(e.target.value)}
             />
 
@@ -62,7 +62,7 @@ class LoginForm extends Component {
             <input
               type="text"
               name='password'
-              id="password"
+              // id="password"
               onChange={e => this.updatePassword(e.target.value)}
             />
 
