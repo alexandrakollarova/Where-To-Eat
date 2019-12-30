@@ -28,7 +28,7 @@ class AddButton extends Component {
         className="btn-add-place"
         onClick={() => this.addPlaceToCollection(index)}
       >
-        Add
+        ADD
       </button>
     );
   }

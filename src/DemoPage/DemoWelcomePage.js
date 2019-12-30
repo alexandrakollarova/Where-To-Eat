@@ -44,7 +44,7 @@ class DemoWelcomePage extends Component {
             className="btn-discover-places"
             to="/demo-search"
           >
-            Discover Restaurants
+            DISCOVER RESTAURANTS
           </Link>
         </>
       </div>

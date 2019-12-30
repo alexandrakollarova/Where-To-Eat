@@ -138,7 +138,7 @@ class SignupForm extends Component {
                   this.validateRepeatPassword()
                 }
               >
-                Done!
+                DONE!
               </button>
             </div>
 
@@ -148,7 +148,7 @@ class SignupForm extends Component {
                 className="btn-forms"
                 onClick={this.context.hideModalForSignupForm}
               >
-                Maybe later
+                MAYBE LATER
                             </button>
             </div>
           </fieldset>

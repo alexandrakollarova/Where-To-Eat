@@ -46,14 +46,15 @@
 
 .btn-add-place {
     border: none;
-    background-color: #EC3A69;;
+    background-image: linear-gradient(to right, #F9643A, #EC3A69);
     font-size: inherit;
-    padding: 10px 30px;
-    color: #FCF5E2;
-    border-radius: 15px;
+    padding: 20px 30px;
+    color: white;
+    border-radius: 30px;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 14px;
     outline: none;
+    letter-spacing: 1px;
 }
 
 .restaurant-image {

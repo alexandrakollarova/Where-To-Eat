@@ -3,10 +3,11 @@ import config from '../config';
 
 const AuthApiService = {
     postUser(user) { 
-        return fetch(`${config.API_ENDPOINT}/users`, {          
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
+    return fetch(`${config.API_ENDPOINT}/users`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*'
             },
             body: JSON.stringify(user)
         })

@@ -83,12 +83,13 @@ footer {
 }
 
 .btn-check-it-out {
-    background-color: #F9643A;
-    border-radius: 20px;
-    padding: 15px 20px;
+    background-image: linear-gradient(to right, #F9643A, #EC3A69);
+    border-radius: 30px;
+    padding: 20px 40px;
     color: #FCF5E2;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
 }
 
 .design-icon, .scale-icon, .calendar-icon {

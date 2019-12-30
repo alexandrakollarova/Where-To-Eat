@@ -25,13 +25,15 @@
   border: none;
   background-color: inherit;
   font-family: 'Libre Franklin', sans-serif;
-  background-color: #EC3A69;
-  padding: 15px 20px;
-  border-radius: 20px;
+  background-image: linear-gradient(to right, #F9643A, #EC3A69);
+  padding: 20px 40px;
+  border-radius: 30px;
   color: white;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 14px;
   outline: none;
+  letter-spacing: 1px;
+
 }
 
 .btn-signup-wrapper {

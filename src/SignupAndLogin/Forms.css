@@ -37,27 +37,28 @@
 .forms input {
     display: block;
     width: 90%;
-    padding: 10px;
+    padding: 12px;
     margin: auto;
     margin-bottom: 30px;
     margin-top: 20px;
     border-style: none;
-    border-radius: 5px;
+    border-radius: 30px;
     font-family: 'Libre Franklin', sans-serif;
-    font-size: 15px
+    font-size: 20px
 }
 
 .btn-forms {
     border: none;
     background-color: inherit;
     font-family: 'Libre Franklin', sans-serif;
-    background-color: #FFBB2E;
-    padding: 15px 20px;
+    background-image: linear-gradient(to right, #FFBB2E, #F9643A);
+    padding: 20px 30px;
     margin-top: 10px;
-    border-radius: 20px;
+    border-radius: 30px;
     color: #FCF5E2;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 .btn-forms:disabled {

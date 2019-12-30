@@ -43,7 +43,7 @@ class LandingMain extends Component {
             to="/demo"
             className="btn-check-it-out"
           >
-            Check it out
+            CHECK IT OUT
           </NavLink>
 
           <Funnels />

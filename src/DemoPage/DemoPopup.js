@@ -26,7 +26,7 @@ class DemoPopup extends Component {
             className="btn-signup"
             onClick={() => this.openSignUpForm()}
           >
-            Sign up
+            SIGN UP
           </button>
         </div>        
       </div>

@@ -37,7 +37,7 @@ class LoginForm extends Component {
         this.context.handleUserSignedIn()
         this.context.hideModalForLoginForm()
       })
-      .catch(res => { console.log(res.error)
+      .catch(res => { 
         this.setState({ error: res.error });
       })
   }
@@ -73,7 +73,7 @@ class LoginForm extends Component {
                 type="submit"
                 className="btn-forms"
               >
-                Login
+                LOGIN
               </button>
             </div>
 
@@ -83,7 +83,7 @@ class LoginForm extends Component {
                 className="btn-forms"
                 onClick={this.context.hideModalForLoginForm}
               >
-                Maybe later
+                MAYBE LATER
               </button>
             </div>
           </fieldset>

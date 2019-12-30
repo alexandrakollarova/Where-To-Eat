@@ -19,7 +19,7 @@ class UndoButton extends Component {
         className="btn-add-place"
         onClick={() => this.removePlaceFromCollection(index)}
       >
-        Undo
+        UNDO
             </button>
     );
   }
