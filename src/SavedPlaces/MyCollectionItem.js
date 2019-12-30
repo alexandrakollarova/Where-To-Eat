@@ -44,7 +44,7 @@ class MyCollectionItem extends Component {
             className="btn-remove-place"
             onClick={() => this.removePlaceFromCollection(id)}
           >
-            Remove
+            REMOVE
           </button>
         </div>
       </>

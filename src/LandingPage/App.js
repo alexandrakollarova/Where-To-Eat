@@ -68,7 +68,7 @@ class App extends Component {
     this.setState({ showConfigWindow: false });
   };
 
-  showModalForPopup= () => {
+  showModalForPopup = () => {
     this.setState({ showPopup: true });
   };
 
@@ -80,10 +80,11 @@ class App extends Component {
     this.setState({ places: filtered });
   };
 
-  savePlace = (place) => {
-    // const newCollectionList = this.state.collectionList.concat([place]);
-    // this.setState({ collectionList: newCollectionList });
+  setCollectionList = collectionList => {
+    this.setState({ collectionList });
+  }
 
+  savePlace = (place) => {
     const businessId = place.id;
     const userId = TokenService.getAuthToken();
 
@@ -111,9 +112,6 @@ class App extends Component {
   };
 
   unsavePlace = (id) => { 
-    // const newCollectionList = this.state.collectionList.filter((place) => place.id !== id);
-    // this.setState({ collectionList: newCollectionList });
-
     const businessId = id;
     const userId = TokenService.getAuthToken();
 
@@ -130,9 +128,6 @@ class App extends Component {
             throw error;
           });
         }
-        return res.json();
-      })
-      .then((data) => {
         const newCollectionList = this.state.collectionList.filter(
           place => place.id !== id
         );
@@ -142,10 +137,6 @@ class App extends Component {
         console.log(error);
       });
   };
-
-  setCollectionList = collectionList => {
-    this.setState({ collectionList });
-  }
 
   convertIsOpenValuesToBoolean() {
     this.setState((prevState) => ({
@@ -160,7 +151,7 @@ class App extends Component {
     }));
   }
 
-  render() { 
+  render() {
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
@@ -195,42 +186,42 @@ class App extends Component {
             {TokenService.hasAuthToken() ? (
               <Redirect to="/my-collection" />
             ) : (
-              <LandingMain />
-            )}
+                <LandingMain />
+              )}
           </Route>
 
           <Route path="/my-collection">
             {TokenService.hasAuthToken() ? (
               <MyCollectionList />
             ) : (
-              <Redirect to="/" />
-            )}
+                <Redirect to="/" />
+              )}
           </Route>
 
           <Route path="/demo">
             {TokenService.hasAuthToken() ? (
               <Redirect to="/my-collection" />
             ) : (
-              <DemoPage />
-            )}
+                <DemoPage />
+              )}
           </Route>
 
           <Route path="/search">
             {TokenService.hasAuthToken() ? (
               <SearchPlaces />
             ) : (
-              <Redirect to="/" />
-            )}
+                <Redirect to="/" />
+              )}
           </Route>
 
           <Route path="/demo-search">
             {TokenService.hasAuthToken() ? (
               <Redirect to="/my-collection" />
             ) : (
-              <DemoSearchPlaces />
-            )}
+                <DemoSearchPlaces />
+              )}
           </Route>
-          
+
           <Route component={PageNotFound} />
         </Switch>
       </AppContext.Provider>

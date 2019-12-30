@@ -73,7 +73,7 @@ input:checked + .slider-open-now:before {
 
 .category-label span {
   background-color:	#673B58;
-  border-radius: 15px;
+  border-radius: 30px;
   color: white;
   font-size: 12px;
   letter-spacing: 3px;
@@ -101,16 +101,17 @@ input:checked + .slider-open-now:before {
 }
 
 .btn-all-set, .btn-never-mind {
-  background-color: #EC3A69;
-  border-radius: 15px;
+  background-image: linear-gradient(to right, #F9643A, #EC3A69);
+  border-radius: 30px;
   font-weight: 600;
-  font-size: 20px;
-  padding: 15px 20px;
+  font-size: 14px;
+  padding: 20px 30px;
   margin-top: 20px;
   margin-bottom: 20px;
   color: white;
   border: none;
   font-family: 'Libre Franklin', sans-serif;
+  letter-spacing: 1px;
 }
 
 

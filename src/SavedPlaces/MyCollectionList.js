@@ -55,13 +55,12 @@ class MyCollectionList extends Component {
   }
 
   render() {
-
     return (
       <div className="my-collection-container">
         <Header />
         <>
           <img src={avo} alt="avo-background" className="avo-img" />
-           {/* eslint-disable-next-line */}
+           
           {this.state.usersPlaces.length == 0
             && 
               <>
@@ -80,7 +79,7 @@ class MyCollectionList extends Component {
                   className="btn-discover-places"
                   to="/search"
                 >
-                  Discover Restaurants
+                  DISCOVER RESTAURANTS
                 </Link>
               </>
           }
@@ -98,7 +97,7 @@ class MyCollectionList extends Component {
           framePadding={this.state.framePadding}
           enableKeyboardControls={this.state.enableKeyboardControls}
         >
-          {this.state.usersPlaces.slice(0, this.state.length).map((place) => (
+          {this.context.collectionList.slice(0, this.state.length).map((place) => (
             <MyCollectionItem
               key={place.id}
               id={place.id}
