@@ -37,7 +37,7 @@ class LoginForm extends Component {
         this.context.handleUserSignedIn()
         this.context.hideModalForLoginForm()
       })
-      .catch(res => {
+      .catch(res => { console.log(res.error)
         this.setState({ error: res.error });
       })
   }
