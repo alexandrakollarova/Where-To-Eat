@@ -64,7 +64,11 @@ class NavSignedIn extends Component {
   render() {
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
-    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
+    const openCloseIconsStyle = {
+      background: 'linear-gradient(to right, #F9643A, #EC3A69)',
+      WebkitBackgroundClip: 'text',   
+      WebkitTextFillColor:'transparent'
+  };
 
     return (
       <nav className="nav-landing">

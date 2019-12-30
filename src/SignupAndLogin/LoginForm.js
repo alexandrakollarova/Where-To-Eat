@@ -29,6 +29,7 @@ class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
+    
     AuthApiService.postLogin({
       user_name: username,
       user_password: password

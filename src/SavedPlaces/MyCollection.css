@@ -52,14 +52,14 @@
 
 .btn-remove-place {
   border: none;
-  background-color: inherit;
   margin-top: 20px; 
-  background-color: #EC3A69;
-  padding: 15px 20px;
+  background-image: linear-gradient(to right, #F9643A, #EC3A69);
+  padding: 20px 30px;
   color: #FCF5E2;
-  border-radius: 20px;
+  border-radius: 30px;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 14px;
+  letter-spacing: 1px;
 }
 
 .slider-control-bottomcenter {
