@@ -103,10 +103,14 @@
     display: none;
 }
 
-@media only screen and (min-width: 650px) {
+@media only screen and (min-width: 500px) {
 
     .forms {
         width: 450px;
+    }
+
+    .login, .signup  {
+        margin-top: 60px;
     }
 
     .btn-forms-wrapper-left {
