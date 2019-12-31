@@ -11,7 +11,7 @@ Craving something yummy, don't feel like experimenting, and nothing comes to you
 ![alt text](visuals/visual1.png)
 
 ### View Demo page
-![alt text](visuals/visual2.png) ![alt text](visuals/visual5.png)
+![alt text](visuals/visual5.png)![alt text](visuals/visual2.png) 
 
 ### Search Places in your area
 ![alt text](visuals/visual3.png)
