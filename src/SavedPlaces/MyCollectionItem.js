@@ -35,7 +35,7 @@ class MyCollectionItem extends Component {
           </div>
 
           <div className="place-is-open">
-            <p>{isClosed ? "Closed Now" : "Open Now"}</p>
+            <p style={{ fontSize: '14px', letterSpacing: '0.5px' }}>{isClosed ? "Closed Now" : "Open Now"}</p>
           </div>
 
           <button

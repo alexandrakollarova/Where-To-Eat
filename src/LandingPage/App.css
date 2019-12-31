@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
 
 body {
     margin: 0;
@@ -27,16 +28,18 @@ button, link, a {
 }
 
 .main-landing .headline {
-    font-family: 'Merienda', cursive;
+    /* font-family: 'Merienda', cursive; */
+    font-family: 'Pacifico', cursive;
     font-size: 65px;
-    line-height: 60px;
+    line-height: 65px;
     transform: rotate(-10deg);
     color: #FFBB2E;  
     position: absolute;
     top: 200px;
     left: 0;
     right: 0;  
-    margin-right: 20px
+    margin-right: 20px;
+    letter-spacing: 3px;
 }
 
 .main-landing p {
@@ -67,8 +70,10 @@ footer {
 }
 
 .funnels h3 {
-    font-family: 'Merienda', cursive;
-    color: #FCF5E2
+    /* font-family: 'Merienda', cursive; */
+    font-family: 'Pacifico', cursive;
+    color: #FCF5E2;
+    letter-spacing: 2px;;
 }
 
 .btn-signup-modal, .btn-check-it-out, .btn-signup-form {
@@ -86,7 +91,7 @@ footer {
     background-image: linear-gradient(to right, #F9643A, #EC3A69);
     border-radius: 30px;
     padding: 20px 40px;
-    color: #FCF5E2;
+    color: white;
     font-weight: 600;
     font-size: 12px;
     letter-spacing: 1px;
@@ -127,7 +132,7 @@ footer {
     .main-landing .headline {
         top: 160px;        
         font-size: 80px;
-        line-height: 75px;
+        line-height: 80px;
     }
 
     .main-landing {

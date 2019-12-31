@@ -30,7 +30,6 @@ class App extends Component {
       activeUserId: TokenService.getAuthToken(),
     });
   }
-
   createUser = (user) => {
     this.setState({
       users: [...this.state.users, user],
@@ -151,7 +150,7 @@ class App extends Component {
     }));
   }
 
-  render() {
+  render() {  
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
@@ -182,21 +181,23 @@ class App extends Component {
     return (
       <AppContext.Provider value={contextValue}>
         <Switch>
-          <Route exact path="/">
-            {TokenService.hasAuthToken() ? (
-              <Redirect to="/my-collection" />
-            ) : (
-                <LandingMain />
-              )}
-          </Route>
+          <Route exact path="/" render={(routeProps) => {
+            return TokenService.hasAuthToken() ? (
+              <Redirect to="/my-collection" routeProps={routeProps} />            
+              ) : (
+                    <LandingMain />
+                  )}
+            }           
+          />
 
-          <Route path="/my-collection">
-            {TokenService.hasAuthToken() ? (
-              <MyCollectionList />
-            ) : (
-                <Redirect to="/" />
-              )}
-          </Route>
+          <Route path="/my-collection" render={(routeProps) => {
+            return TokenService.hasAuthToken() ? (
+              <MyCollectionList routeProps={routeProps} />
+              ) : (
+                  <Redirect to="/" />
+                )}
+            }          
+          />
 
           <Route path="/demo">
             {TokenService.hasAuthToken() ? (

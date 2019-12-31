@@ -5,8 +5,11 @@
 .search-places-main .headline {
     text-align: left;
     margin-left: 10%;
-    line-height: 25px;
+    line-height: 40px;
     color: #FCF5E2; 
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+    letter-spacing: 3px;
 }
 
 .material-icons {
@@ -18,7 +21,7 @@
     background-color: inherit;
     color: white;
     position: absolute;
-    padding-top: 8px;
+    padding-top: 6px;
     margin-left: -50px;
 }
 
@@ -57,7 +60,7 @@
     z-index: 10;
     background-image: linear-gradient(to right, #5C344F, #551843);
     padding-top: 20px;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 #config-window h3 {
@@ -72,10 +75,6 @@
 }
 
 @media only screen and (min-width: 450px) {
-    .search-places-main .headline {
-        font-size: 25px;
-        line-height: 30px;
-    }
 
     #config-window {
         width: 400px;
@@ -87,8 +86,8 @@
 
     .search-places-main .headline {
         margin-left: 15%;
-        font-size: 35px;
-        line-height: 40px;
+        font-size: 50px;
+        line-height: 50px;
     }
 
     .search-input {
@@ -99,6 +98,10 @@
 
     .search-slider {
         width: 35px;
+    }
+
+    .search-icon {
+        padding-top: 10px;
     }
 
     .material-icons {

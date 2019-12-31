@@ -54,63 +54,66 @@ class MyCollectionList extends Component {
       });
   }
 
-  render() {
+  render() {   
     return (
       <div className="my-collection-container">
-        <Header />
+        <Header routeProps={this.props.routeProps} />
         <>
           <img src={avo} alt="avo-background" className="avo-img" />
-           
+
           {this.state.usersPlaces.length == 0
-            && 
-              <>
-                <h1 className="headline-welcome">
-                  Welcome
+            ?
+            <>
+              <h1 className="headline-welcome">
+                Welcome
                 </h1>
 
-                <p className="discover-places-text">
-                  Enjoy swiping through your list of restaurants and narrow down your choice.
+              <p className="discover-places-text">
+                Enjoy swiping through your list of restaurants and narrow down your choice.
                   <br />
-                  Don't have any saved restaurants in your collection? Discover them now!
-                </p>         
-                
-                <Link
-                  type="button"
-                  className="btn-discover-places"
-                  to="/search"
-                >
-                  DISCOVER RESTAURANTS
+                Don't have any saved restaurants in your collection? Discover them now!
+                </p>
+
+              <Link
+                type="button"
+                className="btn-discover-places"
+                to="/search"
+              >
+                DISCOVER RESTAURANTS
                 </Link>
-              </>
+            </>
+            :
+            <>
+              <h1 className="headline-your-collection" >
+                Your collection
+              </h1>
+
+              <Carousel
+                withoutControls={this.state.withoutControls}
+                transitionMode={this.state.transitionMode}
+                cellAlign={this.state.cellAlign}
+                slidesToShow={this.state.slidesToShow}
+                wrapAround={this.state.wrapAround}
+                slideIndex={this.state.slideIndex}
+                framePadding={this.state.framePadding}
+                enableKeyboardControls={this.state.enableKeyboardControls}
+              >
+                {this.context.collectionList.slice(0, this.state.length).map((place) => (
+                  <MyCollectionItem
+                    key={place.id}
+                    id={place.id}
+                    name={place.name}
+                    isClosed={place.isClosed}
+                    rating={place.rating}
+                    onClick={this.handleImageClick}
+                    img={place.image_url}
+                  />
+                ))}
+              </Carousel>
+            </>
           }
         </>
-
-        {/* <h3 className="swipe-left-right-text">Swipe left and right</h3> */}
-
-        <Carousel
-          withoutControls={this.state.withoutControls}
-          transitionMode={this.state.transitionMode}
-          cellAlign={this.state.cellAlign}
-          slidesToShow={this.state.slidesToShow}
-          wrapAround={this.state.wrapAround}
-          slideIndex={this.state.slideIndex}
-          framePadding={this.state.framePadding}
-          enableKeyboardControls={this.state.enableKeyboardControls}
-        >
-          {this.context.collectionList.slice(0, this.state.length).map((place) => (
-            <MyCollectionItem
-              key={place.id}
-              id={place.id}
-              name={place.name}
-              isClosed={place.isClosed}
-              rating={place.rating}
-              onClick={this.handleImageClick}
-              img={place.image_url}
-            />
-          ))}
-        </Carousel>
-
-      </div>
+     </div>
     );
   }
 }

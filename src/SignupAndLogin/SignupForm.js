@@ -96,6 +96,7 @@ class SignupForm extends Component {
       <div className="forms signup" style={this.props.style} >
         <form onSubmit={e => this.handleSubmit(e)} className={handleShowHideModal}>
           <fieldset>
+            <p className="required-fields">* required fields</p>
             <legend>Sign Up</legend>
             <label htmlFor="username">Username *</label>
             <input

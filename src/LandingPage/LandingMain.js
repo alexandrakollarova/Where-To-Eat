@@ -30,7 +30,7 @@ class LandingMain extends Component {
           <h1 className="headline">
             Where
             <br />
-            to eat?
+            to Eat?
           </h1>
 
           <p>

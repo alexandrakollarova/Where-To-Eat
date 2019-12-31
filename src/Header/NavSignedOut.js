@@ -33,7 +33,7 @@ class NavSignedOut extends Component {
   openSignedOutMenu() {
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
-    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
+    const openCloseIconsStyle = { color: '#F9643A', fontSize: '36px' };
 
     return (
       <ul
@@ -82,7 +82,8 @@ class NavSignedOut extends Component {
     const openCloseIconsStyle = {
       background: 'linear-gradient(to right, #F9643A, #EC3A69)',
       WebkitBackgroundClip: 'text',   
-      WebkitTextFillColor:'transparent'
+      WebkitTextFillColor: 'transparent',
+      fontSize: '40px'
     };
 
     return (

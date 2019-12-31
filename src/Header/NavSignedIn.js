@@ -26,7 +26,7 @@ class NavSignedIn extends Component {
   openSignedInMenu() {
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
-    const openCloseIconsStyle = { color: '#00BCD4', fontSize: '36px' };
+    const openCloseIconsStyle = { color: '#F9643A', fontSize: '36px' };
 
     return (
       <ul
@@ -54,22 +54,22 @@ class NavSignedIn extends Component {
             className="btn-log-out"
             style={logoutLoginStyle}
           >
-            log out!
+            log out
           </button>
         </li>
       </ul>
     );
   }
 
-  render() {
+  render() { 
     const { isMenuActive } = this.state;
     const logoutLoginStyle = { color: '#F9643A' };
     const openCloseIconsStyle = {
       background: 'linear-gradient(to right, #F9643A, #EC3A69)',
       WebkitBackgroundClip: 'text',   
       WebkitTextFillColor:'transparent'
-  };
-
+    };
+  
     return (
       <nav className="nav-landing">
       

@@ -21,7 +21,7 @@
     border-style: none;
     background-image: linear-gradient(to right, #5C344F, #551843);
     padding-top: 20px;
-    border-radius: 8px;
+    border-radius: 20px;
 }
 
 .forms legend {
@@ -39,26 +39,28 @@
     width: 90%;
     padding: 12px;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 20px;
     border-style: none;
     border-radius: 30px;
     font-family: 'Libre Franklin', sans-serif;
-    font-size: 20px
+    font-size: 20px;
+    outline: none;
 }
 
 .btn-forms {
     border: none;
     background-color: inherit;
     font-family: 'Libre Franklin', sans-serif;
-    background-image: linear-gradient(to right, #FFBB2E, #F9643A);
-    padding: 20px 30px;
+    background-image: linear-gradient(to right, #F9643A, #EC3A69);
+    padding: 20px 20px;
     margin-top: 10px;
     border-radius: 30px;
     color: #FCF5E2;
     font-weight: 600;
     font-size: 14px;
     letter-spacing: 1px;
+    outline: none;
 }
 
 .btn-forms:disabled {
@@ -67,13 +69,13 @@
 
 .btn-forms-wrapper-left {
     float: left;
-    margin-left: 15px;
+    /* margin-left: 10px; */
     padding: 10px 0;
 }
 
 .btn-forms-wrapper-right {
     float: right;
-    margin-right: 15px;
+    /* margin-right: 10px; */
     padding: 10px 0;
 }
 
@@ -81,6 +83,16 @@
     font-size: 12px;
     padding: 0 10px;
     padding-bottom: 10px;
+    color: #FFBB2E;
+}
+
+.required-fields {
+    position: absolute;
+    right: 30px;
+    top: 80px;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 0.5px;
 }
 
 .display-block {
@@ -95,5 +107,13 @@
 
     .forms {
         width: 450px;
+    }
+
+    .btn-forms-wrapper-left {
+        margin-left: 10px;
+    }
+    
+    .btn-forms-wrapper-right {
+        margin-right: 10px;
     }
 }
