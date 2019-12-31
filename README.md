@@ -8,18 +8,21 @@ Craving something yummy, don't feel like experimenting, and nothing comes to you
 ## In action:
 
 ### Landing Page
-![alt text](images/visual1.png)
+![alt text](readme visuals/visual1.png)
 
 ### Search Places in your area
-![alt text](images/visual2.png)
+![alt text](readme visuals/visual2.png)
  
 ### Decide to Sign up
-![alt text](images/visual3.png)
+![alt text](readme visuals/visual3.png)
 
-![alt text](images/visual4.png)
+![alt text](readme visuals/visual4.png)
 
 ### Swipe left and right through your fav spots! 
-![alt text](images/visual6.png)
+![alt text](readme visuals/visual6.png)
+
+![alt text](readme visuals/visual5.png)
+![alt text](readme visuals/visual7.png)
 
 ## Tech Used:
 * Yelp API
