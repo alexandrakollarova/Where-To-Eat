@@ -9,9 +9,9 @@
     color: white
 }
 
-.signup {
+/* .signup {
     margin-top: 30px;
-}
+} */
 
 .login {
     margin-top: 80px;
@@ -31,7 +31,7 @@
 }
 
 .forms label {
-    padding-left: 6px
+    padding-left: 6px;
 }
 
 .forms input {
