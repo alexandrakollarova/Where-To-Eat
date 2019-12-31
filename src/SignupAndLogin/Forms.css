@@ -9,12 +9,12 @@
     color: white
 }
 
-/* .signup {
-    margin-top: 30px;
-} */
+.signup {
+    margin-top: -5px;
+}
 
 .login {
-    margin-top: 80px;
+    margin-top: 35px;
 }
 
 .forms fieldset {

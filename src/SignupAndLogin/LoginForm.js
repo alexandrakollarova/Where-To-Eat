@@ -73,6 +73,8 @@ class LoginForm extends Component {
               <button
                 type="submit"
                 className="btn-forms"
+                disabled={this.state.username.value.length == 0
+                  || this.state.password.value.length == 0}
               >
                 LOGIN
               </button>

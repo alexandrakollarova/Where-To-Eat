@@ -150,7 +150,7 @@ class SignupForm extends Component {
                 onClick={this.context.hideModalForSignupForm}
               >
                 MAYBE LATER
-                            </button>
+              </button>
             </div>
           </fieldset>
         </form>

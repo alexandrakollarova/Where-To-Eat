@@ -65,13 +65,14 @@
 
 #config-window h3 {
     text-align: left;
-    margin-left: 20px;
     color: white;
-    margin-block-start: 0;
+    margin-block-start: 5px;
+    margin-block-end: 10px;
 }
 
 .form-config-window {
     text-align: center;
+    margin: 0px 10px;
 }
 
 @media only screen and (min-width: 450px) {
