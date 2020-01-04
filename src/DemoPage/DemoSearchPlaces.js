@@ -8,6 +8,7 @@ import ConfigIcon from '../HomePage/ConfigIcon';
 import config from '../config';
 import SignupForm from '../SignupAndLogin/SignupForm';
 import LoginForm from '../SignupAndLogin/LoginForm';
+import Geocode from "react-geocode";
 
 class DemoSearchPlaces extends Component {
   static contextType = AppContext;
@@ -20,16 +21,34 @@ class DemoSearchPlaces extends Component {
     rating: 0,
     allPassedCategories: [],
     isOpen: true,
+    error: null, 
+    city: "",
+    noResultsFound: "No restaurants match this criteria."
   }
 
   componentDidMount() {
+   
     const showPosition = (position) => {
       this.setState({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       }, () => {
-        const { latitude, longitude } = this.state;
+          const { latitude, longitude } = this.state;
 
+          //Geocode.setApiKey("AIzaSyAPCJi3m_5kp8kMN1lAN0Dxn5YHQ_pSoig");
+
+          Geocode.enableDebug();
+          
+          Geocode.fromLatLng(latitude, longitude).then(
+            response => {
+              const address = response.results[6].formatted_address;
+              this.setState({ city: address });
+            },
+            error => {
+              console.error(error);
+            }
+          );
+         
         fetch(`${config.API_ENDPOINT}/businesses?lat=${latitude}&long=${longitude}`, {
           headers: {
             'Content-Type': 'application/json',
@@ -39,19 +58,44 @@ class DemoSearchPlaces extends Component {
             ? res.json().then((e) => Promise.reject(e))
             : res.json()))
           .then((data) => {
-            this.setState({ places: data.businesses });
-          });
+            if (data === "undefined" || data.length === 0) {
+              this.setState({
+                error: "We were not able to retrieve any restaurants in your current location. We apologize for this inconvienence.",
+                places: []
+              })
+            } else {
+              this.setState({ places: data.businesses });
+            }
+          })
+          .catch(err => this.setState({ error: err }))
       });
     };
 
+    const showError = (error) => {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          this.setState({ error: "You denied the request to track your location. Please, allow the location in your browser." });
+          break;
+        case error.POSITION_UNAVAILABLE:
+          this.setState({ error: "Your current location is unavailable or cannot be tracked. We appologize for this inconvienence." });
+          break;
+        case error.TIMEOUT:
+          this.setState({ error: "The request to get your location timed out. Please refresh the page and try again." });
+          break;
+        case error.UNKNOWN_ERROR:
+          this.setState({ error: "Something went wrong with fetching your location. We appologize for this inconvienence." });
+          break;
+      }
+    }
+
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(showPosition);
+      navigator.geolocation.getCurrentPosition(showPosition, showError);
     } else {
       console.log('Geolocation is not supported by this browser.');
     }
   }
 
-  updateSearchInput = (searchInput) => this.setState({ searchInput }) 
+  updateSearchInput = (searchInput) => this.setState({ searchInput })
 
   updateStars = (rating) => this.setState({ rating })
 
@@ -86,12 +130,11 @@ class DemoSearchPlaces extends Component {
       results = results.filter((place) => place.rating >= rating);
     }
 
-    if (isOpen) { 
+    if (isOpen) {
       results = results.filter((place) => !place.is_closed);
     } else {
       results = results.filter((place) => place.is_closed);
     }
-
     return results;
   }
 
@@ -135,6 +178,7 @@ class DemoSearchPlaces extends Component {
                   className="search-input"
                   type="text"
                   name="search-input"
+                  placeholder="e.g. Dominos"
                   onChange={(e) => this.updateSearchInput(e.target.value)}
                 />
                 <button
@@ -156,7 +200,9 @@ class DemoSearchPlaces extends Component {
                   className="search-slider"
                 />
               </div>
-
+            </div>
+            <div>
+              <p className="location-error">{this.state.error}</p>
             </div>
           </form>
           <ConfigIcon
@@ -165,9 +211,20 @@ class DemoSearchPlaces extends Component {
             updateIsOpen={this.updateIsOpen}
             handleNeverMind={this.handleNeverMind}
           />
-          <DemoPlacesList places={searchResults} />
-        </main>
 
+          {this.state.places.length !== 0
+            ? <DemoPlacesList
+                places={searchResults}
+                city={this.state.city}
+                noResultsFound={searchResults.length === 0 && this.state.noResultsFound} 
+              />
+            : (
+              <div className="loading-error">
+                <h1>Loading...</h1>
+              </div>
+              )
+          }
+        </main>
       </>
     );
   }

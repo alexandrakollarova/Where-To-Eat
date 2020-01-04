@@ -2,16 +2,25 @@ import React, { Component } from 'react';
 import AppContext from '../AppContext';
 import DemoPlacesItem from './DemoPlacesItem';
 import DemoPopup from './DemoPopup';
+import '../HomePage/Homepage.css';
 
 class DemoPlacesList extends Component {
   static contextType = AppContext;
 
   render() {
     const { places } = this.props;
+
     return (
-      <div className="restaurant-card-grid">        
-        <DemoPopup />
+      <>
+        <h4 className="city">
+          Found in {this.props.city}
+        </h4>
+
+        <h2 className="no-results">{this.props.noResultsFound}</h2>
         
+      <div className="restaurant-card-grid">
+        <DemoPopup />  
+
         {places.map((place) => (
           <DemoPlacesItem
             key={place.id}
@@ -24,7 +33,8 @@ class DemoPlacesList extends Component {
             isSaved={false}
           />
         ))}
-      </div>
+        </div>
+      </>
     );
   }
 }

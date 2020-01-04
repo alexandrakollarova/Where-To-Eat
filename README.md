@@ -24,7 +24,8 @@ Craving something yummy, don't feel like experimenting, and nothing comes to you
 
 ## Tech Used:
 * Yelp API
-* Geolocation
+* Geolocation API
+* Google Maps - Geocoding API
 * ReactJS
 * React Router
 * JSX

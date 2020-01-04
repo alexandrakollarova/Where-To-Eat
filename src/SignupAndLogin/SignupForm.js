@@ -110,7 +110,7 @@ class SignupForm extends Component {
 
             <label htmlFor="password">Password *</label>
             <input
-              type="text"
+              type="password"
               name='password'
               // id="password"
               onChange={e => this.updatePassword(e.target.value)}
@@ -120,7 +120,7 @@ class SignupForm extends Component {
 
             <label htmlFor="repeat-password">Confirm Password *</label>
             <input
-              type="text"
+              type="password"
               name="repeat-password"
               // id="repeat-password"
               onChange={e => this.updateRepeatPassword(e.target.value)}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from './Footer';
 import Funnels from './Funnels';
@@ -39,12 +39,12 @@ class LandingMain extends Component {
             Let Where To Eat to help you to solve this once for all.
           </p>
 
-          <NavLink
+          <Link
             to="/demo"
             className="btn-check-it-out"
           >
             CHECK IT OUT
-          </NavLink>
+          </Link>
 
           <Funnels />
 
