@@ -35,7 +35,7 @@ class DemoSearchPlaces extends Component {
       }, () => {
           const { latitude, longitude } = this.state;
 
-          //Geocode.setApiKey("AIzaSyAPCJi3m_5kp8kMN1lAN0Dxn5YHQ_pSoig");
+          //Geocode.setApiKey(config.GOOGLE_API_KEY);
 
           Geocode.enableDebug();
           
