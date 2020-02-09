@@ -22,6 +22,7 @@ class App extends Component {
     isMenuActive: false,
     collectionList: [],
     activeUserId: null,
+    error: null
   };
 
   componentDidMount() {
@@ -105,12 +106,10 @@ class App extends Component {
         const newCollectionList = this.state.collectionList.concat([place]);
         this.setState({ collectionList: newCollectionList });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(error => this.setState({ error: error }));
   };
 
-  unsavePlace = (id) => { 
+  unsavePlace = (id) => {
     const businessId = id;
     const userId = TokenService.getAuthToken();
 
@@ -132,9 +131,7 @@ class App extends Component {
         );
         this.setState({ collectionList: newCollectionList });
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(error => this.setState({ error: error }));
   };
 
   convertIsOpenValuesToBoolean() {
@@ -150,7 +147,7 @@ class App extends Component {
     }));
   }
 
-  render() {  
+  render() {
     const contextValue = {
       places: this.state.places,
       users: this.state.users,
@@ -183,20 +180,22 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={(routeProps) => {
             return TokenService.hasAuthToken() ? (
-              <Redirect to="/my-collection" routeProps={routeProps} />            
-              ) : (
-                    <LandingMain />
-                  )}
-            }           
+              <Redirect to="/my-collection" routeProps={routeProps} />
+            ) : (
+                <LandingMain />
+              )
+          }
+          }
           />
 
           <Route path="/my-collection" render={(routeProps) => {
             return TokenService.hasAuthToken() ? (
               <MyCollectionList routeProps={routeProps} />
-              ) : (
-                  <Redirect to="/" />
-                )}
-            }          
+            ) : (
+                <Redirect to="/" />
+              )
+          }
+          }
           />
 
           <Route path="/demo">

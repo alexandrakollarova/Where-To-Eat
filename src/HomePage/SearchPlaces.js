@@ -30,21 +30,19 @@ class SearchPlaces extends Component {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       }, () => {
-          const { latitude, longitude } = this.state;
-          
-          Geocode.setApiKey(config.GOOGLE_API_KEY);
+        const { latitude, longitude } = this.state;
 
-          Geocode.enableDebug();
-          
-          Geocode.fromLatLng(latitude, longitude).then(
-            response => {
-              const address = response.results[6].formatted_address;
-              this.setState({ city: address });
-            },
-            error => {
-              console.error(error);
-            }
-          );
+        Geocode.setApiKey(config.GOOGLE_API_KEY);
+
+        Geocode.enableDebug();
+
+        Geocode.fromLatLng(latitude, longitude).then(
+          response => {
+            const address = response.results[6].formatted_address;
+            this.setState({ city: address });
+          },
+          error => this.setState({ error: error })
+        );
 
         fetch(`${config.API_ENDPOINT}/businesses?lat=${latitude}&long=${longitude}`, {
           headers: {
@@ -52,9 +50,11 @@ class SearchPlaces extends Component {
           },
         })
           .then((res) => {
-            ((!res.ok)
-              ? res.json().then((e) => Promise.reject(e))
-              : res.json())
+            if (!res.ok) {
+              return res.json().then((e) => Promise.reject(e))
+            } else {
+              return res.json()
+            }
           })
           .then((data) => {
             if (data === undefined || data.length === 0) {
@@ -66,14 +66,14 @@ class SearchPlaces extends Component {
               this.setState({ places: data.businesses });
             }
           })
-          .catch(err => console.log(err))
+          .catch(error => this.setState({ error: error }));
       });
     };
 
     const showError = (error) => {
-      switch(error.code) {
+      switch (error.code) {
         case error.PERMISSION_DENIED:
-          this.setState({ error: "You denied the request to track your location. Please, allow the location in your browser." }); 
+          this.setState({ error: "You denied the request to track your location. Please, allow the location in your browser." });
           break;
         case error.POSITION_UNAVAILABLE:
           this.setState({ error: "Your current location is unavailable or cannot be tracked. We appologize for this inconvienence." });
@@ -89,8 +89,6 @@ class SearchPlaces extends Component {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-      console.log('Geolocation is not supported by your browser. Please try using a different browser.');
     }
   }
 
@@ -151,7 +149,7 @@ class SearchPlaces extends Component {
     e.preventDefault();
   }
 
-  render() { 
+  render() {
     const searchResults = this.searchResults();
 
     return (
@@ -195,10 +193,10 @@ class SearchPlaces extends Component {
                   alt="slider-icon"
                   className="search-slider"
                 />
-              </div>              
+              </div>
             </div>
             <div>
-                <p className="location-error">{this.state.error}</p>
+              <p className="location-error">{this.state.error}</p>
             </div>
           </form>
           <ConfigIcon
@@ -210,15 +208,15 @@ class SearchPlaces extends Component {
 
           {this.state.places.length !== 0
             ? <PlacesList
-                places={searchResults}
-                city={this.props.city} 
-                noResultsFound={searchResults.length === 0 && this.state.noResultsFound} 
-              />
+              places={searchResults}
+              city={this.state.city}
+              noResultsFound={searchResults.length === 0 && this.state.noResultsFound}
+            />
             : (
               <div className="loading-error">
                 <h1>Loading...</h1>
               </div>
-              )
+            )
           }
         </main>
       </>

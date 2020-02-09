@@ -28,7 +28,7 @@ class DemoPopup extends Component {
           >
             SIGN UP
           </button>
-        </div>        
+        </div>
       </div>
     );
   }

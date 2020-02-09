@@ -21,34 +21,34 @@ class DemoSearchPlaces extends Component {
     rating: 0,
     allPassedCategories: [],
     isOpen: true,
-    error: null, 
+    error: null,
     city: "",
     noResultsFound: "No restaurants match this criteria."
   }
 
   componentDidMount() {
-   
+
     const showPosition = (position) => {
       this.setState({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       }, () => {
-          const { latitude, longitude } = this.state;
+        const { latitude, longitude } = this.state;
 
-          Geocode.setApiKey(config.GOOGLE_API_KEY);
+        Geocode.setApiKey(config.GOOGLE_API_KEY);
 
-          Geocode.enableDebug();
-          
-          Geocode.fromLatLng(latitude, longitude).then(
-            response => {
-              const address = response.results[6].formatted_address;
-              this.setState({ city: address });
-            },
-            error => {
-              console.error(error);
-            }
-          );
-         
+        Geocode.enableDebug();
+
+        Geocode.fromLatLng(latitude, longitude).then(
+          response => {
+            const address = response.results[6].formatted_address;
+            this.setState({ city: address });
+          },
+          error => {
+            console.error(error);
+          }
+        );
+
         fetch(`${config.API_ENDPOINT}/businesses?lat=${latitude}&long=${longitude}`, {
           headers: {
             'Content-Type': 'application/json',
@@ -90,8 +90,6 @@ class DemoSearchPlaces extends Component {
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, showError);
-    } else {
-      console.log('Geolocation is not supported by this browser.');
     }
   }
 
@@ -214,15 +212,15 @@ class DemoSearchPlaces extends Component {
 
           {this.state.places.length !== 0
             ? <DemoPlacesList
-                places={searchResults}
-                city={this.state.city}
-                noResultsFound={searchResults.length === 0 && this.state.noResultsFound} 
-              />
+              places={searchResults}
+              city={this.state.city}
+              noResultsFound={searchResults.length === 0 && this.state.noResultsFound}
+            />
             : (
               <div className="loading-error">
                 <h1>Loading...</h1>
               </div>
-              )
+            )
           }
         </main>
       </>

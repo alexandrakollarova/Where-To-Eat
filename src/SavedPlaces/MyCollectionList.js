@@ -26,6 +26,7 @@ class MyCollectionList extends Component {
       usersPlaces: [],
       framePadding: '0px',
       enableKeyboardControls: true,
+      error: null
     };
   }
 
@@ -49,12 +50,10 @@ class MyCollectionList extends Component {
         this.setState({ usersPlaces: data });
         this.context.setCollectionList(data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch(error => this.setState({ error: error }));
   }
 
-  render() {   
+  render() {
     return (
       <div className="my-collection-container">
         <Header routeProps={this.props.routeProps} />
@@ -113,7 +112,7 @@ class MyCollectionList extends Component {
             </>
           }
         </>
-     </div>
+      </div>
     );
   }
 }
