@@ -29,7 +29,7 @@ class LoginForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { username, password } = this.state;
-    
+
     AuthApiService.postLogin({
       user_name: username,
       user_password: password
@@ -38,12 +38,12 @@ class LoginForm extends Component {
         this.context.handleUserSignedIn()
         this.context.hideModalForLoginForm()
       })
-      .catch(res => { 
+      .catch(res => {
         this.setState({ error: res.error });
       })
   }
 
-  render() { 
+  render() {
     const handleShowHideModal = this.context.showLoginForm ? "display-block" : "display-none";
 
     return (
@@ -67,7 +67,7 @@ class LoginForm extends Component {
               onChange={e => this.updatePassword(e.target.value)}
             />
 
-            <div>{this.state.error}</div>
+            <div className="error-message">{this.state.error}</div>
 
             <div className='btn-forms-wrapper-left'>
               <button

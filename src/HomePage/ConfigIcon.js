@@ -12,7 +12,7 @@ class ConfigIcon extends Component {
     this.setState((prevState) => ({
       isOn: !prevState.isOn,
     }),
-    () => this.props.updateIsOpen(this.state.isOn));
+      () => this.props.updateIsOpen(this.state.isOn));
   }
 
   render() {

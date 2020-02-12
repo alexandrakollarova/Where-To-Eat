@@ -19,7 +19,7 @@ class Rating extends Component {
         starEmptyColor="grey"
         starDimension="20px"
         starHoverColor="#FFBB2E"
-        changeRating={() => this.changeRating.bind(this)}
+        changeRating={props => this.changeRating(props)}
         numberOfStars={5}
         name="rating"
       />
